@@ -54,6 +54,14 @@
                     "overview": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                 }
             }
+        },
+        "donation": {
+            "heading": "List of donor and their donation",
+            "tableHeading": ["Name", "Amount", "Date" ],
+            "donor": [
+                { "name": "Ram", "amount": 100000, "donationDate": "17 July 2023" }
+            ],
+            "totalDonation": "Total donation till now"
         }
     },
     "hindi": {
@@ -114,6 +122,14 @@
                     "overview": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
                 }
             }
+        },
+        "donation": {
+            "heading": "दाताओं की सूची और उनका दान",
+            "tableHeading": ["नाम", "मात्रा", "तारीख" ],
+            "donor": [
+                { "name": "राम", "amount": 100000, "donationDate": "17 जुलाई 2023" }
+            ],
+            "totalDonation": "अब तक का कुल दान"
         }
     }
 }
