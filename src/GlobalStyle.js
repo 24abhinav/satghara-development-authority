@@ -51,6 +51,10 @@ const GlobalStyle = styled.div`
             border-color: #e54444;
         }
     }
+
+    .link-active {
+        text-decoration: underline !important;
+    }
 `;
 
 export default GlobalStyle;

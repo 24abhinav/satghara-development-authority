@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Wrapper from './style';
 import { getMetaDetails } from '../../handlers';
 
@@ -7,7 +8,7 @@ const { header, selectedLanguage } = getMetaDetails();
 const Options = () => (
     <ul className='options'>
         {header.options.map(({ name = '', url = '' }) => (
-            <li key={name}><a href={url}>{name}</a></li>
+            <li key={name}><NavLink className={({ isActive }) => isActive ? 'link-active' : ''} to={url}>{name}</NavLink></li>
         ))}
         <li>
             <select defaultValue={selectedLanguage} onChange={e => { 
@@ -15,7 +16,7 @@ const Options = () => (
                 window.location.reload()
                 }}>
                 <option value="english">English</option>
-                <option value="hindi">Hindi</option>
+                <option value="hindi">हिंदी</option>
             </select>
         </li>
     </ul>
@@ -53,7 +54,9 @@ const Headers = () => {
                     <img src={header.logo} alt={header.alt} />
                     <h3 dangerouslySetInnerHTML={{__html: header.heading}} />
                 </div>
-                <Options />
+                <nav>
+                    <Options />
+                </nav>
                 <div className="mobile-icon">
                     <div className="hamburger" onClick={toggleMobileHeader}>
                         <div></div>
@@ -63,9 +66,9 @@ const Headers = () => {
                 </div>
             </div>
             <div className="mobile-header" onClick={toggleMobileHeader}>
-                <div ref={mobileHeaderRef} className="mobile-options">
+                <nav ref={mobileHeaderRef} className="mobile-options">
                     <Options />
-                </div>
+                </nav>
             </div>
         </Wrapper>
     );

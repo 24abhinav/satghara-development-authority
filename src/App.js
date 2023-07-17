@@ -1,16 +1,19 @@
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 import Headers from './Components/Header';
 import GlobalStyle from './GlobalStyle';
-import Home from './Components/Home';
+import Routing from './Routing';
 
 const App = () => {
 
   return (
-    <GlobalStyle className="App">
-      <Headers />
-      <br />
-      <Home />
-    </GlobalStyle>
+    <BrowserRouter>
+      <GlobalStyle className="App">
+        <Headers />
+        <br />
+        <Routing />
+      </GlobalStyle>
+    </BrowserRouter>
   );
 }
 
