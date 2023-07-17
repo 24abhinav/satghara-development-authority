@@ -9,7 +9,6 @@ const Wrapper = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-
     }
 
     .heading {
@@ -97,7 +96,7 @@ const Wrapper = styled.div`
             bottom: 0;
             width: 100vw;
             background: white;
-            padding: 20px 0px;
+            padding: 20px 0px 60px;
             border-radius: 40px 40px 0px 0px;
 
             .options {
