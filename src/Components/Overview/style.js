@@ -77,7 +77,7 @@ const Wrapper = styled.div`
         }
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 720px) {
         width: auto !important;
     }
 

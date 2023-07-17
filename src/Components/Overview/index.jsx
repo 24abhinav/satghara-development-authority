@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Wrapper from './style';
 import { getMetaDetails } from '../../handlers';
 
@@ -20,7 +20,7 @@ const Overview = () => {
 
     return (
         <Wrapper>
-            <h4 className='m-b-20'>{overviewPage.heading}</h4>
+            <h4 className='m-b-20'>{overviewPage.heading} <span>({programLength})</span></h4>
             {Object.keys(overviewPage.programList).map((key, index) => {
                     const { imageUrl = '', heading = '', overview = '', upcoming = '' } = overviewPage.programList[key];
 

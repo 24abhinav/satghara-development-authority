@@ -56,6 +56,11 @@ const Wrapper = styled.div`
                 text-decoration: underline;
                 font-weight: 600;
             }
+
+            select {
+                border: none;
+                background: transparent;
+            }
         }
     }
 
@@ -70,6 +75,40 @@ const Wrapper = styled.div`
                 height: 5px;
                 background-color: black;
                 margin: 6px 0;
+            }
+        }
+    }
+
+    .mobile-header {
+        background: rgba(0,0,0, 0.5);
+        width: 100vw;
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: 9;
+        transition: height 0.2s ease-in;
+
+        ${({ mobileHeader }) => `
+            height: ${mobileHeader ? '100vh' : '0'};
+        `}
+
+        .mobile-options {
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            background: white;
+            padding: 20px 0px;
+            border-radius: 40px 40px 0px 0px;
+
+            .options {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                li {
+                    margin: 0;
+                    padding-bottom: 15px;
+                }
             }
         }
     }

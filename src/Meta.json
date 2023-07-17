@@ -8,8 +8,7 @@
             "options": [
                 { "name": "About Us", "url": "/" },
                 { "name": "Programs", "url": "/program" },
-                { "name": "Donation", "url": "/donation" },
-                { "name": "Contact Us", "url": "/contact-us" }
+                { "name": "Donation", "url": "/donation" }
             ]
         },
         "contactUs": {
@@ -30,12 +29,12 @@
                     "required": true,
                     "errMsg": "Please enter your mobile"
                 },
-                "donation": {
-                    "label": "Donation",
+                "description": {
+                    "label": "Donation / Question / Concern / Suggestion",
                     "type": "text",
-                    "placeholder": "What do you want to donate",
+                    "placeholder": "Please tell us in brief",
                     "required": true,
-                    "errMsg": "Please enter what you want to donate"
+                    "errMsg": "Please tell us briefly what you want to say"
                 }
             },
             "submit": "Contact"
@@ -44,12 +43,12 @@
             "heading": "Quick Overview of our programs",
             "programList": {
                 "hospital": {
-                    "upcoming": "Upcoming",
                     "imageUrl": "https://picsum.photos/300/350",
                     "heading": "free Hospital every sunday",
                     "overview": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                 },
                 "commonKitchen": {
+                    "upcoming": "Upcoming",
                     "imageUrl": "https://picsum.photos/300/350",
                     "heading": "A Nominal price Common kitchen",
                     "overview": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
@@ -66,12 +65,11 @@
             "options": [
                 { "name": "हमारे बारे में", "url": "/" },
                 { "name": "कार्यक्रम", "url": "/program" },
-                { "name": "दान", "url": "/donation" },
-                { "name": "संपर्क", "url": "/contact-us" }
+                { "name": "दान", "url": "/donation" }
             ]
         },
         "contactUs": {
-            "heading": "क्या आप  दान करना चाहते हैं? <br /> या क्या आपका कोई प्रश्न/चिंता/सुझाव है? <br /> कृपया हमसे संपर्क करें",
+            "heading": "क्या आप दान करना चाहते हैं? <br /> या क्या आपका कोई प्रश्न / चिंता / सुझाव है? <br /> कृपया हमसे संपर्क करें",
             "formFields": {
                 "name" : {
                     "label": "नाम",
@@ -90,12 +88,12 @@
                     "errMsg": "कृपया अपना मोबाइल दर्ज करें"
                 },
                 "donation": {
-                    "label": "दान",
+                    "label": "दान / प्रश्न / चिंता / सुझाव",
                     "type": "text",
-                    "placeholder": "आप क्या दान करना चाहते हैं",
+                    "placeholder": "हमें संक्षेप में बताएं",
                     "key": "donation",
                     "required": true,
-                    "errMsg": "कृपया वह दर्ज करें जो आप दान करना चाहते हैं"
+                    "errMsg": "कृपया हमें संक्षेप में बताएं कि आप क्या कहना चाहते हैं"
                 }
             },
             "successAlert": "हमें आपका अनुरोध प्राप्त हो गया है! हम शीघ्र ही आपसे संपर्क करेंगे",
@@ -105,12 +103,12 @@
             "heading": "हमारे कार्यक्रमों का त्वरित अवलोकन",
             "programList": {
                 "hospital": {
-                    "upcoming": "आगामी",
                     "imageUrl": "https://picsum.photos/300/350",
                     "heading": "प्रत्येक रविवार को निःशुल्क अस्पताल",
                     "overview": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
                 },
                 "commonKitchen": {
+                    "upcoming": "आगामी",
                     "imageUrl": "https://picsum.photos/300/350",
                     "heading": "नाममात्र की कीमत वाली सामान्य रसोई",
                     "overview": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
