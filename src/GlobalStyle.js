@@ -27,12 +27,13 @@ const GlobalStyle = styled.div`
             }
         }
 
-        input {
+        input, textarea {
             width: 100%;
             box-sizing: border-box;
             padding: 10px;
             border:solid 1px #ccc;
             border-radius: 5px;
+            resize: none;
 
             &:focus {
                 outline: none;
@@ -43,6 +44,7 @@ const GlobalStyle = styled.div`
             font-size: 12px;
             padding-left: 11px;
             color: #e54444;
+            display: block;
         }
 
         .input-error {

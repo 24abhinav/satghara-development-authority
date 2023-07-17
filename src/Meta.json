@@ -31,7 +31,7 @@
                 },
                 "description": {
                     "label": "Donation / Question / Concern / Suggestion",
-                    "type": "text",
+                    "type": "textarea",
                     "placeholder": "Please tell us in brief",
                     "required": true,
                     "errMsg": "Please tell us briefly what you want to say"
@@ -89,7 +89,7 @@
                 },
                 "donation": {
                     "label": "दान / प्रश्न / चिंता / सुझाव",
-                    "type": "text",
+                    "type": "textarea",
                     "placeholder": "हमें संक्षेप में बताएं",
                     "key": "donation",
                     "required": true,

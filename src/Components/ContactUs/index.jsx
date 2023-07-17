@@ -32,7 +32,8 @@ const ContactUs = () => {
             setAlert({
                 type: "success",
                 alert: contactUs.successAlert
-            })
+            });
+            setForm({});
         }
     };
 
@@ -47,17 +48,25 @@ const ContactUs = () => {
             e.preventDefault();
             onSubmit();
         }}>
-            {alert && <Alert { ...alert } />}
+            {alert && <Alert { ...alert } autoClose={3} />}
             <h3 dangerouslySetInnerHTML={{__html: contactUs.heading}} />
             <div className="m-b-15">
                 {Object.keys(contactUs.formFields).map(key =>  {
                     const { label, placeholder, required, type } = contactUs.formFields[key];
+                    const formAttr = {
+                        className: error[key] ? 'input-error' : '',
+                        onChange: e => onChangeHandler(key, e.target.value),
+                        name: key,
+                        type,
+                        placeholder,
+                        value: form[key] || ''
+                    };
                     return (
                         <div key={key} className="form-field">
                             <label htmlFor={key}>
                                 {label} {required && (<span className='asterisk'> * </span>)}
                             </label>
-                            <input className={error[key] ? 'input-error' : ''} onChange={(e) => onChangeHandler(key, e.target.value)} name={key} type={type} placeholder={placeholder} />
+                            {type === 'textarea' ? <textarea { ...formAttr } /> : <input { ...formAttr } />}
                             {error[key] && <span className='error-msg'>{error[key]}</span>}
                         </div>
                     )
