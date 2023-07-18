@@ -12,6 +12,10 @@ const GlobalStyle = styled.div`
         margin-bottom: 20px;
     }
 
+    .m-r-20 {
+        margin-right: 20px;
+    }
+
 
     .form-field {
         margin-bottom: 1rem;
@@ -27,7 +31,7 @@ const GlobalStyle = styled.div`
             }
         }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             box-sizing: border-box;
             padding: 10px;
@@ -54,6 +58,32 @@ const GlobalStyle = styled.div`
 
     .link-active {
         text-decoration: underline !important;
+    }
+
+    .primary-btn {
+        border: none;
+        background: #4e4edb;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:disabled {
+            cursor: not-allowed;
+            background: #c9c9d1;
+        }
+    }
+
+    .icon-btn {
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .danger {
+        background: #950101;
     }
 `;
 

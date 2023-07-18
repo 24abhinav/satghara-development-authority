@@ -11,7 +11,8 @@ const Wrapper = styled.table`
         padding: 8px;
     }
 
-    tr:nth-child(even) {
+    tr:hover {
+        cursor: pointer;
         background-color: #dddddd;
     }
 `;
