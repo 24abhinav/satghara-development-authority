@@ -6,7 +6,8 @@
             "heading": "Satghara Development <br /> Authority",
 
             "options": [
-                { "name": "About Us", "url": "/" },
+                { "name": "Home", "url": "/" },
+                { "name": "About Us", "url": "/about-us" },
                 { "name": "Programs", "url": "/program" },
                 { "name": "Donation", "url": "/donation" }
             ]
@@ -62,6 +63,10 @@
                 { "name": "Ram", "amount": 100000, "donationDate": "17 July 2023" }
             ],
             "totalDonation": "Total donation till now"
+        },
+        "common": {
+            "serverError": "Due to some technical glitches we could not captured your request! please try after some time",
+            "loading": "Please wait..."
         }
     },
     "hindi": {
@@ -130,6 +135,10 @@
                 { "name": "राम", "amount": 100000, "donationDate": "17 जुलाई 2023" }
             ],
             "totalDonation": "अब तक का कुल दान"
+        },
+        "common": {
+            "serverError": "कुछ तकनीकी खामियों के कारण हम आपका अनुरोध स्वीकार नहीं कर सके! कृपया कुछ देर बाद प्रयास करें",
+            "loading": "कृपया प्रतीक्षा करें..."
         }
     }
 }

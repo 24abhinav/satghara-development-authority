@@ -36,6 +36,11 @@ const Wrapper = styled.form`
         border-radius: 2px;
         padding: 10px;
         cursor: pointer;
+
+        &:disabled {
+            background: #afafaf;
+            cursor: not-allowed;
+        }
     }
 `;
 

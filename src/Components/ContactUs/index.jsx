@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Wrapper from './style';
-import { getMetaDetails } from '../../handlers';
+import { getMetaDetails, postContact } from '../../handlers';
 import Alert from '../ui/Alert';
 
-const { contactUs } = getMetaDetails();
+const { contactUs, common } = getMetaDetails();
 
 const ContactUs = () => {
     const [form, setForm] = useState({});
     const [error, setError] = useState({});
     const [alert, setAlert] = useState(null);
+    const [loading, setLoading] = useState(null);
 
     const validate = () => {
         let hasError = true;
@@ -25,15 +26,20 @@ const ContactUs = () => {
         return hasError;
     };
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         const hasFormValid = validate();
         if (hasFormValid) {
-            console.log(form);
+            setLoading(true);
+            setAlert({});
+            const success = await postContact(form);
             setAlert({
-                type: "success",
-                alert: contactUs.successAlert
+                type: success ? 'success' : 'error',
+                alert: success ? contactUs.successAlert : common.serverError
             });
-            setForm({});
+            if (success) {
+                setForm({});
+            }
+            setLoading(false);
         }
     };
 
@@ -48,7 +54,7 @@ const ContactUs = () => {
             e.preventDefault();
             onSubmit();
         }}>
-            {alert && <Alert { ...alert } autoClose={3} />}
+            {alert && <Alert { ...alert } />}
             <h3 dangerouslySetInnerHTML={{__html: contactUs.heading}} />
             <div className="m-b-15">
                 {Object.keys(contactUs.formFields).map(key =>  {
@@ -72,7 +78,7 @@ const ContactUs = () => {
                     )
                 })}
             </div>
-            <button type='submit'>{contactUs.submit}</button>
+            <button disabled={loading} type='submit'>{loading ? common.loading : contactUs.submit}</button>
         </Wrapper>
     );
 }

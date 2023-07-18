@@ -1,3 +1,5 @@
+import Axios from 'axios';
+import Manifest from './manifest';
 import Meta from './Meta.json';
 
 let meta = {};
@@ -10,6 +12,15 @@ const fetchMetaDetails = async () => {
     }
     meta = { ...(Meta[selectedLanguage] || {}), selectedLanguage };
     console.log(meta)
+};
+
+export const postContact = async (payload) => {
+    try {
+        const { data: { status = 500 } = {} } = await Axios.post(`${Manifest.apiBashUrl}/contact`, payload);
+        return status === 200;
+    } catch (err) {
+        return false;
+    }
 };
 
 fetchMetaDetails()
