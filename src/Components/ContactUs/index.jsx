@@ -30,7 +30,7 @@ const ContactUs = () => {
         const hasFormValid = validate();
         if (hasFormValid) {
             setLoading(true);
-            setAlert({});
+            setAlert(null);
             const success = await postContact(form);
             setAlert({
                 type: success ? 'success' : 'error',
