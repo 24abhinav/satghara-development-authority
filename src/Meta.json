@@ -88,7 +88,6 @@
                     "label": "नाम",
                     "type": "text",
                     "placeholder": "अपना नाम दर्ज करें",
-                    "key": "name",
                     "required": true,
                     "errMsg": "कृपया अपना नाम दर्ज करें"
                 },
@@ -96,15 +95,13 @@
                     "label": "मोबाइल",
                     "type": "number",
                     "placeholder": "अपना मोबाइल नंबर दर्ज करें",
-                    "key": "mobile",
                     "required": true,
                     "errMsg": "कृपया अपना मोबाइल दर्ज करें"
                 },
-                "donation": {
+                "description": {
                     "label": "दान / प्रश्न / चिंता / सुझाव",
                     "type": "textarea",
                     "placeholder": "हमें संक्षेप में बताएं",
-                    "key": "donation",
                     "required": true,
                     "errMsg": "कृपया हमें संक्षेप में बताएं कि आप क्या कहना चाहते हैं"
                 }
