@@ -44,13 +44,13 @@
             "heading": "Quick Overview of our programs",
             "programList": {
                 "hospital": {
-                    "imageUrl": "https://picsum.photos/300/350",
+                    "imageUrl": "Assets/hospital-logo.png",
                     "heading": "free Hospital every sunday",
                     "overview": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                 },
                 "commonKitchen": {
                     "upcoming": "Upcoming",
-                    "imageUrl": "https://picsum.photos/300/350",
+                    "imageUrl": "Assets/kitchen.jpg",
                     "heading": "A Nominal price Common kitchen",
                     "overview": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                 }
@@ -113,13 +113,13 @@
             "heading": "हमारे कार्यक्रमों का त्वरित अवलोकन",
             "programList": {
                 "hospital": {
-                    "imageUrl": "https://picsum.photos/300/350",
+                    "imageUrl": "Assets/hospital-logo.png",
                     "heading": "प्रत्येक रविवार को निःशुल्क अस्पताल",
                     "overview": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
                 },
                 "commonKitchen": {
                     "upcoming": "आगामी",
-                    "imageUrl": "https://picsum.photos/300/350",
+                    "imageUrl": "Assets/kitchen.jpg",
                     "heading": "नाममात्र की कीमत वाली सामान्य रसोई",
                     "overview": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
                 }

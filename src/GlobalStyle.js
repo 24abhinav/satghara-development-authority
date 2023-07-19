@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const GlobalStyle = styled.div`
+    width: 100%;
 
     .m-b-10 {
         margin-bottom: 10px;

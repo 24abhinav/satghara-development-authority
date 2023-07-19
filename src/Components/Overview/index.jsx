@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Wrapper from './style';
 import { getMetaDetails } from '../../handlers';
 
-const { overviewPage } = getMetaDetails();
+const { overviewPage, assetsBaseUrl = '' } = getMetaDetails();
 const programLength = Object.keys(overviewPage.programList).length;
 
 const Overview = () => {
@@ -29,7 +29,7 @@ const Overview = () => {
                             { count === (index + 1) ? (
                                 <div className="overview">
                                     {upcoming && <p className='upcoming-flag'>{upcoming}</p>}
-                                    <img src={imageUrl} alt={heading} />
+                                    <img src={`${assetsBaseUrl}/static/${imageUrl}`} alt={heading} />
                                     <div className="program-details">
                                         <h4 className='m-b-15'>{heading}</h4>
                                         <p dangerouslySetInnerHTML={{__html: overview}} />

@@ -10,7 +10,7 @@ const fetchMetaDetails = async () => {
         selectedLanguage = 'english';
         localStorage.setItem('selectedLanguage', 'english');
     }
-    meta = { ...(Meta[selectedLanguage] || {}), selectedLanguage };
+    meta = { ...(Meta[selectedLanguage] || {}), selectedLanguage, assetsBaseUrl: 'https://satghara-development-foundation-server.vercel.app' };
     console.log(meta)
 };
 

@@ -4,7 +4,7 @@ const Wrapper = styled.div`
     height: 70px;
     box-sizing: border-box;
     padding: 10px 0;
-    width: 100vw;
+    width: 100%;
     
     .header {
         display: flex;
