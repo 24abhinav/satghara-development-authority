@@ -93,6 +93,8 @@ const Wrapper = styled.div`
         img {
             width: 100% !important;
             height: 300px !important;
+            min-width: unset !important;
+            min-height: 300px;
         }
     }
 `;
