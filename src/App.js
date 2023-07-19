@@ -8,7 +8,8 @@ import './App.css';
 import Loader from './Components/Loader';
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const isAdmin = window.location.pathname.includes('sdpAdmin');
+  const [loading, setLoading] = useState(!isAdmin);
 
   const initialData = async () => {
     await fetchMetaDetails();
@@ -16,7 +17,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    initialData();
+    if (!isAdmin) {
+      initialData();
+    }
   }, []);
 
   return (
@@ -24,7 +27,7 @@ const App = () => {
       <GlobalStyle className="App">
         {loading ? <Loader /> : (
           <>
-              <Headers />
+              <Headers isAdmin={isAdmin} />
               <br />
               <Suspense fallback={<p>loading</p>}>
                 <Routing />

@@ -92,8 +92,8 @@ const Wrapper = styled.div`
         z-index: 9;
         transition: height 0.2s ease-in;
 
-        ${({ mobileHeader }) => `
-            height: ${mobileHeader ? '100vh' : '0'};
+        ${({ $mobileHeader }) => `
+            height: ${$mobileHeader ? '100vh' : '0'};
         `}
 
         .mobile-options {

@@ -181,7 +181,7 @@ const VisitorsContact = () => {
                         </Table>
                         <MobileList list={list} />
                     </div>
-                ) : <p>No Contact</p>
+                ) : <p className='no-data'>No Data found</p>
             }
         </Wrapper>
     );

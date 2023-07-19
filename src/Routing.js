@@ -6,8 +6,11 @@ const Overview = React.lazy(() => import('./Components/Overview'));
 const Donation = React.lazy(() => import('./Components/Donation'));
 const Program = React.lazy(() => import('./Components/Program'));
 const About = React.lazy(() => import('./Components/About'));
+
+// Admin route
 const Admin = React.lazy(() => import('./Components/Admin/Home'));
-const VisitorsContact = React.lazy(() => import('./Components/Admin/VisitorsContact'));
+const AdminContact = React.lazy(() => import('./Components/Admin/VisitorsContact'));
+const AdminDonation = React.lazy(() => import('./Components/Admin/Donation'));
 
 const Routing = () => {
     return (
@@ -19,7 +22,8 @@ const Routing = () => {
             <Route path='/donation' Component={Donation} />
             <Route path='/program' Component={Program} />
             <Route path='/sdpAdmin' Component={Admin} >
-                <Route path='visitors-contact' Component={VisitorsContact} ></Route>
+                <Route path='' Component={AdminContact} ></Route>
+                <Route path='donation' Component={AdminDonation} ></Route>
             </Route>
         </Routes>
     )

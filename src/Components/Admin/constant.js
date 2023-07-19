@@ -1,8 +1,4 @@
 const ADMIN_STATIC = Object.freeze({
-    homepageLinks: [
-        { label: 'Visitors Contact', to: 'visitors-contact' },
-        { label: 'Donations', to: 'donations' }
-    ],
     monthsArray: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     visitorsContactPage: {
         filters: [
@@ -13,7 +9,11 @@ const ADMIN_STATIC = Object.freeze({
             { placeholder: 'Month', key: 'month', type: 'select' },
             { placeholder: 'Year', key: 'year', type: 'number' },
         ]
-    }
+    },
+    navOption: [
+        { name: "Visitors Contact", url: "/sdpAdmin" },
+        { name: "Donations", url: "/sdpAdmin/donation" },
+    ]
 });
 
 export default ADMIN_STATIC;

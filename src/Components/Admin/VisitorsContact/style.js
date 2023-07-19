@@ -87,6 +87,10 @@ const Wrapper = styled.div`
           }
      }
    }
+
+   .no-data {
+     text-align: center;
+   }
 `;
 
 export default Wrapper;
