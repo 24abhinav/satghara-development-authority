@@ -16,8 +16,8 @@ const fetchMetaDetails = async () => {
 
 export const postContact = async (payload) => {
     try {
-        const { data: { status = 500 } = {} } = await Axios.post(`${Manifest.apiBashUrl}/contact`, payload);
-        return status === 200;
+        await Axios.post(`${Manifest.apiBashUrl}/contact`, payload);
+        return true;
     } catch (err) {
         return false;
     }
