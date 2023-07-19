@@ -17,9 +17,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (!isAdmin) {
-      initialData();
-    }
+    initialData();
   }, []);
 
   return (
