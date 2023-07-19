@@ -1,13 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './Components/Home';
-import Overview from './Components/Overview';
-import Donation from './Components/Donation';
-import Program from './Components/Program';
-import About from './Components/About';
-import Admin from './Components/Admin/Home';
-import AdminRouting from './Components/Admin/Routing';
-import VisitorsContact from './Components/Admin/VisitorsContact';
+
+const Home = React.lazy(() => import('./Components/Home'));
+const Overview = React.lazy(() => import('./Components/Overview'));
+const Donation = React.lazy(() => import('./Components/Donation'));
+const Program = React.lazy(() => import('./Components/Program'));
+const About = React.lazy(() => import('./Components/About'));
+const Admin = React.lazy(() => import('./Components/Admin/Home'));
+const VisitorsContact = React.lazy(() => import('./Components/Admin/VisitorsContact'));
 
 const Routing = () => {
     return (

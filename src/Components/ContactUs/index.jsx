@@ -3,20 +3,23 @@ import Wrapper from './style';
 import { getMetaDetails, postContact } from '../../handlers';
 import Alert from '../ui/Alert';
 
-const { contactUs, common } = getMetaDetails();
-
 const ContactUs = () => {
     const [form, setForm] = useState({});
     const [error, setError] = useState({});
     const [alert, setAlert] = useState(null);
     const [loading, setLoading] = useState(null);
 
+    const {
+        contactUs: { formFields = {}, successAlert = '', heading = '', submit = '' } = {},
+        common: { serverError: serverErrorMsg = '', loading: loadingMsg = '' } = {}
+    } = getMetaDetails();
+
     const validate = () => {
         let hasError = true;
         const errorMsg = {};
-        Object.keys(contactUs.formFields).forEach(key => {
+        Object.keys(formFields).forEach(key => {
             const {[key]: formValue = '' } = form;
-            const {[key]: { required = false, errMsg = '' } = {} } = contactUs.formFields;
+            const {[key]: { required = false, errMsg = '' } = {} } = formFields;
             if (required && (!formValue || (key === 'mobile' && formValue.length !== 10))) {
                 errorMsg[key] = errMsg;
                 hasError = false;
@@ -34,7 +37,7 @@ const ContactUs = () => {
             const success = await postContact(form);
             setAlert({
                 type: success ? 'success' : 'error',
-                alert: success ? contactUs.successAlert : common.serverError
+                alert: success ? successAlert : serverErrorMsg
             });
             if (success) {
                 setForm({});
@@ -55,10 +58,10 @@ const ContactUs = () => {
             onSubmit();
         }}>
             {alert && <Alert { ...alert } />}
-            <h3 dangerouslySetInnerHTML={{__html: contactUs.heading}} />
+            <h3 dangerouslySetInnerHTML={{__html: heading}} />
             <div className="m-b-15">
-                {Object.keys(contactUs.formFields).map(key =>  {
-                    const { label, placeholder, required, type } = contactUs.formFields[key];
+                {Object.keys(formFields).map(key =>  {
+                    const { label, placeholder, required, type } = formFields[key];
                     const formAttr = {
                         className: error[key] ? 'input-error' : '',
                         onChange: e => onChangeHandler(key, e.target.value),
@@ -78,7 +81,7 @@ const ContactUs = () => {
                     )
                 })}
             </div>
-            <button disabled={loading} type='submit'>{loading ? common.loading : contactUs.submit}</button>
+            <button disabled={loading} type='submit'>{loading ? loadingMsg : submit}</button>
         </Wrapper>
     );
 }

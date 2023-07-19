@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Wrapper from './style';
 import { getMetaDetails } from '../../handlers';
-
-const { overviewPage, assetsBaseUrl = '' } = getMetaDetails();
-const programLength = Object.keys(overviewPage.programList).length;
+import Manifest from '../../manifest';
 
 const Overview = () => {
+    const { overviewPage: { programList = {}, heading = '' } = {} } = getMetaDetails();
+    const programListKey = Object.keys(programList);
+    const programLength = programListKey.length;
+
     const [count, setCount] = useState(1);
 
     const changeView = (type = 'inc') => {
@@ -20,16 +22,16 @@ const Overview = () => {
 
     return (
         <Wrapper>
-            <h4 className='m-b-20'>{overviewPage.heading} <span>({programLength})</span></h4>
-            {Object.keys(overviewPage.programList).map((key, index) => {
-                    const { imageUrl = '', heading = '', overview = '', upcoming = '' } = overviewPage.programList[key];
+            <h4 className='m-b-20'>{heading} <span>({programLength})</span></h4>
+            {programListKey.map((key, index) => {
+                    const { imageUrl = '', heading = '', overview = '', upcoming = '' } = programList[key];
 
                     return (
                         <React.Fragment key={heading}>
                             { count === (index + 1) ? (
                                 <div className="overview">
                                     {upcoming && <p className='upcoming-flag'>{upcoming}</p>}
-                                    <img src={`${assetsBaseUrl}/static/${imageUrl}`} alt={heading} />
+                                    <img src={`${Manifest.apiBashUrl}/static/${imageUrl}`} alt={heading} />
                                     <div className="program-details">
                                         <h4 className='m-b-15'>{heading}</h4>
                                         <p dangerouslySetInnerHTML={{__html: overview}} />

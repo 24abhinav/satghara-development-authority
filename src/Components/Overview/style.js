@@ -27,6 +27,8 @@ const Wrapper = styled.div`
         img {
             width: 350px;
             height: 300px;
+            min-width: 350px;
+            min-height: 300px;
         }
 
         .program-details {

@@ -1,5 +1,5 @@
 const Manifest = {
-    apiBashUrl: 'https://satghara-development-foundation-server.vercel.app'
+    apiBashUrl: 'http://localhost:9000'
 };
 
 export default Manifest;

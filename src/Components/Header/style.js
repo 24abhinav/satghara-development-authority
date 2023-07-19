@@ -20,6 +20,10 @@ const Wrapper = styled.div`
         font-weight: 600;
         font-family: monospace;
 
+        img {
+            width: 50px;
+        }
+
         h3 {
             margin: 0;
             padding-left: 10px;

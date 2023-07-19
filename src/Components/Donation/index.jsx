@@ -3,25 +3,23 @@ import Wrapper from './style';
 import { getMetaDetails } from '../../handlers';
 import Table from '../ui/Table';
 
-const { donation } = getMetaDetails();
-
-console.log(donation)
 
 const Donation = () => {
+    const { donation: { heading = '', tableHeading = [], donor = [], totalDonation = 0 } = {} } = getMetaDetails();
     return (
         <Wrapper className='page-width'>
-            <h3>{donation.heading}</h3>
+            <h3>{heading}</h3>
             <Table>
                 <thead>
                     <tr>
-                        {donation.tableHeading.map(el => (
+                        {tableHeading.map(el => (
                             <th key={el}>{el}</th>
                         ))}
                     </tr>
                 </thead>
 
                 <tbody>
-                    {donation.donor.map(({ name, amount, donationDate }) => (
+                    {donor.map(({ name, amount, donationDate }) => (
                         <tr key={name}>
                             <td>{name}</td>
                             <td>{amount.toLocaleString('en-IN')}</td>
@@ -30,7 +28,7 @@ const Donation = () => {
                     ))}
                 </tbody>
             </Table>
-            <h3>{donation.totalDonation} : 1,00,000</h3>
+            <h3>{totalDonation} : 1,00,000</h3>
         </Wrapper>
     );
 }

@@ -3,17 +3,16 @@ import { NavLink } from 'react-router-dom';
 import Wrapper from './style';
 import { getMetaDetails } from '../../handlers';
 
-const { header, selectedLanguage } = getMetaDetails();
-
-const Options = () => (
+const Options = ({ options = [], selectedLanguage = '' }) => (
     <ul className='options'>
-        {header.options.map(({ name = '', url = '' }) => (
+        {options.map(({ name = '', url = '' }) => (
             <li key={name}><NavLink className={({ isActive }) => isActive ? 'link-active' : ''} to={url}>{name}</NavLink></li>
         ))}
         <li>
-            <select defaultValue={selectedLanguage} onChange={e => { 
-                localStorage.setItem('selectedLanguage', e.target.value || 'english');
-                window.location.reload()
+            <select defaultValue={selectedLanguage} onChange={e => {
+                    sessionStorage.removeItem('pageMeta')
+                    localStorage.setItem('selectedLanguage', e.target.value || 'english');
+                    window.location.reload()
                 }}>
                 <option value="english">English</option>
                 <option value="hindi">हिंदी</option>
@@ -25,6 +24,7 @@ const Options = () => (
 const Headers = () => {
     const [mobileHeader, setMobileHeader] = useState(false);
     const mobileHeaderRef = useRef(null);
+    const { header: { options = [], logo = '', alt = '', heading = '' } = {}, selectedLanguage, apiBaseUrl = '' } = getMetaDetails();
 
     const toggleMobileHeader = () => {
         const newState = !mobileHeader
@@ -51,11 +51,11 @@ const Headers = () => {
         <Wrapper mobileHeader={mobileHeader}>
             <div className='page-width header'>
                 <div className="heading">
-                    <img src={header.logo} alt={header.alt} />
-                    <h3 dangerouslySetInnerHTML={{__html: header.heading}} />
+                    <img src={`${apiBaseUrl}/${logo}`} alt={alt} />
+                    <h3 dangerouslySetInnerHTML={{__html: heading}} />
                 </div>
                 <nav>
-                    <Options />
+                    <Options options={options} selectedLanguage={selectedLanguage} />
                 </nav>
                 <div className="mobile-icon">
                     <div className="hamburger" onClick={toggleMobileHeader}>
