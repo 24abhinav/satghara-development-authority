@@ -70,18 +70,70 @@ const VisitorsContact = () => {
         }
         const { active = '' } = newFilter;
         setFilter({
-            ...filter,
-            ...newFilter ,
+            ...newFilter,
             active: !!active
         });
     };
+
+    const mappingActionButton =  {
+        delete: deleteRecord,
+        contacted
+    };
+
+    const actionHandler = (key, id) => {
+        const confirm = window.confirm('Confirmation');
+        if (confirm) {
+            mappingActionButton[key](id)
+        }
+    };
+
+    const ActionButton = ({ id }) => (
+        <>
+            <button onClick={() => actionHandler('delete', id)} title='Delete'><span className="fa fa-trash-o"></span></button>
+            <button onClick={() => actionHandler('contacted', id)} title='Contacted'><span className="fa fa-check"></span></button>
+        </>
+    );
+
+    const MobileList = () => {
+        return (
+            <div className="mobile-list">
+                {list?.map(({ id, name, mobile, day, month, year, description}) => (
+                    <ul key={id}>
+                        <li>
+                            <span>Name:</span>
+                            <span>{name}</span>
+                        </li>
+                        <li>
+                            <span>Mobile:</span>
+                            <span>{mobile}</span>
+                        </li>
+                        <li>
+                            <span>Date:</span>
+                            <span>{day} {month} {year}</span>
+                        </li>
+                        <li>
+                            <span>Description:</span>
+                            <span>{description}</span>
+                        </li>
+                        <li className='action-btn'>
+                            <span>Action</span>
+                            <div>
+                                <ActionButton id={id} />
+                            </div>
+                        </li>
+                    </ul>
+                ))}
+            </div>
+        )
+    };
+
 
     return (
         <Wrapper>
             <form onSubmit={onSearch} className="m-b-20">
                 <div className='filter-section'>
                     {ADMIN_STATIC.visitorsContactPage.filters.map(({ placeholder, key, type, attr = {} }) => (
-                        <div className="form-field m-r-20" key={key}>
+                        <div className={`form-field m-r-20 ${key === 'active' ? 'active-check' : ''}`} key={key}>
                             {
                                 type === 'select' ? (
                                     <select name='month' { ...attr }>
@@ -102,31 +154,33 @@ const VisitorsContact = () => {
             </form>
             {
                 list.length ? (
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Mobile</th>
-                                <th>Date</th>
-                                <th>Description</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {list?.map(({ id, name, mobile, day, month, year, description}) => (
-                                <tr key={id}>
-                                    <td>{name}</td>
-                                    <td>{mobile}</td>
-                                    <td>{day} {month} {year}</td>
-                                    <td>{description}</td>
-                                    <td className='action-btn'>
-                                        <button onClick={() => deleteRecord(id)} title='Delete'><span className="fa fa-trash-o"></span></button>
-                                        <button onClick={() => contacted(id)} title='Contacted'><span className="fa fa-check"></span></button>
-                                    </td>
+                    <div className="contact-list">
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Mobile</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </Table>
+                            </thead>
+                            <tbody>
+                                {list?.map(({ id, name, mobile, day, month, year, description}) => (
+                                    <tr key={id}>
+                                        <td>{name}</td>
+                                        <td>{mobile}</td>
+                                        <td>{day} {month} {year}</td>
+                                        <td>{description}</td>
+                                        <td className='action-btn'>
+                                            <ActionButton id={id} />
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                        <MobileList list={list} />
+                    </div>
                 ) : <p>No Contact</p>
             }
         </Wrapper>
