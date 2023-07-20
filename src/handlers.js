@@ -31,8 +31,9 @@ export const fetchMetaDetails = async () => {
     } catch (err) {
         metaDetails = META[selectedLanguage];
     }
-    sessionStorage.setItem('pageMeta', JSON.stringify(metaDetails));
-    return metaDetails;
+    const dataToSave = { ...metaDetails, selectedLanguage };
+    sessionStorage.setItem('pageMeta', JSON.stringify(dataToSave));
+    return dataToSave;
 };
 
 export const postContact = async (payload) => {
