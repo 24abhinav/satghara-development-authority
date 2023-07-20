@@ -1,101 +1,50 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    width: calc(100% - 450px);
-    padding: 1rem;
-    border-width: inherit;
-    border-left-width: 3px;
-    border-style: solid;
-    border-image: 
-        linear-gradient(
-        to bottom, 
-        red, 
-        rgba(0, 0, 0, 0)
-        ) 1 100%;
-    
-
     h4 {
         margin: 0;
+        font-size: 25px;
+        font-family: sans-serif;
         text-align: center;
     }
 
-    .overview {
-        display: flex;
-        align-items: center;
-        position: relative;
-
-        img {
-            width: 350px;
-            height: 300px;
-            min-width: 350px;
-            min-height: 300px;
-        }
-
-        .program-details {
-            padding-left: 20px;
-            p {
-                margin: 0;
-                line-height: 20px;
-                font-size: 15px;
-            }
-        }
-
-        .upcoming-flag {
-            position: absolute;
-            top: 17px;
-            left: -17px;
-            margin: 0;
-            background: red;
-            color: white;
-            padding: 6px 17px;
-            transform: rotate(315deg);
-            font-size: 13px;
-        }
-    }
-
-    .change-program-btn {
-        margin-top: 25px;
+    .tiles {
         display: flex;
         justify-content: center;
 
-        button {
-            border: 1px solid #337EFE;
-            background: transparent;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 25px;
-            width: 50px;
-            height: 50px;
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 3px #9b9b9b;
+            margin-right: 20px;
 
-
-            &:hover {
-                background: #337EFE;
-                color: white;
+            span {
+                &:nth-child(1) {
+                    padding-bottom: 20px;
+                    font-family: sans-serif;
+                }
             }
         }
 
-        button:nth-child(2) {
-            margin-left: 20px;
+        @media (max-width: 425px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+
+            div {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
         }
     }
 
-    @media (max-width: 720px) {
-        width: auto !important;
-    }
-
-    @media (max-width: 960px) {
-        width: 50%;
-
-        .overview {
-            display: block;
-        }
-
-        img {
-            width: 100% !important;
-            height: 300px !important;
-            min-width: unset !important;
-            min-height: 300px;
-        }
+    .overview-section {
+        display: flex;
+        justify-content: space-between;
     }
 `;
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import Wrapper from './style';
 import ContactUs from '../ContactUs';
-import Overview from '../Overview';
+import QuickOverview from '../QuickOverview';
 
 const Home = () => {
     return (
         <Wrapper className='page-width'>
             <div className="home-first-page">
-                <Overview />
+                <QuickOverview />
                 <ContactUs />
             </div>
         </Wrapper>

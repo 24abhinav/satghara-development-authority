@@ -6,6 +6,7 @@ import Routing from './Routing';
 import { fetchMetaDetails } from './handlers';
 import './App.css';
 import Loader from './Components/Loader';
+import Footer from './Components/Footer';
 
 const App = () => {
   const isAdmin = window.location.pathname.includes('sdpAdmin');
@@ -30,6 +31,7 @@ const App = () => {
               <Suspense fallback={<p>loading</p>}>
                 <Routing />
               </Suspense>
+              <Footer />
           </>
         )}
       </GlobalStyle>
