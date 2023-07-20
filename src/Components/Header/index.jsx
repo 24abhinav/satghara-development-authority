@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Wrapper from './style';
 import { getMetaDetails } from '../../handlers';
 import ADMIN_STATIC from '../Admin/constant';
+import Manifest from '../../manifest';
 
 const Options = ({ options = [], selectedLanguage = '', isAdmin = false }) => (
     <ul className='options'>
@@ -27,7 +28,7 @@ const Options = ({ options = [], selectedLanguage = '', isAdmin = false }) => (
 const Headers = ({ isAdmin = false }) => {
     const [mobileHeader, setMobileHeader] = useState(false);
     const mobileHeaderRef = useRef(null);
-    const { header: { options = [], logo = '', alt = '', heading = '' } = {}, selectedLanguage, apiBaseUrl = '' } = getMetaDetails();
+    const { header: { options = [], logo = '', alt = '', heading = '' } = {}, selectedLanguage } = getMetaDetails();
 
     const toggleMobileHeader = () => {
         const newState = !mobileHeader
@@ -54,7 +55,7 @@ const Headers = ({ isAdmin = false }) => {
         <Wrapper $mobileHeader={mobileHeader}>
             <div className='page-width header'>
                 <div className="heading">
-                    <img src={`${apiBaseUrl}/${logo}`} alt={alt} />
+                    <img src={`${Manifest.apiBashUrl}/${logo}`} alt={alt} />
                     <h3>
                         <span dangerouslySetInnerHTML={{__html: heading}} />
                         {isAdmin && (<span>{' Admin '}</span>)}
