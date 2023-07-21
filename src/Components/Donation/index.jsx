@@ -4,11 +4,11 @@ import { getMetaDetails } from '../../handlers';
 import Table from '../ui/Table';
 
 
-const Donation = () => {
+const Donation = ({ showHeading = true }) => {
     const { donation: { heading = '', tableHeading = [], donor = [], totalDonation = 0 } = {} } = getMetaDetails();
     return (
         <Wrapper className='page-width'>
-            <h3>{heading}</h3>
+            {showHeading && (<h3>{heading}</h3>)}
             <Table>
                 <thead>
                     <tr>

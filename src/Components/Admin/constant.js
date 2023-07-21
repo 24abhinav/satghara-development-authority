@@ -13,7 +13,13 @@ const ADMIN_STATIC = Object.freeze({
     navOption: [
         { name: "Visitors Contact", url: "/sdpAdmin" },
         { name: "Donations", url: "/sdpAdmin/donation" },
-    ]
+    ],
+    addDonation: {
+        form: [
+            { name: 'name', label: 'Donor Name', errorMsg: 'Please enter donor name', type: 'text', required: true },
+            { name: 'amount', label: 'Donation Amount', errorMsg: 'Please enter donation amount', type: 'number', required: true },
+        ]
+    }
 });
 
 export default ADMIN_STATIC;
