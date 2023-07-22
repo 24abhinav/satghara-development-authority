@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Wrapper from './style';
-import Donation from '../../Donation';
+import { DonationTable } from '../../Donation';
 import Modal from '../../ui/Modal';
 import ADMIN_STATIC from '../constant';
 
@@ -67,7 +67,7 @@ const ManageDonation = () => {
                     <span>Add New</span>
                 </button>
             </div>
-            <Donation showHeading={false} />
+            <DonationTable isAdmin />
         </Wrapper>
     );
 }

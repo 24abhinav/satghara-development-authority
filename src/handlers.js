@@ -44,3 +44,12 @@ export const postContact = async (payload) => {
         return false;
     }
 };
+
+export const getDonationHandler = async (filter = {}) => {
+    try {
+        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}donation`, { params: filter });
+        return data;
+    } catch (err) {
+        return [];
+    }
+};
