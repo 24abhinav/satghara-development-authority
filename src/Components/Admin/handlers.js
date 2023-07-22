@@ -56,3 +56,11 @@ export const adminSignInHandler = ( payload ) => {
         data: { ...payload }
     });
 };
+
+export const addAdminUserHandler = ( payload ) => {
+    return axiosInstance({
+        method: 'post',
+        url: 'admin/add-user',
+        data: { ...payload }
+    });
+};

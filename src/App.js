@@ -9,7 +9,7 @@ import Loader from './Components/Loader';
 import Footer from './Components/Footer';
 
 const App = () => {
-  const isAdmin = window.location.pathname.includes('sdpAdmin');
+  const isAdmin = window.location.pathname.includes('sdaAdmin');
   const [loading, setLoading] = useState(!isAdmin);
 
   const initialData = async () => {

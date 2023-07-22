@@ -130,7 +130,7 @@ const VisitorsContact = () => {
 
 
     return (
-        <Wrapper>
+        <Wrapper className='m-b-20'>
             <form onSubmit={onSearch} className="m-b-20">
                 <div className='filter-section'>
                     {ADMIN_STATIC.visitorsContactPage.filters.map(({ placeholder, key, type, attr = {} }) => (
