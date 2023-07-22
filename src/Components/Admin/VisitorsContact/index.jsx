@@ -6,7 +6,8 @@ import ADMIN_STATIC from '../constant';
 
 
 const initialFilter = {
-    active: true
+    active: true,
+    year: new Date().getFullYear()
 };
 
 const VisitorsContact = () => {
@@ -142,7 +143,7 @@ const VisitorsContact = () => {
                                         ))}
                                     </select>
                                 ): (
-                                    <input { ...attr } name={key} type={type} placeholder={placeholder} />
+                                    <input { ...attr } defaultValue={initialFilter[key] || ''} name={key} type={type} placeholder={placeholder} />
                                 )
                             }
                             {key === 'active' ? <label>Active</label> : null}

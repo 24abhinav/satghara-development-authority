@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Wrapper from './style';
 import { DonationTable } from '../../Donation';
 import Modal from '../../ui/Modal';
@@ -129,7 +129,7 @@ const ManageDonation = () => {
                     <span>Add New</span>
                 </button>
             </div>
-            <DonationTable filter={filter} isAdmin changeDonation={changeDonation} />
+            <DonationTable  parentFilter={filter} isAdmin changeDonation={changeDonation} />
         </Wrapper>
     );
 }

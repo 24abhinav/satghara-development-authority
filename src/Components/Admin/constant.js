@@ -14,6 +14,15 @@ const ADMIN_STATIC = Object.freeze({
         { name: "Visitors Contact", url: "/sdpAdmin" },
         { name: "Donations", url: "/sdpAdmin/donation" },
     ],
+    donationPage: {
+        filters: [
+            { placeholder: 'Name', key: 'name', type: 'text' },
+            { placeholder: 'Amount', key: 'amount', type: 'number' },
+            { placeholder: 'Date', key: 'day', type: 'number' },
+            { placeholder: 'Month', key: 'month', type: 'select' },
+            { placeholder: 'Year', key: 'year', type: 'number' },
+        ]
+    },
     addDonation: {
         form: [
             { name: 'name', label: 'Donor Name', errorMsg: 'Please enter donor name', type: 'text', required: true },
