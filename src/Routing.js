@@ -11,6 +11,7 @@ const About = React.lazy(() => import('./Components/About'));
 const Admin = React.lazy(() => import('./Components/Admin/Home'));
 const AdminContact = React.lazy(() => import('./Components/Admin/VisitorsContact'));
 const AdminDonation = React.lazy(() => import('./Components/Admin/Donation'));
+const MetaDetails = React.lazy(() => import('./Components/Admin/MetaDetails'));
 
 const Routing = () => {
     return (
@@ -24,6 +25,7 @@ const Routing = () => {
             <Route path='/sdpAdmin' Component={Admin} >
                 <Route path='' Component={AdminContact} ></Route>
                 <Route path='donation' Component={AdminDonation} ></Route>
+                <Route path='page-meta' Component={MetaDetails} ></Route>
             </Route>
         </Routes>
     )

@@ -4,17 +4,23 @@ import Manifest from '../../manifest';
 export const axiosInstance = async (axiosOption) => {
     try {
         const { headers = {} } = axiosOption;
-        const { data = {}, status } = await Axios({
+        const { data = {}, status, headers: respHeader } = await Axios({
             ...axiosOption,
             baseURL: Manifest.apiBashUrl,
             headers: {
                 ...headers,
-                'access-token': 'token'
+                'sid': localStorage.getItem('sid') || ''
             },
         });
-        return { status, data, ok: true };
+        return { status, data, ok: true, headers: respHeader };
     } catch (err) {
-        return { ok: false };
+        const { response: { status = 500 } = {} } = err;
+        if (status === 401) {
+            localStorage.removeItem('sid');
+            window.location.reload();
+        } else {
+            return { ok: false };
+        }
     }
 };
 
@@ -40,5 +46,13 @@ export const deleteDonationHandler = ( id ) => {
         method: 'delete',
         url: 'donation',
         params: { id }
+    });
+};
+
+export const adminSignInHandler = ( payload ) => {
+    return axiosInstance({
+        method: 'post',
+        url: 'admin/sign-in',
+        data: { ...payload }
     });
 };

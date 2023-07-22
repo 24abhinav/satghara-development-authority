@@ -13,6 +13,7 @@ const ADMIN_STATIC = Object.freeze({
     navOption: [
         { name: "Visitors Contact", url: "/sdpAdmin" },
         { name: "Donations", url: "/sdpAdmin/donation" },
+        { name: "Page Meta", url: "/sdpAdmin/page-meta" },
     ],
     donationPage: {
         filters: [
