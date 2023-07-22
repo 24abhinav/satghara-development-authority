@@ -1,10 +1,10 @@
 import React from 'react';
 import Wrapper from './style';
 
-const ActionButton = ({ children, className }) => {
+const ActionButton = ({ children, ...rest }) => {
     return (
         <Wrapper>
-            <span className={className} />
+            <span {...rest} />
             { children && (
                 <span>{children}</span>
             ) }

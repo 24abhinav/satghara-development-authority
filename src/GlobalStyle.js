@@ -68,11 +68,6 @@ const GlobalStyle = styled.div`
         padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
-
-        &:disabled {
-            cursor: not-allowed;
-            background: #c9c9d1;
-        }
     }
 
     .icon-btn {
@@ -85,6 +80,13 @@ const GlobalStyle = styled.div`
 
     .danger {
         background: #950101;
+    }
+
+    button {
+        &:disabled {
+            background: #afafaf !important;
+            cursor: not-allowed !important;
+        }
     }
 `;
 

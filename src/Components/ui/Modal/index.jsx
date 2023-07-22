@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Wrapper from './style';
 
-const Modal = ({ children, onClose, onProceed }) => {
+const Modal = ({ children, onClose, onProceed, loading }) => {
 
     console.log({ onClose, onProceed })
     useEffect(() => {
@@ -19,8 +19,8 @@ const Modal = ({ children, onClose, onProceed }) => {
             <div className="modal">
                 {children}
                 <div className="modal-btn">
-                    <button onClick={onClose}>Cancel</button>
-                    <button onClick={onProceed}>Submit</button>
+                    <button disabled={loading} onClick={onClose}>Cancel</button>
+                    <button disabled={loading} onClick={onProceed}>Submit</button>
                 </div>
             </div>
         </Wrapper>
