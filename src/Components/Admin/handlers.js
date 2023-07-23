@@ -104,3 +104,13 @@ export const deleteOrgUserHandler = (email) => {
         params: { email }
     });
 };
+
+export const setAdminPasswordHandler = ({ password, token }) => {
+    return axiosInstance({
+        method: 'patch',
+        url: '/set-password',
+        data: { password },
+        headers: { 'x-key': token }
+    });
+};
+

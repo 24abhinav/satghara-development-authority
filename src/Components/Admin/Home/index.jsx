@@ -13,11 +13,13 @@ const AdminHome = () => {
         }
     }, []);
 
+    const resetPwPage = window.location.pathname.includes('/sdfAdmin/create-password');
+
     return (
         <Wrapper className="page-width">
             <div className="admin">
                 <div>
-                    {isSingedInUser ? <Outlet /> : <SignIn />}
+                    {(isSingedInUser || resetPwPage) ? <Outlet /> : <SignIn />}
                 </div>
             </div>
         </Wrapper>
