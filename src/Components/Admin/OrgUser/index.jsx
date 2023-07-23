@@ -1,17 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Wrapper from './style';
 import ADMIN_STATIC from '../constant';
-import { addAdminUserHandler, deleteOrgUserHandler, fetchOrgUserHandler, resetOrgUserPasswordHandler } from '../handlers';
+import { addAdminUserHandler, deleteOrgUserHandler, fetchOrgUserHandler, resetOrgUserPasswordHandler, updateAdminUserHandler } from '../handlers';
 import Alert from '../../ui/Alert';
 import Table from '../../ui/Table';
+import Modal from '../../ui/Modal';
 
-const AddUser = () => {
+const AddEditUser = ({ onClose, userDetails = {}, operation, onSuccess }) => {
     const [alert, setAlert] = useState(null);
-    const formRef = useRef();
+    const [loading, setLoading] = useState(false);
+    const btnRef = useRef();
 
     const addUser = async e => {
         e.preventDefault();
         setAlert(null);
+        setLoading(true);
         const formData = {};
         const form  = new FormData(e.currentTarget);
         for (let [key, value] of form.entries()) {
@@ -19,29 +22,34 @@ const AddUser = () => {
                 formData[key] = value;
             }
         }
-        const { ok } = await addAdminUserHandler(formData);
+        let handlerToExecute = operation === 'Add' ? addAdminUserHandler : updateAdminUserHandler;
+        const { ok, status } = await handlerToExecute(formData, userDetails);
         if (ok) {
-            setAlert({ type: 'success', alert: 'User has been added'});
-            e.target.reset();
+            onSuccess();
         } else {
-            setAlert({ type: 'error', alert: 'Something went wrong..'});
+            let msg = 'Something went wrong';
+            if (status === 409) {
+                msg = 'Entered email is already exist';
+            }
+            setLoading(false);
+            setAlert({ type: 'error', alert: msg });
         }
     };
 
     return (
-        <Wrapper className='m-b-20'>
-            <h3>Add Admin user</h3>
+        <Modal loading={loading} className='m-b-20' onClose={onClose} onProceed={() => btnRef.current.click()}>
+            <h3>{operation} Admin user</h3>
             {alert && <Alert { ...alert } />}
-            <form ref={formRef} onSubmit={addUser}>
+            <form onSubmit={addUser}>
                 {ADMIN_STATIC.adminUser.formField.map(({ label, required, type, name }) => (
                     <div key={name} className={`form-field`}>
                         <label>{label} {required && <span className='asterisk'>*</span>} </label>
-                        <input name={name} type={type} required={required}  />
+                        <input defaultValue={userDetails[name] || ''} name={name} type={type} required={required}  />
                     </div>
                 ))}
-                <button className='primary-btn' type='submit'>Add</button>
+                <button ref={btnRef} className='primary-btn' type='submit' style={{display: 'none'}} />
             </form>
-        </Wrapper>
+        </Modal>
     );
 }
 
@@ -85,6 +93,7 @@ const MobileList = ({ list = [], isAdmin, ActionButton }) => {
 
 const OrgUserList = ({ isAdmin }) => {
     const [users, setUsers] = useState([]);
+    const [modal, setModal] = useState({});
 
     const fetchOrgUser = async () => {
         const { ok, data } = await fetchOrgUserHandler();
@@ -116,20 +125,32 @@ const OrgUserList = ({ isAdmin }) => {
                 }
             }
         } else if (type === 'update') {
-            console.log(userDetails);
+            setModal({ open: true, userDetails, operation: 'Update' });
         }
     };
 
     const ActionButton = ({ user }) => (
         <div className='action-button'>
-            <button onClick={() => actionHandler('delete', user)} title='Delete'><span className="fa fa-trash-o"></span></button>
-            <button onClick={() => actionHandler('update', user)} title='Contacted'><span className="fa fa-pen"></span></button>
-            <button onClick={() => actionHandler('reset-password', user)} title='Send reset password link'><span className="fa fa-eye"></span></button>
+            <button onClick={() => actionHandler('delete', user)} title='Delete'>
+                <span className="fa fa-trash-o"></span>
+            </button>
+            <button onClick={() => actionHandler('update', user)} title='Contacted'>
+                <span className="fa fa-pen"></span>
+            </button>
+            <button onClick={() => actionHandler('reset-password', user)} title='Send reset password link'>
+                <span className="fa fa-eye"></span>
+            </button>
         </div>
     );
 
+    const reloadData = () => {
+        setModal({});
+        fetchOrgUser();
+    }
+
     return (
         <>
+            <button className='primary-btn m-b-20' onClick={() => setModal({ open: true, operation: 'Add'})}>Add New User</button>
             <div className='data-table'>
                 <Table>
                     <thead>
@@ -163,47 +184,15 @@ const OrgUserList = ({ isAdmin }) => {
                 </Table>
             </div>
             <MobileList ActionButton={ActionButton} list={users} isAdmin={isAdmin} />
+            {modal.open && <AddEditUser { ...modal } onSuccess={reloadData} onClose={() => setModal({})} />}
         </>
     )
 };
 
 const OrgUser = () => {
-    const [alert, setAlert] = useState(null);
-    const formRef = useRef();
-
-    const addUser = async e => {
-        e.preventDefault();
-        setAlert(null);
-        const formData = {};
-        const form  = new FormData(e.currentTarget);
-        for (let [key, value] of form.entries()) {
-            if (value) {
-                formData[key] = value;
-            }
-        }
-        const { ok } = await addAdminUserHandler(formData);
-        if (ok) {
-            setAlert({ type: 'success', alert: 'User has been added'});
-            e.target.reset();
-        } else {
-            setAlert({ type: 'error', alert: 'Something went wrong..'});
-        }
-    };
-
     return (
         <Wrapper className='m-b-20'>
             <OrgUserList isAdmin />
-            <h3>Add Admin user</h3>
-            {alert && <Alert { ...alert } />}
-            <form ref={formRef} onSubmit={addUser}>
-                {ADMIN_STATIC.adminUser.formField.map(({ label, required, type, name }) => (
-                    <div key={name} className={`form-field`}>
-                        <label>{label} {required && <span className='asterisk'>*</span>} </label>
-                        <input name={name} type={type} required={required}  />
-                    </div>
-                ))}
-                <button className='primary-btn' type='submit'>Add</button>
-            </form>
         </Wrapper>
     );
 }

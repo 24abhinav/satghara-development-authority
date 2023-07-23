@@ -8,7 +8,6 @@
             "options": [
                 { "name": "Home", "url": "/" },
                 { "name": "Overview", "url": "/overview" },
-                { "name": "Programs", "url": "/program" },
                 { "name": "Donation", "url": "/donation" }
             ]
         },
@@ -94,7 +93,6 @@
             "options": [
                 { "name": "मुख", "url": "/"},
                 { "name": "निरीक्षण", "url": "/overview" },
-                { "name": "कार्यक्रम", "url": "/program" },
                 { "name": "दान", "url": "/donation" }
             ]
         },

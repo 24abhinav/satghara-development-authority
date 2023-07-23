@@ -32,6 +32,7 @@ const Wrapper = styled.div`
 
     .options {
         display: flex;
+        align-items: center;
         list-style-type: none;
         padding: 0;
         margin: 0;

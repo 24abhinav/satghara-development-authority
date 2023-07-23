@@ -64,7 +64,7 @@ export const DonationTable = ({ isAdmin = false, changeDonation, parentFilter = 
 
     useEffect(() => {
         getDonation();
-    }, [filter, parentFilter]);
+    }, [filter]);
 
     return (
         <div className="donation-table">

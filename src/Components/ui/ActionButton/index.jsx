@@ -1,9 +1,9 @@
 import React from 'react';
 import Wrapper from './style';
 
-const ActionButton = ({ children, onClick, ...rest }) => {
+const ActionButton = ({ children, ...rest }) => {
     return (
-        <Wrapper onClick={onClick}>
+        <Wrapper>
             <span {...rest} />
             { children && (
                 <span>{children}</span>

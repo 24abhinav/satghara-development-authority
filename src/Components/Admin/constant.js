@@ -35,8 +35,10 @@ const ADMIN_STATIC = Object.freeze({
     adminUser: {
         formField: [
             { name: 'name', label: 'User Name', type: 'text', required: true },
+            { name: 'designation', label: 'User Designation', type: 'text', required: true },
             { name: 'email', label: 'User Email', type: 'email', required: true },
-            { name: 'mobile', label: 'User Mobile', type: 'number', required: false }
+            { name: 'mobile', label: 'User Mobile', type: 'number', required: false },
+            { name: 'role', label: 'User Role', type: 'text', required: false }
         ]
     }
 });

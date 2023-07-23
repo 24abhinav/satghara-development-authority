@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import SignIn from '../SignIn';
 
 const AdminHome = () => {
-    const isSingedInUser = localStorage.getItem('sid');
+    const isSingedInUser = localStorage.getItem('x-session-token');
     const navigate = useNavigate();
 
     useEffect(() => {

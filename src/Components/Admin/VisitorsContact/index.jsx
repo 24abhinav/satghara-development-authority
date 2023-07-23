@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Wrapper from './style';
 import Table from '../../ui/Table';
-import { axiosInstance } from '../handlers';
+import { axiosInstance, getVisitorsContactHandler } from '../handlers';
 import ADMIN_STATIC from '../constant';
 
 
@@ -17,11 +17,7 @@ const VisitorsContact = () => {
 
     const getVisitorsList = async () => {
         setLoading(true);
-        const { data: { visitorsList = [] } = {}} = await axiosInstance({
-            method: 'get',
-            url: 'contact',
-            params: { ...filter }
-        });
+        const { data: { visitorsList = [] } = {}} = await getVisitorsContactHandler(filter);
         setList(visitorsList);
         setLoading(false);
     };

@@ -6,6 +6,19 @@ const Wrapper = styled.div`
             display: none;
         }
     }
+
+    .action-button {
+        button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            margin-right: 5px;
+
+            &:hover {
+                background: grey;
+            }
+        }
+    }
 `;
 
 export default Wrapper;

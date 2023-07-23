@@ -9,7 +9,7 @@ export const axiosInstance = async (axiosOption) => {
             baseURL: Manifest.apiBashUrl,
             headers: {
                 ...headers,
-                'sid': localStorage.getItem('sid') || ''
+                'x-session-token': localStorage.getItem('x-session-token') || ''
             },
         });
         return { status, data, ok: true, headers: respHeader };
@@ -19,15 +19,23 @@ export const axiosInstance = async (axiosOption) => {
             localStorage.removeItem('sid');
             window.location.reload();
         } else {
-            return { ok: false };
+            return { ok: false, status };
         }
     }
+};
+
+export const getVisitorsContactHandler = (filter = {}) => {
+    return axiosInstance({
+        method: 'get',
+        url: 'admin/contact',
+        params: { ...filter }
+    });
 };
 
 export const addNewDonationHandler = (payload = {}) => {
     return axiosInstance({
         method: 'post',
-        url: 'donation',
+        url: 'admin/donation',
         data: { ...payload }
     });
 };
@@ -35,7 +43,7 @@ export const addNewDonationHandler = (payload = {}) => {
 export const updateDonationHandler = ({ id, ...restParams } = {}) => {
     return axiosInstance({
         method: 'patch',
-        url: 'donation',
+        url: 'admin/donation',
         data: { ...restParams },
         params: { id }
     });
@@ -44,7 +52,7 @@ export const updateDonationHandler = ({ id, ...restParams } = {}) => {
 export const deleteDonationHandler = ( id ) => {
     return axiosInstance({
         method: 'delete',
-        url: 'donation',
+        url: 'admin/donation',
         params: { id }
     });
 };
@@ -60,22 +68,31 @@ export const adminSignInHandler = ( payload ) => {
 export const addAdminUserHandler = ( payload ) => {
     return axiosInstance({
         method: 'post',
-        url: 'admin/add-user',
+        url: 'admin/user',
         data: { ...payload }
+    });
+};
+
+export const updateAdminUserHandler = ( payload, { email = '' } ) => {
+    return axiosInstance({
+        method: 'patch',
+        url: 'admin/user',
+        data: { ...payload },
+        params: { email }
     });
 };
 
 export const fetchOrgUserHandler = () => {
     return axiosInstance({
         method: 'get',
-        url: '/admin-user'
+        url: 'admin/user'
     });
 };
 
 export const resetOrgUserPasswordHandler = (email) => {
     return axiosInstance({
         method: 'post',
-        url: '/reset-password',
+        url: '/admin/reset-password',
         data: { email }
     });
 };
@@ -83,7 +100,7 @@ export const resetOrgUserPasswordHandler = (email) => {
 export const deleteOrgUserHandler = (email) => {
     return axiosInstance({
         method: 'delete',
-        url: '/admin-user',
+        url: '/admin/user',
         params: { email }
     });
 };
