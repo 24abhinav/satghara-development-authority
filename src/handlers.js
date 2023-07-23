@@ -47,7 +47,7 @@ export const postContact = async (payload) => {
 
 export const getDonationHandler = async (filter = {}) => {
     try {
-        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}donation`, { params: filter });
+        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/donation`, { params: filter });
         return data;
     } catch (err) {
         return [];

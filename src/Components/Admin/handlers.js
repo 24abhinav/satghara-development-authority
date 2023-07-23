@@ -64,3 +64,26 @@ export const addAdminUserHandler = ( payload ) => {
         data: { ...payload }
     });
 };
+
+export const fetchOrgUserHandler = () => {
+    return axiosInstance({
+        method: 'get',
+        url: '/admin-user'
+    });
+};
+
+export const resetOrgUserPasswordHandler = (email) => {
+    return axiosInstance({
+        method: 'post',
+        url: '/reset-password',
+        data: { email }
+    });
+};
+
+export const deleteOrgUserHandler = (email) => {
+    return axiosInstance({
+        method: 'delete',
+        url: '/admin-user',
+        params: { email }
+    });
+};

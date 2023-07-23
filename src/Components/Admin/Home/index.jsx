@@ -8,8 +8,8 @@ const AdminHome = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isSingedInUser && window.location.pathname === '/sdaAdmin') {
-            navigate('/sdaAdmin/visitors-contact')
+        if (isSingedInUser && window.location.pathname === '/sdfAdmin') {
+            navigate('/sdfAdmin/visitors-contact')
         }
     }, []);
 

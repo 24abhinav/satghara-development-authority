@@ -1,5 +1,5 @@
 const Manifest = {
-    apiBashUrl: 'https://satghara-development-foundation-server.vercel.app/',
+    apiBashUrl: 'https://satghara-development-foundation-server.vercel.app',
     hindiMonths: {
         january: 'जनवरी',
         february: 'फ़रवरी',

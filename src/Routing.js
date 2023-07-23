@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import AddAdminUser from './Components/Admin/AddAdminUser';
+import OrgUser from './Components/Admin/OrgUser';
 
 const Home = React.lazy(() => import('./Components/Home'));
 const Overview = React.lazy(() => import('./Components/Overview'));
@@ -23,11 +23,11 @@ const Routing = () => {
             <Route path='/about-us' Component={About} />
             <Route path='/donation' Component={Donation} />
             <Route path='/program' Component={Program} />
-            <Route path='/sdaAdmin' Component={Admin} >
+            <Route path='/sdfAdmin' Component={Admin} >
                 <Route path='visitors-contact' Component={AdminContact} ></Route>
                 <Route path='donation' Component={AdminDonation} ></Route>
                 <Route path='page-meta' Component={MetaDetails} ></Route>
-                <Route path='add-user' Component={AddAdminUser} ></Route>
+                <Route path='org-user' Component={OrgUser} ></Route>
             </Route>
         </Routes>
     )

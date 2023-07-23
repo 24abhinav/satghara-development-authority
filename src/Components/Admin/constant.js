@@ -11,10 +11,10 @@ const ADMIN_STATIC = Object.freeze({
         ]
     },
     navOption: [
-        { name: "Visitors Contact", url: "/sdaAdmin/visitors-contact" },
-        { name: "Donations", url: "/sdaAdmin/donation" },
-        { name: "Add new Admin", url: "/sdaAdmin/add-user" },
-        { name: "Page Meta", url: "/sdaAdmin/page-meta" },
+        { name: "Visitors Contact", url: "/sdfAdmin/visitors-contact" },
+        { name: "Donations", url: "/sdfAdmin/donation" },
+        { name: "Org Users", url: "/sdfAdmin/org-user" },
+        { name: "Page Meta", url: "/sdfAdmin/page-meta" },
     ],
     donationPage: {
         filters: [
@@ -34,9 +34,9 @@ const ADMIN_STATIC = Object.freeze({
 
     adminUser: {
         formField: [
-            { name: 'name', label: 'User Name', errorMsg: 'Please enter user name', type: 'text', required: true },
-            { name: 'email', label: 'User Email', errorMsg: 'Please enter user email', type: 'email', required: true },
-            { name: 'mobile', label: 'User Mobile', errorMsg: 'Please enter user mobile', type: 'number', required: false }
+            { name: 'name', label: 'User Name', type: 'text', required: true },
+            { name: 'email', label: 'User Email', type: 'email', required: true },
+            { name: 'mobile', label: 'User Mobile', type: 'number', required: false }
         ]
     }
 });

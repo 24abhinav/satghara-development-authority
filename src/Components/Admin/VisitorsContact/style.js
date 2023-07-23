@@ -55,39 +55,6 @@ const Wrapper = styled.div`
      }
    }
 
-   .mobile-list {
-     display: none;
-
-     @media(max-width: 720px) {
-          display: block;
-     }
-
-     ul {
-          padding: 0;
-          list-style-type: none;
-          border-bottom: 1px solid #6f6f6f;
-
-          li {
-               display: flex;
-               justify-content: space-between;
-               align-items: center;
-               margin-bottom: 10px;
-
-               &:hover {
-                    background-color: #dddddd;
-               }
-
-               span {
-                    display: block;
-
-                    &:nth-child(2) {
-                       text-align: right;
-                    }
-               }
-          }
-     }
-   }
-
    .no-data {
      text-align: center;
    }
