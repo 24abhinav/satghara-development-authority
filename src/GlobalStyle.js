@@ -156,6 +156,11 @@ const GlobalStyle = styled.div`
           }
         }
    }
+
+   .no-data {
+        text-align: center;
+        font-weight: bold;
+   }
 `;
 
 export default GlobalStyle;

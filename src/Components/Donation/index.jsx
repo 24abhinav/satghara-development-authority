@@ -101,6 +101,7 @@ export const DonationTable = ({ isAdmin = false, changeDonation, parentFilter = 
                 </tbody>
             </Table>
             {loading && <p>Loading latest Donation ...</p>}
+            {!donationList?.length && <p className='no-data'>No Data Found</p>}
             <h3>{totalDonationLabel} : {totalDonation.toLocaleString('en-IN')}</h3>
         </div>
     );
