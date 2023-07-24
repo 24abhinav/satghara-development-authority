@@ -24,7 +24,7 @@ const Routing = () => {
             <Route path='/about-us' Component={About} />
             <Route path='/donation' Component={Donation} />
             <Route path='/program' Component={Program} />
-            <Route path='/sdfAdmin' Component={Admin} >
+            <Route path='/sdf-admin' Component={Admin} >
                 <Route path='visitors-contact' Component={AdminContact} ></Route>
                 <Route path='donation' Component={AdminDonation} ></Route>
                 <Route path='page-meta' Component={MetaDetails} ></Route>

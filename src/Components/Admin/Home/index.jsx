@@ -8,12 +8,12 @@ const AdminHome = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isSingedInUser && window.location.pathname === '/sdfAdmin') {
-            navigate('/sdfAdmin/visitors-contact')
+        if (isSingedInUser && window.location.pathname === '/sdf-admin') {
+            navigate('/sdf-admin/visitors-contact')
         }
     }, []);
 
-    const resetPwPage = window.location.pathname.includes('/sdfAdmin/create-password');
+    const resetPwPage = window.location.pathname.includes('/sdf-admin/create-password');
 
     return (
         <Wrapper className="page-width">

@@ -7,6 +7,7 @@ import {
     getVisitorsContactHandler
 } from '../handlers';
 import ADMIN_STATIC from '../constant';
+import Toast from '../../ui/Toast';
 
 
 const initialFilter = {
@@ -18,6 +19,7 @@ const VisitorsContact = () => {
     const [filter, setFilter] = useState({ ...initialFilter });
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [toast, setToast] = useState();
 
     const getVisitorsList = async () => {
         setLoading(true);
@@ -38,6 +40,7 @@ const VisitorsContact = () => {
         const { ok } = await deleteContactHandler({ id })
         if (ok) {
             getVisitorsList();
+            setToast({ msg: 'Contact deleted '});
         } else {
             serverError();
         }
@@ -47,6 +50,7 @@ const VisitorsContact = () => {
         const { ok } = await changeContactStatusHandler({ id });
         if (ok) {
             getVisitorsList();
+            setToast({ msg: 'Contacted'});
         } else {
             serverError();
         }
@@ -123,6 +127,7 @@ const VisitorsContact = () => {
 
     return (
         <Wrapper className='m-b-20'>
+            {toast && <Toast { ...toast } /> }
             <form onSubmit={onSearch} className="m-b-20">
                 <div className='filter-section'>
                     {ADMIN_STATIC.visitorsContactPage.filters.map(({ placeholder, key, type, attr = {} }) => (

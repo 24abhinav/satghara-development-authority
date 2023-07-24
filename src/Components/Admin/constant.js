@@ -11,18 +11,18 @@ const ADMIN_STATIC = Object.freeze({
         ]
     },
     navOption: [
-        { name: "Visitors Contact", url: "/sdfAdmin/visitors-contact" },
-        { name: "Donations", url: "/sdfAdmin/donation" },
-        { name: "Org Users", url: "/sdfAdmin/org-user" },
-        { name: "Page Meta", url: "/sdfAdmin/page-meta" },
+        { name: "Visitors Contact", url: "/sdf-admin/visitors-contact" },
+        { name: "Donations", url: "/sdf-admin/donation" },
+        { name: "Org Users", url: "/sdf-admin/org-user" },
+        { name: "Page Meta", url: "/sdf-admin/page-meta" },
     ],
     donationPage: {
         filters: [
-            { placeholder: 'Name', key: 'name', type: 'text' },
-            { placeholder: 'Amount', key: 'amount', type: 'number' },
-            { placeholder: 'Date', key: 'day', type: 'number' },
-            { placeholder: 'Month', key: 'month', type: 'select' },
-            { placeholder: 'Year', key: 'year', type: 'number' },
+            { placeholder: { english: 'Name', hindi: 'नाम'}, key: 'name', type: 'text' },
+            { placeholder: { english: 'Amount', hindi: 'मात्रा'}, key: 'amount', type: 'number' },
+            { placeholder:  { english: 'Date', hindi: 'तारीख'}, key: 'day', type: 'number' },
+            { placeholder:  { english: 'Month', hindi: 'महीना'}, key: 'month', type: 'select' },
+            { placeholder:  { english: 'Year', hindi: 'वर्ष'}, key: 'year', type: 'number' },
         ]
     },
     addDonation: {

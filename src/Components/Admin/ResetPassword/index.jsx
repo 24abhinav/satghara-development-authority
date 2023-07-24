@@ -26,7 +26,7 @@ const ResetPassword = () => {
             setError({ apiError: true });
             setLoading(false);
         } else {
-            navigate('/sdfAdmin/visitors-contact')
+            navigate('/sdf-admin/visitors-contact')
         }
     };
 

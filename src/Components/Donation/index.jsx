@@ -29,12 +29,14 @@ const FilterComponent = ({ setFilter, loading }) => {
                         {
                             type === 'select' ? (
                                 <select name='month' { ...attr }>
-                                    {['Month', ...ADMIN_STATIC.monthsArray].map(mon => (
-                                        <option key={mon} value={mon === 'Month' ? '' : mon.toLowerCase()}>{mon}</option>
+                                    {['Month', ...Object.keys(Manifest.hindiMonths)].map(mon => (
+                                        <option key={mon} value={mon === 'Month' ? '' : mon.toLowerCase()}>
+                                            {selectedLng === 'english' ? mon : Manifest.hindiMonths[mon] || 'महीना'}
+                                        </option>
                                     ))}
                                 </select>
                             ): (
-                                <input { ...attr } defaultValue={initialFilter[key] || ''} name={key} type={type} placeholder={placeholder} />
+                                <input { ...attr } defaultValue={initialFilter[key] || ''} name={key} type={type} placeholder={placeholder[selectedLng]} />
                             )
                         }
                     </div>
@@ -47,7 +49,7 @@ const FilterComponent = ({ setFilter, loading }) => {
 }
 
 
-export const DonationTable = ({ isAdmin = false, changeDonation, parentFilter = {} }) => {
+export const DonationTable = ({ isAdmin = false, changeDonation, reload = false, setReload }) => {
     const { donation: { tableHeading = [], totalDonationLabel = '' } = {} } = getMetaDetails();
     const [donationDetails, setDonation] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -65,6 +67,13 @@ export const DonationTable = ({ isAdmin = false, changeDonation, parentFilter = 
     useEffect(() => {
         getDonation();
     }, [filter]);
+
+    useEffect(() => {
+        if (reload) {
+            getDonation();
+            setReload(false);
+        }
+    }, [reload]);
 
     return (
         <div className="donation-table">

@@ -5,6 +5,7 @@ import { addAdminUserHandler, deleteOrgUserHandler, fetchOrgUserHandler, resetOr
 import Alert from '../../ui/Alert';
 import Table from '../../ui/Table';
 import Modal from '../../ui/Modal';
+import Toast from '../../ui/Toast';
 
 const AddEditUser = ({ onClose, userDetails = {}, operation, onSuccess }) => {
     const [alert, setAlert] = useState(null);
@@ -25,7 +26,7 @@ const AddEditUser = ({ onClose, userDetails = {}, operation, onSuccess }) => {
         let handlerToExecute = operation === 'Add' ? addAdminUserHandler : updateAdminUserHandler;
         const { ok, status } = await handlerToExecute(formData, userDetails);
         if (ok) {
-            onSuccess();
+            onSuccess(operation);
         } else {
             let msg = 'Something went wrong';
             if (status === 409) {
@@ -94,6 +95,7 @@ const MobileList = ({ list = [], isAdmin, ActionButton }) => {
 const OrgUserList = ({ isAdmin }) => {
     const [users, setUsers] = useState([]);
     const [modal, setModal] = useState({});
+    const [toast, setToast] = useState();
 
     const fetchOrgUser = async () => {
         const { ok, data } = await fetchOrgUserHandler();
@@ -113,13 +115,15 @@ const OrgUserList = ({ isAdmin }) => {
     const actionHandler = async (type, userDetails) => {
         const { email: userEmail = '' } = userDetails;
         if (type === 'reset-password') {
-            resetOrgUserPasswordHandler(userEmail);
+            await resetOrgUserPasswordHandler(userEmail);
+            setToast({ msg: 'Resent password link has been sent to the email'});
         } else if (type === 'delete') {
             const confirm = window.confirm('Confirm Delete');
             if (confirm) {
                 const { ok } = await deleteOrgUserHandler(userEmail);
                 if (ok) {
                     fetchOrgUser();
+                    setToast({ msg: 'User deleted successfully '});
                 } else {
                     serverError();
                 }
@@ -143,13 +147,19 @@ const OrgUserList = ({ isAdmin }) => {
         </div>
     );
 
-    const reloadData = () => {
-        setModal({});
+    const reloadData = (operation) => {
+        const toastMsg = {
+            Add: 'User added successfully',
+            Update: 'User updated successfully'
+        };
         fetchOrgUser();
+        setToast({ msg: toastMsg[operation]});
+        setModal({});
     }
 
     return (
         <>
+             {toast && <Toast { ...toast } /> }
             <button className='primary-btn m-b-20' onClick={() => setModal({ open: true, operation: 'Add'})}>Add New User</button>
             <div className='data-table'>
                 <Table>

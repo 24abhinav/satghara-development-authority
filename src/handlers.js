@@ -18,7 +18,7 @@ export const getMetaDetails = () => {
     return meta || {};
 };
 
-export const fetchMetaDetails = async () => {
+export const fetchMetaDetails = async ({ otherParams = {} } = {}) => {
     let metaDetails = null;
     let selectedLanguage = localStorage.getItem('selectedLanguage');
     if (!['hindi', 'english'].includes(selectedLanguage)) {
@@ -26,7 +26,7 @@ export const fetchMetaDetails = async () => {
         localStorage.setItem('selectedLanguage', 'english');
     }
     try {
-        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/page-meta`, { params: { language: selectedLanguage }});
+        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/page-meta`, { params: { language: selectedLanguage, ...otherParams }});
         metaDetails = { ...data };
     } catch (err) {
         metaDetails = META[selectedLanguage];

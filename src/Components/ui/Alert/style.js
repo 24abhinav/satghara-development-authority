@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const typeColorMap = {
+export const typeColorMap = {
     success: {
         bgColor: '#008400bf',
         borderColor: 'green'

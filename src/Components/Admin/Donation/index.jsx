@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Wrapper from './style';
 import { DonationTable } from '../../Donation';
 import Modal from '../../ui/Modal';
 import ADMIN_STATIC from '../constant';
 import { addNewDonationHandler, deleteDonationHandler, updateDonationHandler } from '../handlers';
+import Toast from '../../ui/Toast';
 
-const AddUpdateDonation = ({ modal = {}, setModal, initialForm = {}, reload }) => {
+const AddUpdateDonation = ({ modal = {}, setModal, initialForm = {}, reload, setToast }) => {
     const [error, setError] = useState({});
     const [form, setForm] = useState({ name: '', amount: '', ...initialForm });
     const [loading, setLoading] = useState(false);
@@ -41,6 +42,7 @@ const AddUpdateDonation = ({ modal = {}, setModal, initialForm = {}, reload }) =
     const addNewDonation = async () => {
         const { ok } = await addNewDonationHandler(form);
         if (ok) {
+            setToast({ msg: 'New Donation has been added'});
             reload();
         } else {
             showError();
@@ -51,6 +53,7 @@ const AddUpdateDonation = ({ modal = {}, setModal, initialForm = {}, reload }) =
     const updateDonationExec = async () => {
         const { ok } = await updateDonationHandler(form);
         if (ok) {
+            setToast({ msg: 'Donation updated'});
             reload();
         } else {
             showError();
@@ -90,13 +93,14 @@ const AddUpdateDonation = ({ modal = {}, setModal, initialForm = {}, reload }) =
 
 const ManageDonation = () => {
     const [modal, setModal] = useState({});
-    const [filter, setFilter] = useState({});
+    const [toast, setToast] = useState();
+    const [reload, setReload] = useState(false);
 
     const { formInitialValue = {} } = modal;
 
     const reloadTable = () => {
         setModal({});
-        setFilter({ ...filter });
+        setReload(true);
     };
 
     const deleteDonation = async ({ id }) => {
@@ -104,7 +108,10 @@ const ManageDonation = () => {
         if (confirm) {
             const { ok } = await deleteDonationHandler(id);
             if (ok) {
+                setToast({ msg: 'Donation deleted '});
                 reloadTable();
+            } else {
+                setToast({ msg: 'Server Error', type: 'error' });
             }
         }
     };
@@ -122,14 +129,15 @@ const ManageDonation = () => {
     return (
         <Wrapper>
             <h3>Manage Donation</h3>
-            {modal.open && <AddUpdateDonation reload={reloadTable} initialForm={formInitialValue} modal={modal} setModal={setModal} />}
+            {toast && <Toast { ...toast } /> }
+            {modal.open && <AddUpdateDonation setToast={setToast} reload={reloadTable} initialForm={formInitialValue} modal={modal} setModal={setModal} />}
             <div className="add-new m-b-20">
                 <button onClick={() => setModal({ open: true, type: 'new' })}>
                     <span className='fa fa-add'></span>
                     <span>Add New</span>
                 </button>
             </div>
-            <DonationTable  parentFilter={filter} isAdmin changeDonation={changeDonation} />
+            <DonationTable reload={reload} setReload={setReload} isAdmin changeDonation={changeDonation} />
         </Wrapper>
     );
 }

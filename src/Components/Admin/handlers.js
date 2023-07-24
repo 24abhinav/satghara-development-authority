@@ -16,7 +16,7 @@ export const axiosInstance = async (axiosOption) => {
     } catch (err) {
         const { response: { status = 500 } = {} } = err;
         if (status === 401) {
-            localStorage.removeItem('sid');
+            localStorage.clear();
             window.location.reload();
         } else {
             return { ok: false, status };
@@ -115,7 +115,7 @@ export const setAdminPasswordHandler = ({ password, token }) => {
 };
 
 export const changeContactStatusHandler = ({ id }) => {
-    axiosInstance({
+    return axiosInstance({
         method: 'patch',
         url: 'admin/contact',
         params: { id }
@@ -123,9 +123,17 @@ export const changeContactStatusHandler = ({ id }) => {
 };
 
 export const deleteContactHandler = ({ id }) => {
-    axiosInstance({
+    return axiosInstance({
         method: 'delete',
         url: 'admin/contact',
         params: { id }
     });
 };
+
+export const fetchMetaDetailsForAdmin = async () => {
+    return axiosInstance({
+        method: 'get',
+        url: 'page-meta',
+        params: { language: 'english', fullResponse: true }
+    });
+}

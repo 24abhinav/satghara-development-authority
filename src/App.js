@@ -9,7 +9,7 @@ import Loader from './Components/Loader';
 import Footer from './Components/Footer';
 
 const App = () => {
-  const isAdmin = window.location.pathname.includes('sdfAdmin');
+  const isAdmin = window.location.pathname.includes('sdf-admin');
   const [loading, setLoading] = useState(!isAdmin);
 
   const initialData = async () => {
