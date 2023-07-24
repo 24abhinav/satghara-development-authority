@@ -84,17 +84,17 @@ const VisitorsContact = () => {
         }
     };
 
-    const ActionButton = ({ id }) => (
+    const ActionButton = ({ id, active }) => (
         <>
             <button onClick={() => actionHandler('delete', id)} title='Delete'><span className="fa fa-trash-o"></span></button>
-            <button onClick={() => actionHandler('contacted', id)} title='Contacted'><span className="fa fa-check"></span></button>
+            {active && <button onClick={() => actionHandler('contacted', id)} title='Contacted'><span className="fa fa-check"></span></button>}
         </>
     );
 
     const MobileList = () => {
         return (
             <div className="mobile-list">
-                {list?.map(({ id, name, mobile, day, month, year, description}) => (
+                {list?.map(({ id, name, mobile, day, month, year, description, active = false}) => (
                     <ul key={id}>
                         <li>
                             <span>Name:</span>
@@ -115,7 +115,7 @@ const VisitorsContact = () => {
                         <li className='action-btn'>
                             <span>Action</span>
                             <div>
-                                <ActionButton id={id} />
+                                <ActionButton active={active} id={id} />
                             </div>
                         </li>
                     </ul>
@@ -164,14 +164,14 @@ const VisitorsContact = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {list?.map(({ id, name, mobile, day, month, year, description}) => (
+                                {list?.map(({ id, name, mobile, day, month, year, description, active }) => (
                                     <tr key={id}>
                                         <td>{name}</td>
                                         <td>{mobile}</td>
                                         <td>{day} {month} {year}</td>
                                         <td>{description}</td>
                                         <td className='action-btn'>
-                                            <ActionButton id={id} />
+                                            <ActionButton id={id} active={active} />
                                         </td>
                                     </tr>
                                 ))}
