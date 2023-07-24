@@ -114,3 +114,18 @@ export const setAdminPasswordHandler = ({ password, token }) => {
     });
 };
 
+export const changeContactStatusHandler = ({ id }) => {
+    axiosInstance({
+        method: 'patch',
+        url: 'admin/contact',
+        params: { id }
+    })
+};
+
+export const deleteContactHandler = ({ id }) => {
+    axiosInstance({
+        method: 'delete',
+        url: 'admin/contact',
+        params: { id }
+    });
+};

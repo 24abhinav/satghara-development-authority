@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Wrapper from './style';
 import Table from '../../ui/Table';
-import { axiosInstance, getVisitorsContactHandler } from '../handlers';
+import {
+    changeContactStatusHandler,
+    deleteContactHandler,
+    getVisitorsContactHandler
+} from '../handlers';
 import ADMIN_STATIC from '../constant';
 
 
@@ -31,11 +35,7 @@ const VisitorsContact = () => {
     };
 
     const deleteRecord = async id => {
-        const { ok } = await axiosInstance({
-            method: 'delete',
-            url: 'contact',
-            params: { id }
-        });
+        const { ok } = await deleteContactHandler({ id })
         if (ok) {
             getVisitorsList();
         } else {
@@ -44,11 +44,7 @@ const VisitorsContact = () => {
     };
 
     const contacted = async id => {
-        const { ok } = await axiosInstance({
-            method: 'patch',
-            url: 'contact',
-            params: { id }
-        });
+        const { ok } = await changeContactStatusHandler({ id });
         if (ok) {
             getVisitorsList();
         } else {
