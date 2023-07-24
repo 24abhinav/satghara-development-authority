@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import Manifest from './manifest';
 import META from './Meta.json';
+import { fetchMetaDetailsHandler } from './Components/Admin/handlers';
 
 let meta = null;
 
@@ -26,7 +27,7 @@ export const fetchMetaDetails = async ({ otherParams = {} } = {}) => {
         localStorage.setItem('selectedLanguage', 'english');
     }
     try {
-        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/page-meta`, { params: { language: selectedLanguage, ...otherParams }});
+        const { data = {} } = await fetchMetaDetailsHandler({ language: selectedLanguage, fullResponse: false });
         metaDetails = { ...data };
     } catch (err) {
         metaDetails = META[selectedLanguage];

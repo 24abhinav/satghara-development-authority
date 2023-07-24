@@ -130,10 +130,18 @@ export const deleteContactHandler = ({ id }) => {
     });
 };
 
-export const fetchMetaDetailsForAdmin = async () => {
+export const fetchMetaDetailsHandler = async ( params = {} ) => {
     return axiosInstance({
         method: 'get',
         url: 'page-meta',
-        params: { language: 'english', fullResponse: true }
+        params: { language: 'english', fullResponse: true, ...params }
+    });
+}
+
+export const saveMetaDetailsHandler = async ( data ) => {
+    return axiosInstance({
+        method: 'patch',
+        url: '/admin/page-meta',
+        data: { data }
     });
 }
