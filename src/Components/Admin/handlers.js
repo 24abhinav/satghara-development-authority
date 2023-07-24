@@ -27,7 +27,7 @@ export const axiosInstance = async (axiosOption) => {
 export const getVisitorsContactHandler = (filter = {}) => {
     return axiosInstance({
         method: 'get',
-        url: 'admin/contact',
+        url: 'contact',
         params: { ...filter }
     });
 };
