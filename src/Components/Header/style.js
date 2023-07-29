@@ -99,11 +99,11 @@ const Wrapper = styled.div`
 
         .mobile-options {
             position: absolute;
-            bottom: 0;
+            top: 0;
             width: 100vw;
             background: white;
             padding: 20px 0px 60px;
-            border-radius: 40px 40px 0px 0px;
+            border-radius: 0px 0px 40px 40px;
 
             .options {
                 display: flex;
