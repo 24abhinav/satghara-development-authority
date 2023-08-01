@@ -88,7 +88,7 @@ const Wrapper = styled.div`
         background: rgba(0,0,0, 0.5);
         width: 100vw;
         position: absolute;
-        top:0;
+        bottom:0;
         left:0;
         z-index: 9;
         transition: height 0.2s ease-in;
@@ -103,7 +103,7 @@ const Wrapper = styled.div`
             width: 100vw;
             background: white;
             padding: 20px 0px 60px;
-            border-radius: 0px 0px 40px 40px;
+            border-radius: 40px 40px 0 0;
 
             .options {
                 display: flex;
