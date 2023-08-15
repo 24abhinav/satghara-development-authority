@@ -91,11 +91,11 @@ const Wrapper = styled.div`
         bottom:0;
         left:0;
         z-index: 9;
-        transition: height 0.2s ease-in;
+        transition: visibility 0s, height 0.2s ease-in;
 
         ${({ $mobileHeader }) => `
             height: ${$mobileHeader ? '100vh' : '0'};
-            display: ${$mobileHeader ? 'block' : 'none'};
+            visibility: ${$mobileHeader ? 'visible' : 'hidden'};
         `}
 
         .mobile-options {
