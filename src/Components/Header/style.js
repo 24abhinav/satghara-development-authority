@@ -103,7 +103,7 @@ const Wrapper = styled.div`
             top: 0px;
             width: 100vw;
             background: white;
-            padding: 20px 0px;
+            padding: 40px 0px 20px;
             border-radius: 0px 0px 20px 20px;
 
             .options {
