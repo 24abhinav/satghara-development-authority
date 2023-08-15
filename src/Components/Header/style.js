@@ -95,6 +95,7 @@ const Wrapper = styled.div`
 
         ${({ $mobileHeader }) => `
             height: ${$mobileHeader ? '100vh' : '0'};
+            display: ${$mobileHeader ? 'block' : 'none'};
         `}
 
         .mobile-options {
