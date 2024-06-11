@@ -29,7 +29,9 @@ const App = () => {
               <Headers isAdmin={isAdmin} />
               <br />
               <Suspense fallback={<p>loading</p>}>
-                <Routing />
+                <div className='router-component'>
+                  <Routing />
+                </div>
               </Suspense>
               <Footer />
           </>

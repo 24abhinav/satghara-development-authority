@@ -17,6 +17,11 @@ const GlobalStyle = styled.div`
         margin-right: 20px;
     }
 
+    .router-component {
+        display: flex;
+        justify-content: center;
+    }
+
 
     .form-field {
         margin-bottom: 1rem;

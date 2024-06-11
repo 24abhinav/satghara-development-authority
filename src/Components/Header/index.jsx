@@ -82,9 +82,9 @@ const Headers = ({ isAdmin = false }) => {
                 </nav>
                 <div className="mobile-icon">
                     <div className="hamburger" onClick={toggleMobileHeader}>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                        <div />
+                        <div />
+                        <div />
                     </div>
                 </div>
             </div>
