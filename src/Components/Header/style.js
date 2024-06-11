@@ -88,22 +88,23 @@ const Wrapper = styled.div`
         background: rgba(0,0,0, 0.5);
         width: 100vw;
         position: absolute;
-        top:0;
+        bottom:0;
         left:0;
         z-index: 9;
-        transition: height 0.2s ease-in;
+        transition: visibility 0s, height 0.2s ease-in;
 
         ${({ $mobileHeader }) => `
             height: ${$mobileHeader ? '100vh' : '0'};
+            visibility: ${$mobileHeader ? 'visible' : 'hidden'};
         `}
 
         .mobile-options {
             position: absolute;
-            bottom: 0;
+            top: 0px;
             width: 100vw;
             background: white;
-            padding: 20px 0px 60px;
-            border-radius: 40px 40px 0px 0px;
+            padding: 80px 0px 20px;
+            border-radius: 0px 0px 20px 20px;
 
             .options {
                 display: flex;
