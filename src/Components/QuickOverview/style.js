@@ -83,7 +83,7 @@ const Wrapper = styled.div`
         width: auto !important;
     }
 
-    @media (max-width: 1290px) {
+    @media (max-width: 1200px) {
         .overview {
             flex-direction: column;
         }
