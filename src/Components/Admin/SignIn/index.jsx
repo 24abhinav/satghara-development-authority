@@ -45,7 +45,7 @@ const SignIn = () => {
                         <label>Password <span className="asterisk">*</span></label>
                         <input type="password" name="password" required />
                     </div>
-                    <button disabled={loading} className='primary-btn'>Sign In</button>
+                    <button disabled={loading} className='primary-btn btn'>Sign In</button>
                 </form>
             </div>
         </Wrapper>

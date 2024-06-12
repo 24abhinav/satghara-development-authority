@@ -138,10 +138,32 @@ export const fetchMetaDetailsHandler = async ( params = {} ) => {
     });
 }
 
+export const fetchAllMeta = async ( params = {} ) => {
+    return axiosInstance({
+        method: 'get',
+        url: 'admin/page-meta',
+    });
+}
+
 export const saveMetaDetailsHandler = async ( data ) => {
     return axiosInstance({
-        method: 'patch',
+        method: 'post',
         url: '/admin/page-meta',
-        data: { data }
+        data
+    });
+}
+
+export const updateMetaStatueHandler = async ({ id, activeId }) => {
+    return axiosInstance({
+        method: 'patch',
+        url: '/admin/page-meta-status',
+        data: { id, activeId, status: true }
+    });
+}
+
+export const deleteMetaHandler = async ({ id }) => {
+    return axiosInstance({
+        method: 'delete',
+        url: `/admin/page-meta/${id}`
     });
 }

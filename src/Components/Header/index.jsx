@@ -17,7 +17,7 @@ const Options = ({ options = [], selectedLanguage = '', isAdmin = false }) => {
             {(isAdmin ? ADMIN_STATIC.navOption : options).map(({ name = '', url = '' }) => (
                 <li key={name}><NavLink className={({ isActive }) => isActive ? 'link-active' : ''} to={url}>{name}</NavLink></li>
             ))}
-            {isAdmin && <li><button className='primary-btn' onClick={logout}>Logout</button></li>}
+            {isAdmin && <li><button className='primary-btn btn' onClick={logout}>Logout</button></li>}
             {!isAdmin && (
                 <li>
                     <select defaultValue={selectedLanguage} onChange={e => {

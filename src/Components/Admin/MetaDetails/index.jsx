@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import JsonView from 'react18-json-view'
+import 'react18-json-view/src/style.css'
+import Table from '../../ui/Table';
 import Wrapper from './style';
-import { fetchMetaDetailsHandler, saveMetaDetailsHandler } from '../handlers';
+import { deleteMetaHandler, fetchAllMeta, saveMetaDetailsHandler, updateMetaStatueHandler } from '../handlers';
 import Toast from '../../ui/Toast';
+import Loader from '../../Loader';
 
 const MetaDetails = () => {
-    const [meta, setMeta] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [activeMeta, setActiveMeta] = useState({});
+    const [metaList, setMetaList] = useState([]);
     const [toast, setToast] = useState();
 
     const getPageMeta = async () => {
-        const { ok, data: { fullResponse = {} } } = await fetchMetaDetailsHandler();
+        const { ok, data: { allMeta = [], active = {} } = {} } = await fetchAllMeta();
         if (ok) {
-            console.log(JSON.stringify(fullResponse));
-            setMeta(JSON.stringify(fullResponse));
+            setActiveMeta(active);
+            setMetaList(allMeta);
         }
     };
 
@@ -20,21 +26,95 @@ const MetaDetails = () => {
     }, []);
 
     const onMetaSave = async () => {
-        const { ok } = await saveMetaDetailsHandler(meta);
+        const { ok } = await saveMetaDetailsHandler(activeMeta);
         if (ok) {
             setToast({ msg: 'Meta details saved '});
+            await getPageMeta();
         } else {
             setToast({ msg: 'Server error'});
         }
     };
 
+    const activateMeta = async ({ id } = {}) => {
+        const { ok } = await updateMetaStatueHandler({ id, activeId: activeMeta.id });
+        if (ok) {
+            await getPageMeta();
+        } else {
+            alert('Something went wrong...');
+        }
+        setLoading(false);
+    };
+
+    const deleteMeta = async ({ id } = {}) => {
+        const { ok } = await deleteMetaHandler({ id });
+        if (ok) {
+            await getPageMeta();
+        } else {
+            alert('Something went wrong...');
+        }
+        setLoading(false);
+    };
+
+    const editMeta = (element) => {
+        setActiveMeta(element);
+        setLoading(false);
+    };
+
+    const actions = [
+        { handler: activateMeta, label: 'Activate', className: 'warning-btn'},
+        { handler: editMeta, label: 'Edit', className: 'primary-btn'},
+        { handler: deleteMeta, label: 'Delete', className: 'danger-btn'},
+    ];
+
+    const actionButtonsHandler = (handler, params) => {
+        if (window.confirm('Are you sure?')) {
+            setLoading(true);
+            handler(params);
+        }
+    };
+
     return (
         <Wrapper className='m-b-20'>
+            <Table className="meta-history">
+                <tr>
+                    <th>ID</th>
+                    <th>Created Date</th>
+                    <th>Modified By</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                {metaList.map((element) => {
+                    const { createdDate = '', active = false, id, modifiedby } = element;
+                    return (
+                        <tr key={id}>
+                            <td>{id}</td>
+                            <td>{createdDate}</td>
+                            <td>{modifiedby}</td>
+                            <td className={active ? 'active': 'in-active'}>{active ? 'Live' : 'not-live'}</td>
+                            <td className='action-buttons'>
+                                {actions.map(({ handler, label, className }) => (
+                                    <button
+                                        key={label}
+                                        disabled={
+                                            (active && (['Delete', 'Activate'].includes(label))) ||
+                                            loading
+                                        }
+                                        onClick={() => actionButtonsHandler(handler, element)}
+                                        className={`btn ${className}`}
+                                    >
+                                        {label}
+                                    </button>
+                                ))}
+                            </td>
+                        </tr>
+                    )
+                })}
+            </Table>
+            <h4>Active page meta</h4>
             {toast && <Toast { ...toast } /> }
-            <div className="form-field m-b-20">
-                <textarea onChange={(e) => setMeta(e.target.value)} value={meta} rows="20"></textarea>
-            </div>
-            <button className='primary-btn' onClick={onMetaSave}>Save</button>
+            <JsonView src={activeMeta} editable onChange={({ src }) => setActiveMeta(src)} />
+            <hr />
+            <button disabled={loading} className='primary-btn btn' onClick={onMetaSave}>Save</button>
         </Wrapper>
     );
 }

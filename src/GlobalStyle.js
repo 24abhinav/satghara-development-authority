@@ -66,13 +66,25 @@ const GlobalStyle = styled.div`
         text-decoration: underline !important;
     }
 
-    .primary-btn {
+    .btn {
         border: none;
-        background: #4e4edb;
+        background: transparent;
         color: white;
         padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
+    }
+
+    .primary-btn {
+        background: #4e4edb;
+    }
+
+    .danger-btn {
+        background: #700b0b;
+    }
+
+    .warning-btn {
+        background: #767610;
     }
 
     .icon-btn {

@@ -12,7 +12,6 @@ const Wrapper = styled.table`
     }
 
     tr:hover {
-        cursor: pointer;
         background-color: #dddddd;
     }
 `;

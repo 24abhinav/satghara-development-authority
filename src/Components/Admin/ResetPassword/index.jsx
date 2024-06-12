@@ -40,7 +40,7 @@ const ResetPassword = () => {
                         <label>Password <span className="asterisk">*</span></label>
                         <input type="password" name="password" required />
                     </div>
-                    <button disabled={loading} className='primary-btn'>Set Password</button>
+                    <button disabled={loading} className='primary-btn btn'>Set Password</button>
                 </form>
             </div>
         </Wrapper>
