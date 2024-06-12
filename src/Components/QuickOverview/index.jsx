@@ -7,7 +7,6 @@ const QuickOverview = ({ parentHeading, noUpcoming = false }) => {
     const { overviewPage: { programList = {}, QuickHeading = '' } = {} } = getMetaDetails();
     const programListKey = Object.keys(programList);
     const programLength = programListKey.length;
-
     const [count, setCount] = useState(1);
 
     const changeView = (type = 'inc') => {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
     height: 70px;
     box-sizing: border-box;
     padding: 10px 0;
@@ -97,7 +97,7 @@ const Wrapper = styled.div`
 
         ${({ $mobileHeader }) => `
             height: ${$mobileHeader ? '100vh' : '0'};
-            visibility: ${$mobileHeader ? 'visible' : 'hidden'};
+            display: ${$mobileHeader ? 'block' : 'none'};
         `}
 
         .mobile-options {

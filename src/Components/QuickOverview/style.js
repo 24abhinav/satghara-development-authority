@@ -83,12 +83,14 @@ const Wrapper = styled.div`
         width: auto !important;
     }
 
+    @media (max-width: 1290px) {
+        .overview {
+            flex-direction: column;
+        }
+    }
+
     @media (max-width: 960px) {
         width: 50%;
-
-        .overview {
-            display: block;
-        }
 
         img {
             width: 100% !important;
