@@ -27,8 +27,8 @@ export const fetchMetaDetails = async ({ otherParams = {} } = {}) => {
         localStorage.setItem('selectedLanguage', 'english');
     }
     try {
-        const { data = {} } = await fetchMetaDetailsHandler({ language: selectedLanguage, fullResponse: false });
-        metaDetails = { ...data };
+        const { data: { meta = {}, ...otherMeta} = {} } = await fetchMetaDetailsHandler({ language: selectedLanguage, fullResponse: false });
+        metaDetails = { ...meta, ...otherMeta };
     } catch (err) {
         metaDetails = META[selectedLanguage];
     }
