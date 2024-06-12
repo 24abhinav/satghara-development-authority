@@ -35,7 +35,6 @@ const Wrapper = styled.div`
             padding-left: 20px;
             p {
                 margin: 0;
-                line-height: 20px;
                 font-size: 15px;
             }
         }
