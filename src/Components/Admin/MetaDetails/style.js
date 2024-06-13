@@ -13,6 +13,17 @@ const Wrapper = styled.div`
         button {
             margin-right: 10px;
         }
+
+        @media(max-width: 720px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            button {
+                margin: 0 0 10px 0;
+                width: 5rem;
+            }
+        }
     }
 `;
 
