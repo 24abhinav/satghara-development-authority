@@ -30,6 +30,8 @@ const ADMIN_STATIC = Object.freeze({
         form: [
             { name: 'name', label: 'Donor Name', errorMsg: 'Please enter donor name', type: 'text', required: true },
             { name: 'amount', label: 'Donation Amount', errorMsg: 'Please enter donation amount', type: 'number', required: true },
+            { name: 'comments', label: 'Comments', errorMsg: 'Comments', type: 'text', required: false },
+            { name: 'notes', label: 'notes (Admin view only)', errorMsg: 'Notes', type: 'text', required: false },
         ]
     },
 

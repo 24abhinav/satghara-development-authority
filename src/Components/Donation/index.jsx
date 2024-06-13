@@ -41,7 +41,7 @@ const FilterComponent = ({ setFilter, loading }) => {
                         }
                     </div>
                 ))}
-                <button disabled={loading} className='primary-btn m-r-20' type='submit'>{loading ? 'Searching' : 'Search'}</button>
+                <button disabled={loading} className='btn primary-btn m-r-20' type='submit'>{loading ? 'Searching' : 'Search'}</button>
                 <button className='icon-btn danger' type='reset'><span className="fa fa-close"></span></button>
             </div>
         </form>
@@ -81,7 +81,7 @@ export const DonationTable = ({ isAdmin = false, changeDonation, reload = false,
             <Table>
                 <thead>
                     <tr>
-                        {[ ...tableHeading, ...(isAdmin ? [''] : [])].map(el => (
+                        {[ ...tableHeading, ...(isAdmin ? ['Admin Notes', ''] : [])].map(el => (
                             <th key={el}>{el}</th>
                         ))}
                     </tr>
@@ -89,20 +89,24 @@ export const DonationTable = ({ isAdmin = false, changeDonation, reload = false,
 
                 <tbody>
                     {donationList.map(item => {
-                        const { amount, day, month, year, id, ...restOption } = item;
+                        const { amount, day, month, year, id, notes, ...restOption } = item;
                         const { [selectedLng]: content = '{}'} = restOption;
-                        const { name = '' } = JSON.parse(content);
+                        const { name = '', comments } = JSON.parse(content);
                         const { [month]: hindiMonth = '' } = Manifest.hindiMonths;
                         return(
                             <tr key={id}>
                                 <td>{name}</td>
                                 <td>{Number(amount).toLocaleString('en-IN')}</td>
                                 <td>{day} {selectedLng === 'hindi' ? hindiMonth : month } {year}</td>
+                                <td>{comments}</td>
                                 {isAdmin && (
-                                    <td>
-                                        <ActionButton onClick={() => changeDonation({ type: 'delete', id })} className="fa fa-trash-o" />
-                                        <ActionButton onClick={() => changeDonation({ type: 'update', ...item })} className="fa fa-pen" />
-                                    </td>
+                                    <>
+                                        <td>{notes}</td>
+                                        <td>
+                                            <ActionButton onClick={() => changeDonation({ type: 'delete', id })} className="fa fa-trash-o" />
+                                            <ActionButton onClick={() => changeDonation({ type: 'update', ...item })} className="fa fa-pen" />
+                                        </td>
+                                    </>
                                 )}
                             </tr>
                         );

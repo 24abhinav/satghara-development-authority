@@ -64,7 +64,6 @@ const AddUpdateDonation = ({ modal = {}, setModal, initialForm = {}, reload, set
     const onSubmit = () => {
         const isValid = isFormValid();
         if (isValid) {
-            console.log(form);
             setLoading(true);
             if (operationType === 'new') {
                 addNewDonation();
