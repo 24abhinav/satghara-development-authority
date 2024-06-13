@@ -6,6 +6,7 @@ import Alert from '../../ui/Alert';
 import { addNewProgramHandler, deleteProgramHandler, editProgramHandler, getPrograms } from '../handlers';
 import ADMIN_STATIC from '../constant';
 import Toast from '../../ui/Toast';
+import Manifest from '../../../manifest';
 
 const AddEditProgram = ({ onClose, selectedProgram = {}, operation, onSuccess }) => {
     const [alert, setAlert] = useState(null);
@@ -103,12 +104,12 @@ const Programs = () => {
             </div>
             <div className='cards'>
                 {programs.map((program = {}) => {
-                    const { title, description, imageUrl, detailsPageUrl, upcoming } = program;
+                    const { title, description, imageurl, detailsPageUrl, alerts } = program;
 
                     return (
                         <div key={title} className='card'>
-                            {upcoming && <small>Upcoming</small>}
-                            <img src={imageUrl} alt={title} />
+                            {alerts && <small>{alerts}</small>}
+                            <img src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
                             <div className='details'>
                                 <h4>{title}</h4>
                                 <p>{description}</p>

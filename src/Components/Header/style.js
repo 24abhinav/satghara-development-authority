@@ -23,7 +23,7 @@ const Wrapper = styled.header`
         font-family: monospace;
 
         img {
-            width: 50px;
+            width: 80px;
         }
 
         h3 {

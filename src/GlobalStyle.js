@@ -226,7 +226,7 @@ const GlobalStyle = styled.div`
                 p {
                     line-height: 20px;
                     text-align: justify;
-                    height: 100px;
+                    max-height: 100px;
                     overflow: auto;
                 }
             }
