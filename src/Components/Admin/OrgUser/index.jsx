@@ -6,6 +6,7 @@ import Alert from '../../ui/Alert';
 import Table from '../../ui/Table';
 import Modal from '../../ui/Modal';
 import Toast from '../../ui/Toast';
+import { getIstTime } from '../../../helper';
 
 const AddEditUser = ({ onClose, userDetails = {}, operation, onSuccess }) => {
     const [alert, setAlert] = useState(null);
@@ -58,7 +59,7 @@ const MobileList = ({ list = [], isAdmin, ActionButton }) => {
     return (
         <div className="mobile-list">
             {list?.map((user) => { 
-                const { id, name, mobile, email, designation } = user;
+                const { id, name, mobile, email, designation, role, createdby, createdat } = user;
                 return (
                 <ul key={id}>
                     <li>
@@ -77,13 +78,28 @@ const MobileList = ({ list = [], isAdmin, ActionButton }) => {
                         <span>Designation:</span>
                         <span>{designation}</span>
                     </li>
+                    <li>
+                        <span>Created By:</span>
+                        <span>{createdby}</span>
+                    </li>
+
                     {isAdmin && (
-                        <li className='action-btn'>
-                            <span>Action</span>
-                            <div>
-                                <ActionButton user={user} />
-                            </div>
-                        </li>
+                        <>
+                            <li>
+                                <span>Created At</span>
+                                <span>{getIstTime(createdat)}</span>
+                            </li>
+                            <li>
+                                <span>Role</span>
+                                <span>{role}</span>
+                            </li>
+                            <li className='action-btn'>
+                                <span>Action</span>
+                                <div>
+                                    <ActionButton user={user} />
+                                </div>
+                            </li>
+                        </>
                     )}
                 </ul>
             )})}
@@ -169,7 +185,9 @@ const OrgUserList = ({ isAdmin }) => {
                             <td>Email</td>
                             <td>mobile</td>
                             <td>Designation</td>
+                            <td>Created By</td>
                             {isAdmin && <>
+                                <td>Created At</td>
                                 <td>Role</td>
                                 <td>Action</td>
                             </>}
@@ -177,14 +195,16 @@ const OrgUserList = ({ isAdmin }) => {
                     </thead>
                     <tbody>
                         {users.map((user) => {
-                            const { name, email, mobile, designation, role } = user;
+                            const { name, email, mobile, designation, role, createdby, createdat } = user;
                             return (
                             <tr key={email}>
                                 <td>{name}</td>
                                 <td>{email}</td>
                                 <td>{mobile}</td>
                                 <td>{designation}</td>
+                                <td>{createdby}</td>
                                 {isAdmin && <>
+                                    <td>{getIstTime(createdat)}</td>
                                     <td>{role}</td>
                                     <td><ActionButton user={user} /></td>
                                 </>}

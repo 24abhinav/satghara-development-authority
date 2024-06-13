@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     .data-table {
-        @media(max-width: 720px) {
+        @media(max-width: 850px) {
             display: none;
         }
     }
@@ -13,9 +13,11 @@ const Wrapper = styled.div`
             background: transparent;
             cursor: pointer;
             margin-right: 5px;
+            padding: 10px;
+            border-radius: 5px;
 
             &:hover {
-                background: grey;
+                background: #ededed;
             }
         }
     }

@@ -109,7 +109,7 @@ const GlobalStyle = styled.div`
     .mobile-list {
      display: none;
 
-     @media(max-width: 720px) {
+     @media(max-width: 850px) {
         display: block;
      }
 
