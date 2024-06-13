@@ -5,7 +5,6 @@ import Table from '../../ui/Table';
 import Wrapper from './style';
 import { deleteMetaHandler, fetchAllMeta, saveMetaDetailsHandler, updateMetaStatueHandler } from '../handlers';
 import Toast from '../../ui/Toast';
-import Loader from '../../Loader';
 import { getIstTime } from '../../../helper';
 
 const MetaDetails = () => {

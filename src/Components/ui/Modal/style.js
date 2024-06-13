@@ -17,6 +17,13 @@ const Wrapper = styled.div`
         background: white;
         border-radius: 5px;
         min-width: 300px;
+        box-sizing: border-box;
+        overflow: auto;
+        max-height: 98vh;
+
+        h3 {
+            margin: 0;
+        }
 
         .modal-btn {
             border-top: 1px solid black;

@@ -18,9 +18,8 @@ export const axiosInstance = async (axiosOption) => {
         if (status === 401) {
             localStorage.clear();
             window.location.reload();
-        } else {
-            return { ok: false, status };
         }
+        return { ok: false, status };
     }
 };
 
@@ -167,3 +166,26 @@ export const deleteMetaHandler = async ({ id }) => {
         url: `/admin/page-meta/${id}`
     });
 }
+
+export const getPrograms = async () => {
+    return axiosInstance({
+        method: 'get',
+        url: '/program',
+    });
+};
+
+export const addNewProgramHandler = async (formData) => {
+    return axiosInstance({
+        method: 'post',
+        url: '/admin/program',
+        data: formData
+    });
+};
+
+export const editProgramHandler = async (formData, { id, ...oldData }) => {
+    return axiosInstance({
+        method: 'put',
+        url: `/admin/program/${id}`,
+        data: { ...oldData, ...formData }
+    });
+};

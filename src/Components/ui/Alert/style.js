@@ -11,7 +11,7 @@ export const typeColorMap = {
 };
 
 const Wrapper = styled.div`
-    padding: 10px;
+    padding: 5px;
     ${({ type = 'success'}) => {
         const { bgColor, borderColor } = typeColorMap[type];
         return `

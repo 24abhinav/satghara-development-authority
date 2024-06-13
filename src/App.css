@@ -3,6 +3,21 @@
   src: url("https://fonts.googleapis.com/css?family=Trirong");
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 body {
   margin: 0;
   background-color: #F5F5F5;

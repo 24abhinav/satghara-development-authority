@@ -6,6 +6,7 @@ const Wrapper = styled.div`
     align-items: center;
     background: #cdcdcd;
     padding: 15px;
+    margin-top: 20px;
 
     .copyright {
         text-align: center;

@@ -178,6 +178,69 @@ const GlobalStyle = styled.div`
         text-align: center;
         font-weight: bold;
    }
+
+   .d-flex {
+        display: flex;
+   }
+
+   .j-center {
+        justify-content: center;
+   }
+
+   .j-space-between {
+        justify-content: space-between;
+   }
+
+   .cards {
+        display: grid;
+        grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+        grid-gap: 10px;
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+            border-radius: 5px;
+            position: relative;
+
+            small {
+                background: #14145d;
+                color: white;
+                padding: 5px 15px;
+                border-radius: 5px;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+
+            img {
+                width: 100%;
+                border-radius: 5px;
+            }
+
+            .details {
+                padding: 10px;
+
+                h4 {
+                    margin: 0;
+                }
+
+                p {
+                    line-height: 20px;
+                    text-align: justify;
+                    height: 100px;
+                    overflow: auto;
+                }
+            }
+        }
+   }
+
+   .link {
+        background: #0a386f;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+   }
 `;
 
 export default GlobalStyle;

@@ -15,6 +15,7 @@ const ADMIN_STATIC = Object.freeze({
         { name: "Donations", url: "/sdf-admin/donation" },
         { name: "Org Users", url: "/sdf-admin/org-user" },
         { name: "Page Meta", url: "/sdf-admin/page-meta" },
+        { name: "Programs", url: "/sdf-admin/programs" },
     ],
     donationPage: {
         filters: [
@@ -39,6 +40,14 @@ const ADMIN_STATIC = Object.freeze({
             { name: 'email', label: 'User Email', type: 'email', required: true },
             { name: 'mobile', label: 'User Mobile', type: 'number', required: false },
             { name: 'role', label: 'User Role', type: 'text', required: false }
+        ]
+    },
+    programs: {
+        formField: [
+            { name: 'title', label: 'Title', type: 'text', required: true },
+            { name: 'description', label: 'Description', type: 'text', required: true },
+            { name: 'detailsPageUrl', label: 'Details Page Url', type: 'text', required: false },
+            { name: 'upcoming', label: 'Upcoming Programs', type: 'text', required: true }
         ]
     }
 });
