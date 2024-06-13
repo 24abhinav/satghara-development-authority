@@ -104,7 +104,7 @@ const Programs = () => {
             </div>
             <div className='cards'>
                 {programs.map((program = {}) => {
-                    const { title, description, imageurl, detailsPageUrl, alerts } = program;
+                    const { title, description, imageurl, detailspageurl, alerts } = program;
 
                     return (
                         <div key={title} className='card'>
@@ -115,7 +115,7 @@ const Programs = () => {
                                 <p>{description}</p>
                                 <hr />
                                 <div className='action-btn d-flex j-space-between'>
-                                    {detailsPageUrl && <Link className='link' to={detailsPageUrl}>View</Link>}
+                                    {detailspageurl && <Link className='link' to={detailspageurl}>View</Link>}
                                     <button disabled={loading} className='btn warning-btn' onClick={() => showProgramModal({ operation: 'Edit', selectedProgram: program })}>Edit</button>
                                     <button disabled={loading} className='btn danger-btn' onClick={() => onDelete(program)}>Delete</button>
                                 </div>
