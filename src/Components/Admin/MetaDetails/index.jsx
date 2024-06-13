@@ -6,6 +6,7 @@ import Wrapper from './style';
 import { deleteMetaHandler, fetchAllMeta, saveMetaDetailsHandler, updateMetaStatueHandler } from '../handlers';
 import Toast from '../../ui/Toast';
 import Loader from '../../Loader';
+import { getIstTime } from '../../../helper';
 
 const MetaDetails = () => {
     const [loading, setLoading] = useState(false);
@@ -76,39 +77,43 @@ const MetaDetails = () => {
     return (
         <Wrapper className='m-b-20'>
             <Table className="meta-history">
-                <tr>
-                    <th>ID</th>
-                    <th>Created Date</th>
-                    <th>Modified By</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-                {metaList.map((element) => {
-                    const { createdDate = '', active = false, id, modifiedby } = element;
-                    return (
-                        <tr key={id}>
-                            <td>{id}</td>
-                            <td>{createdDate}</td>
-                            <td>{modifiedby}</td>
-                            <td className={active ? 'active': 'in-active'}>{active ? 'Live' : 'not-live'}</td>
-                            <td className='action-buttons'>
-                                {actions.map(({ handler, label, className }) => (
-                                    <button
-                                        key={label}
-                                        disabled={
-                                            (active && (['Delete', 'Activate'].includes(label))) ||
-                                            loading
-                                        }
-                                        onClick={() => actionButtonsHandler(handler, element)}
-                                        className={`btn ${className}`}
-                                    >
-                                        {label}
-                                    </button>
-                                ))}
-                            </td>
-                        </tr>
-                    )
-                })}
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Created Date</th>
+                        <th>Modified By</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {metaList.map((element) => {
+                        const { createdat = '', active = false, id, modifiedby } = element;
+                        return (
+                            <tr key={id}>
+                                <td>{id}</td>
+                                <td>{getIstTime(createdat)}</td>
+                                <td>{modifiedby}</td>
+                                <td className={active ? 'active': 'in-active'}>{active ? 'Live' : 'not-live'}</td>
+                                <td className='action-buttons'>
+                                    {actions.map(({ handler, label, className }) => (
+                                        <button
+                                            key={label}
+                                            disabled={
+                                                (active && (['Delete', 'Activate'].includes(label))) ||
+                                                loading
+                                            }
+                                            onClick={() => actionButtonsHandler(handler, element)}
+                                            className={`btn ${className}`}
+                                        >
+                                            {label}
+                                        </button>
+                                    ))}
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
             </Table>
             <h4>Active page meta</h4>
             {toast && <Toast { ...toast } /> }
