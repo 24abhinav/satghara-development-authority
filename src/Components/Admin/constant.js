@@ -47,7 +47,7 @@ const ADMIN_STATIC = Object.freeze({
             { name: 'title', label: 'Title', type: 'text', required: true },
             { name: 'description', label: 'Description', type: 'text', required: true },
             { name: 'detailsPageUrl', label: 'Details Page Url', type: 'text', required: false },
-            { name: 'upcoming', label: 'Upcoming Programs', type: 'text', required: true }
+            { name: 'alerts', label: 'Alert for programs (e.g: Upcoming)', type: 'text', required: true }
         ]
     }
 });

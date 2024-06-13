@@ -170,22 +170,29 @@ export const deleteMetaHandler = async ({ id }) => {
 export const getPrograms = async () => {
     return axiosInstance({
         method: 'get',
-        url: '/program',
+        url: '/programs',
     });
 };
 
 export const addNewProgramHandler = async (formData) => {
     return axiosInstance({
         method: 'post',
-        url: '/admin/program',
+        url: '/admin/programs',
         data: formData
     });
 };
 
-export const editProgramHandler = async (formData, { id, ...oldData }) => {
+export const editProgramHandler = async (formData, oldData) => {
     return axiosInstance({
         method: 'put',
-        url: `/admin/program/${id}`,
+        url: `/admin/programs`,
         data: { ...oldData, ...formData }
+    });
+};
+
+export const deleteProgramHandler = async ({ id }) => {
+    return axiosInstance({
+        method: 'delete',
+        url: `/admin/programs/${id}`
     });
 };

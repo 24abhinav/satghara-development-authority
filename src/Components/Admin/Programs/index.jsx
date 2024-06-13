@@ -3,41 +3,9 @@ import Wrapper from './style';
 import { Link } from 'react-router-dom';
 import Modal from '../../ui/Modal';
 import Alert from '../../ui/Alert';
-import { addNewProgramHandler, editProgramHandler, getPrograms } from '../handlers';
+import { addNewProgramHandler, deleteProgramHandler, editProgramHandler, getPrograms } from '../handlers';
 import ADMIN_STATIC from '../constant';
-
-const programs = [
-    {
-        imageUrl: 'https://satghara-development-foundation-server.vercel.app/static/Assets/hospital.png',
-        title: 'free Hospital every sunday',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        detailsPageUrl: 'hospital',
-        id: 1
-    },
-    {
-        imageUrl: 'https://satghara-development-foundation-server.vercel.app/static/Assets/hospital.png',
-        title: 'free Hospital every monday',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        detailsPageUrl: 'hospital',
-        upcoming: true,
-        id: 2
-    },
-    {
-        imageUrl: 'https://satghara-development-foundation-server.vercel.app/static/Assets/hospital.png',
-        title: 'free Hospital every tuesday',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        detailsPageUrl: 'hospital',
-        upcoming: true,
-        id: 3
-    },
-    {
-        imageUrl: 'https://satghara-development-foundation-server.vercel.app/static/Assets/hospital.png',
-        title: 'free Hospital every wednesday',
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        detailsPageUrl: 'hospital',
-        id: 4
-    }
-];
+import Toast from '../../ui/Toast';
 
 const AddEditProgram = ({ onClose, selectedProgram = {}, operation, onSuccess }) => {
     const [alert, setAlert] = useState(null);
@@ -85,12 +53,16 @@ const AddEditProgram = ({ onClose, selectedProgram = {}, operation, onSuccess })
 
 const Programs = () => {
     const [modal, setModal] = useState({});
-    // const [programs, setPrograms] = useState([]);
+    const [programs, setPrograms] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [toast, setToast] = useState();
 
     const fetchFreshData = async () => {
         setModal({});
-        // const { data = [] } = await getPrograms();
-        // setPrograms(data);
+        setLoading(true);
+        const { data = [] } = await getPrograms();
+        setPrograms(data);
+        setLoading(false);
     };
 
     const showProgramModal = ({ operation = 'Add', selectedProgram = {} }) => {
@@ -103,16 +75,30 @@ const Programs = () => {
         });
     }
 
+    const onDelete = async (program) => {
+        setLoading(true);
+        const { ok } = await deleteProgramHandler(program);
+        let msg = 'Program moved to bin, it will be deleted after 30 days from database'
+        if (ok) {
+            fetchFreshData();
+        } else {
+            msg = 'Something went wrong';
+            setLoading(false);
+        }
+        setToast({ msg });
+    }
+
     useEffect(() => {
         fetchFreshData();
     }, []);
 
     return (
         <Wrapper>
+            {toast && <Toast { ...toast } onClose={() =>  setToast()} /> }
             <div className='items d-flex j-space-between'>
-                <h2>Programs</h2>
+                <h2>Programs ({programs.length})</h2>
                 <div className='action-btn'>
-                    <button onClick={showProgramModal} className='btn primary-btn'>Add New</button>
+                    <button disabled={loading} onClick={showProgramModal} className='btn primary-btn'>Add New</button>
                 </div>
             </div>
             <div className='cards'>
@@ -129,8 +115,8 @@ const Programs = () => {
                                 <hr />
                                 <div className='action-btn d-flex j-space-between'>
                                     {detailsPageUrl && <Link className='link' to={detailsPageUrl}>View</Link>}
-                                    <button className='btn warning-btn' onClick={() => showProgramModal({ operation: 'Edit', selectedProgram: program })}>Edit</button>
-                                    <button className='btn danger-btn'>Delete</button>
+                                    <button disabled={loading} className='btn warning-btn' onClick={() => showProgramModal({ operation: 'Edit', selectedProgram: program })}>Edit</button>
+                                    <button disabled={loading} className='btn danger-btn' onClick={() => onDelete(program)}>Delete</button>
                                 </div>
                             </div>
                         </div>

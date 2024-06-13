@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Wrapper from './style';
 
-const Toast = ({ msg = 'toast message', type, autoClose = 5 }) => {
+const Toast = ({ msg = 'toast message', type, autoClose = 5, onClose }) => {
     const [open, setOpen] = useState(true);
 
     useEffect(() => {
         if (autoClose) {
             setInterval(() => {
                 setOpen(false);
+                if (onClose) {
+                    onClose();
+                }
             }, autoClose * 1000);
         }
     }, []);
