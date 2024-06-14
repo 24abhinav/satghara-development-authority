@@ -9,6 +9,7 @@ const Wrapper = styled.form`
     align-items: center;
     padding: 30px;
     box-sizing: border-box;
+    height: 100%;
 
     h3 {
         margin: 0;

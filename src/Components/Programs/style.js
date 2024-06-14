@@ -2,13 +2,10 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    margin-right: 20px;
 
     .program-slider {
         display: flex;
         justify-content: space-between;
-        cursor: grab;
-
         
         .program-image {
             width: 40%;
@@ -24,11 +21,6 @@ const Wrapper = styled.div`
             box-sizing: border-box;
             padding: 20px 30px 20px;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
             h5, p {
                 margin: 0;
             }
@@ -42,6 +34,24 @@ const Wrapper = styled.div`
                 font-size: 15px;
                 text-align: justify;
                 margin-bottom:  15px;
+            }
+
+            .arrows {
+                display: flex;
+                justify-content: space-between;
+
+                button {
+                    background: #0A0A0A;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                }
             }
         }
     }

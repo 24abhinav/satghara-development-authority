@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 
         .programs-page {
             width: 800px;
-            /* margin-right: 20px; */
+            margin-right: 20px;
         }
 
         .contact-us-page {
@@ -27,6 +27,7 @@ const Wrapper = styled.div`
 
             .programs-page {
                 width: auto;
+                margin-right: 0px;
             }
         }
     }
