@@ -3,8 +3,9 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
 
     .home-first-page {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: self-end;
 
         .programs-page {
             width: 800px;
@@ -16,17 +17,12 @@ const Wrapper = styled.div`
         }
 
         @media (max-width: 1200px) {
-            .programs-page {
-                width: 600px;
-            }
-        }
-
-        @media (max-width: 1100px) {
-            display: block;
+            grid-template-columns: 1fr;
+            justify-items: unset;
 
             .programs-page {
                 width: auto;
-                margin-right: 0px;
+                margin-right: 0;
             }
         }
     }

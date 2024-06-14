@@ -4,7 +4,7 @@ import Manifest from '../../manifest';
 import { getMetaDetails, getPrograms } from '../../handlers';
 import { Link } from 'react-router-dom';
 
-const Programs = () => {
+const ProgramDetails = () => {
     const [programList, setProgramList] = useState([]);
     const [slider, setSlider] = useState([]);
     const [count, setCount] = useState(0);
@@ -62,4 +62,4 @@ const Programs = () => {
     );
 }
 
-export default Programs;
+export default ProgramDetails;

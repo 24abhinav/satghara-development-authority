@@ -7,6 +7,31 @@ let meta = null;
 
 const caching = {};
 
+export const axiosInstance = async (axiosOption) => {
+    try {
+        let selectedLanguage = localStorage.getItem('selectedLanguage');
+        if (!['hindi', 'english'].includes(selectedLanguage)) {
+            selectedLanguage = 'english';
+            localStorage.setItem('selectedLanguage', 'english');
+        }
+        const { params = {} } = axiosOption;
+        const { data = {}, status, headers: respHeader } = await Axios({
+            ...axiosOption,
+            baseURL: Manifest.apiBashUrl,
+            params: { ...params, lng: selectedLanguage }
+        });
+        return { status, data, ok: true, headers: respHeader };
+    } catch (err) {
+        const { response: { status = 500 } = {} } = err;
+        if (status === 401) {
+            localStorage.clear();
+            window.location.reload();
+        }
+        return { ok: false, status };
+    }
+};
+
+
 export const getMetaDetails = () => {
     if (!meta) {
         try {
@@ -39,9 +64,13 @@ export const fetchMetaDetails = async ({ otherParams = {} } = {}) => {
     return dataToSave;
 };
 
-export const postContact = async (payload) => {
+export const postContact = async (data) => {
     try {
-        await Axios.post(`${Manifest.apiBashUrl}/contact`, payload);
+        await axiosInstance({
+            method: 'post',
+            url: 'contact',
+            data
+        });
         return true;
     } catch (err) {
         return false;

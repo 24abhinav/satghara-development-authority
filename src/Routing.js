@@ -5,6 +5,7 @@ const Home = React.lazy(() => import('./Components/Home'));
 const Overview = React.lazy(() => import('./Components/Overview'));
 const Donation = React.lazy(() => import('./Components/Donation'));
 const About = React.lazy(() => import('./Components/About'));
+const Hospital = React.lazy(() => import('./Components/Program-Details/Hospital'));
 
 // Admin route
 const Admin = React.lazy(() => import('./Components/Admin/Home'));
@@ -23,6 +24,7 @@ const Routing = () => {
             <Route path='/overview' Component={Overview} />
             <Route path='/about-us' Component={About} />
             <Route path='/donation' Component={Donation} />
+            <Route path='/hospital' Component={Hospital} />
             <Route path='/sdf-admin' Component={Admin} >
                 <Route path='visitors-contact' Component={AdminContact} ></Route>
                 <Route path='donation' Component={AdminDonation} ></Route>

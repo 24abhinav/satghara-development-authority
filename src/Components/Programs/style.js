@@ -4,22 +4,25 @@ const Wrapper = styled.div`
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
     .program-slider {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         justify-content: space-between;
         
         .program-image {
-            width: 40%;
             position: relative;
             img {
                 height: 100%;
                 width: 100%;
+                min-height: 215px;
             }
         }
 
         .program-details {
-            width: 60%;
             box-sizing: border-box;
             padding: 20px 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
             h5, p {
                 margin: 0;
@@ -63,10 +66,19 @@ const Wrapper = styled.div`
 
             .program-image {
                 width: 100%;
+
+                img {
+                    max-height: 215px;
+                }
             }
 
             .program-details {
                 width: 100%;
+
+                p {
+                    max-height: 150px;
+                    overflow: auto;
+                }
             }
         }
     }
