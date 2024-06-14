@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Wrapper from './style';
 import Manifest from '../../manifest';
-import { getPrograms } from '../../handlers';
+import { getMetaDetails, getPrograms } from '../../handlers';
 import { Link } from 'react-router-dom';
 
 const Programs = () => {
     const [programList, setProgramList] = useState([]);
     const [slider, setSlider] = useState([]);
     const [count, setCount] = useState(0);
+    const { overviewPage = {} } = getMetaDetails() || {};
 
-    const changeLayout = ({ target: { name = '' } = {}}) => {
+    const changeLayout = (name) => {
         const newCount = name === 'increase' ? count + 1 : count - 1;
         setSlider([programList[newCount]]);
         setCount(newCount);
@@ -41,13 +42,13 @@ const Programs = () => {
                                 <p>{description}</p>
                                 <div className='arrows'>
                                     {count !== 0 ? (
-                                        <button name='decrease' onClick={changeLayout}>
+                                        <button onClick={() => changeLayout('decrease')}>
                                             <i className='fa fa-arrow-left'></i>
                                         </button>
                                     ): <span />}
-                                    {detailspageurl && <Link to={detailspageurl} className='btn primary'>Get More Details</Link>}
+                                    {detailspageurl && <Link to={detailspageurl} className='btn primary'>{overviewPage.moreDetailsBtnText}</Link>}
                                     {count < (programList.length - 1) ? (
-                                        <button name='increase' onClick={changeLayout}>
+                                        <button onClick={() => changeLayout('increase')}>
                                             <i className='fa fa-arrow-right'></i>
                                         </button>
                                     ) : <span />}

@@ -62,7 +62,8 @@ export const getPrograms = async () => {
         return caching.programs;
     }
     try {
-        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/programs`);
+        const lng = localStorage.getItem('selectedLanguage') || 'english'
+        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/programs`, { params: { lng }});
         caching.programs = data;
         return data;
     } catch (err) {

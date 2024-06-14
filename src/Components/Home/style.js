@@ -5,7 +5,6 @@ const Wrapper = styled.div`
     .home-first-page {
         display: flex;
         justify-content: space-between;
-        padding: 0 20px;
 
         .programs-page {
             width: 800px;
