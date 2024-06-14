@@ -3,6 +3,16 @@
   src: url("https://fonts.googleapis.com/css?family=Trirong");
 }
 
+::selection {
+  color: white;
+  background: rgb(51, 51, 51);
+}
+
+::-moz-selection {
+  color: white;
+  background: rgb(51, 51, 51);
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;

@@ -57,7 +57,7 @@ const ContactUs = () => {
             e.preventDefault();
             onSubmit();
         }}>
-            {alert && <Alert { ...alert } />}
+            {alert && <Alert { ...alert } onClose={setAlert}/>}
             <h3 dangerouslySetInnerHTML={{__html: heading}} />
             <div className="m-b-15">
                 {Object.keys(formFields).map(key =>  {

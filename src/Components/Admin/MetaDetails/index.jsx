@@ -115,7 +115,7 @@ const MetaDetails = () => {
                 </tbody>
             </Table>
             <h4>Active page meta</h4>
-            {toast && <Toast { ...toast } /> }
+            {toast && <Toast { ...toast } onClose={() => setToast()} /> }
             <JsonView src={activeMeta} editable onChange={({ src }) => setActiveMeta(src)} />
             <hr />
             <button disabled={loading} className='primary-btn btn' onClick={onMetaSave}>Save</button>

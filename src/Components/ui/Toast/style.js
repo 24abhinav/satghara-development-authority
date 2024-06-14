@@ -8,6 +8,7 @@ const Wrapper = styled.div`
     border-radius: 5px;
     top: 16px;
     right: 16px;
+    z-index: 1050;
     ${({ type = 'success'}) => {
         const { borderColor } = typeColorMap[type];
         return `
