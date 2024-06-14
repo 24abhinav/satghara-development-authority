@@ -73,18 +73,7 @@ const GlobalStyle = styled.div`
         padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
-    }
-
-    .primary-btn {
-        background: #4e4edb;
-    }
-
-    .danger-btn {
-        background: #700b0b;
-    }
-
-    .warning-btn {
-        background: #767610;
+        text-decoration: none;
     }
 
     .icon-btn {
@@ -93,10 +82,6 @@ const GlobalStyle = styled.div`
         padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
-    }
-
-    .danger {
-        background: #950101;
     }
 
     button {
@@ -241,6 +226,32 @@ const GlobalStyle = styled.div`
         cursor: pointer;
         text-decoration: none;
    }
+
+    .success {
+        background: green;
+    }
+
+    .primary {
+        background: #4e4edb;
+    }
+
+    .danger {
+        background: #700b0b;
+    }
+
+    .warning {
+        background: #767610;
+    }
+
+   .chip {
+        color: white;
+        padding: 3px 10px;
+        border-radius: 15px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1020;
+    }
 `;
 
 export default GlobalStyle;

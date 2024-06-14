@@ -41,7 +41,7 @@ const FilterComponent = ({ setFilter, loading }) => {
                         }
                     </div>
                 ))}
-                <button disabled={loading} className='btn primary-btn m-r-20' type='submit'>{loading ? 'Searching' : 'Search'}</button>
+                <button disabled={loading} className='btn primary m-r-20' type='submit'>{loading ? 'Searching' : 'Search'}</button>
                 <button className='icon-btn danger' type='reset'><span className="fa fa-close"></span></button>
             </div>
         </form>

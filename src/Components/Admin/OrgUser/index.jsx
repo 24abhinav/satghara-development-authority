@@ -49,7 +49,7 @@ const AddEditUser = ({ onClose, userDetails = {}, operation, onSuccess }) => {
                         <input defaultValue={userDetails[name] || ''} name={name} type={type} required={required}  />
                     </div>
                 ))}
-                <button ref={btnRef} className='primary-btn btn' type='submit' style={{display: 'none'}} />
+                <button ref={btnRef} className='primary btn' type='submit' style={{display: 'none'}} />
             </form>
         </Modal>
     );
@@ -176,7 +176,7 @@ const OrgUserList = ({ isAdmin }) => {
     return (
         <>
             {toast && <Toast { ...toast } /> }
-            <button className='primary-btn m-b-20 btn' onClick={() => setModal({ open: true, operation: 'Add'})}>Add New User</button>
+            <button className='primary m-b-20 btn' onClick={() => setModal({ open: true, operation: 'Add'})}>Add New User</button>
             <div className='data-table'>
                 <Table>
                     <thead>

@@ -5,6 +5,8 @@ import { fetchMetaDetailsHandler } from './Components/Admin/handlers';
 
 let meta = null;
 
+const caching = {};
+
 export const getMetaDetails = () => {
     if (!meta) {
         try {
@@ -49,6 +51,19 @@ export const postContact = async (payload) => {
 export const getDonationHandler = async (filter = {}) => {
     try {
         const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/donation`, { params: filter });
+        return data;
+    } catch (err) {
+        return [];
+    }
+};
+
+export const getPrograms = async () => {
+    if (caching.programs) {
+        return caching.programs;
+    }
+    try {
+        const { data = {} } = await Axios.get(`${Manifest.apiBashUrl}/programs`);
+        caching.programs = data;
         return data;
     } catch (err) {
         return [];

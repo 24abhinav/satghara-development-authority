@@ -61,9 +61,9 @@ const MetaDetails = () => {
     };
 
     const actions = [
-        { handler: activateMeta, label: 'Activate', className: 'warning-btn'},
-        { handler: editMeta, label: 'Edit', className: 'primary-btn'},
-        { handler: deleteMeta, label: 'Delete', className: 'danger-btn'},
+        { handler: activateMeta, label: 'Activate', className: 'warning'},
+        { handler: editMeta, label: 'Edit', className: 'primary'},
+        { handler: deleteMeta, label: 'Delete', className: 'danger'},
     ];
 
     const actionButtonsHandler = (handler, params) => {
@@ -118,7 +118,7 @@ const MetaDetails = () => {
             {toast && <Toast { ...toast } onClose={() => setToast()} /> }
             <JsonView src={activeMeta} editable onChange={({ src }) => setActiveMeta(src)} />
             <hr />
-            <button disabled={loading} className='primary-btn btn' onClick={onMetaSave}>Save</button>
+            <button disabled={loading} className='primary btn' onClick={onMetaSave}>Save</button>
         </Wrapper>
     );
 }

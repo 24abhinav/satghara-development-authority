@@ -46,7 +46,7 @@ const AddEditProgram = ({ onClose, selectedProgram = {}, operation, onSuccess })
                         <input defaultValue={selectedProgram[name] || ''} name={name} type={type} required={required}  />
                     </div>
                 ))}
-                <button ref={btnRef} className='primary-btn btn' type='submit' style={{display: 'none'}} />
+                <button ref={btnRef} className='primary btn' type='submit' style={{display: 'none'}} />
             </form>
         </Modal>
     )
@@ -99,7 +99,7 @@ const Programs = () => {
             <div className='items d-flex j-space-between'>
                 <h2>Programs ({programs.length})</h2>
                 <div className='action-btn'>
-                    <button disabled={loading} onClick={showProgramModal} className='btn primary-btn'>Add New</button>
+                    <button disabled={loading} onClick={showProgramModal} className='btn primary'>Add New</button>
                 </div>
             </div>
             <div className='cards'>
@@ -116,8 +116,8 @@ const Programs = () => {
                                 <hr />
                                 <div className='action-btn d-flex j-space-between'>
                                     {detailspageurl && <Link className='link' to={detailspageurl}>View</Link>}
-                                    <button disabled={loading} className='btn warning-btn' onClick={() => showProgramModal({ operation: 'Edit', selectedProgram: program })}>Edit</button>
-                                    <button disabled={loading} className='btn danger-btn' onClick={() => onDelete(program)}>Delete</button>
+                                    <button disabled={loading} className='btn warning' onClick={() => showProgramModal({ operation: 'Edit', selectedProgram: program })}>Edit</button>
+                                    <button disabled={loading} className='btn danger' onClick={() => onDelete(program)}>Delete</button>
                                 </div>
                             </div>
                         </div>

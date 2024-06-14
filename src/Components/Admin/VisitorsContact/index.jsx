@@ -146,7 +146,7 @@ const VisitorsContact = () => {
                             {key === 'active' ? <label>Active</label> : null}
                         </div>
                     ))}
-                    <button disabled={loading} className='primary-btn btn m-r-20' type='submit'>{loading ? 'Searching' : 'Search'}</button>
+                    <button disabled={loading} className='primary btn m-r-20' type='submit'>{loading ? 'Searching' : 'Search'}</button>
                     <button className='icon-btn danger' type='reset'><span className="fa fa-close"></span></button>
                 </div>
             </form>
