@@ -1,29 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Wrapper from './style';
 import Manifest from '../../manifest';
 import { getMetaDetails, getPrograms } from '../../handlers';
 import { Link } from 'react-router-dom';
 
 const ProgramDetails = () => {
-    const [programList, setProgramList] = useState([]);
     const [slider, setSlider] = useState([]);
     const [count, setCount] = useState(0);
     const { overviewPage = {} } = getMetaDetails() || {};
+    const pageRefs = useRef({ interval: null, programList: [] });
 
-    const changeLayout = (name) => {
-        const newCount = name === 'increase' ? count + 1 : count - 1;
+    const { current: { interval, programList = [] }} = pageRefs;
+
+    const changeLayout = (source = '') => {
+        let newCount = source === 'increase' ? count + 1 : count - 1;
+        console.log({ newCount, len: programList.length});
+        if (newCount > programList.length) {
+            newCount = 0;
+        } else if (newCount < 0) {
+            newCount = programList.length - 1;
+        }
         setSlider([programList[newCount]]);
         setCount(newCount);
+    };
+
+    const onChange = (source = '') => {
+        clearInterval(pageRefs.current.interval);
+        changeLayout(source);
     };
     
     const initialData = async () => {
         const response = await getPrograms();
         setSlider([{ ...response[0] || []}]);
-        setProgramList(response);
+        pageRefs.current.programList = response;
+
+        // pageRefs.current.interval = setInterval(() => {
+        //     changeLayout('increase');
+        // }, 3000);
     };
 
     useEffect(() => {
-        initialData()
+        initialData();
     }, []);
 
     return (
@@ -42,13 +59,13 @@ const ProgramDetails = () => {
                                 <p>{description}</p>
                                 <div className='arrows'>
                                     {count !== 0 ? (
-                                        <button onClick={() => changeLayout('decrease')}>
+                                        <button onClick={() => onChange('decrease')}>
                                             <i className='fa fa-arrow-left'></i>
                                         </button>
                                     ): <span />}
                                     {detailspageurl && <Link to={detailspageurl} className='btn primary'>{overviewPage.moreDetailsBtnText}</Link>}
                                     {count < (programList.length - 1) ? (
-                                        <button onClick={() => changeLayout('increase')}>
+                                        <button onClick={() => onChange('increase')}>
                                             <i className='fa fa-arrow-right'></i>
                                         </button>
                                     ) : <span />}
