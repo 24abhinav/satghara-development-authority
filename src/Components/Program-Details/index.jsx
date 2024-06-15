@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Wrapper from './style';
 import { getMetaDetails, getProgramsByUrlHandler } from '../../handlers';
 import Manifest from '../../manifest';
@@ -28,8 +28,9 @@ const Hospital = () => {
 
     return (
         <Wrapper className='page-width'>
+            <Link className='back-link' to="/">Back</Link>
             <h1>{title}</h1>
-            {address && <p>{centerAddress}: {address}</p> }
+            {address && <p>{centerAddress}: <b>{address}</b></p> }
             <div className='details-section'>
                 <img className='fixed-height' src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
                 <p>{description}</p>

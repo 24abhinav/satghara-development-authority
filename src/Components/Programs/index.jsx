@@ -48,6 +48,7 @@ const ProgramDetails = () => {
             <div>
                 {slider.map((program = {}) => {
                     const { id, imageurl, title, description, alerts, detailspageurl } = program;
+                    const hasLongDescription = description.length > 450;
                     return (
                         <div key={id} className="program-slider">
                             <div className='program-image'>
@@ -56,7 +57,7 @@ const ProgramDetails = () => {
                             </div>
                             <div className='program-details'>
                                 <h5>{title}</h5>
-                                <p>{description}</p>
+                                <p>{description.slice(0, 450)}{hasLongDescription && '...'}</p>
                                 <div className='arrows'>
                                     {count !== 0 ? (
                                         <button onClick={() => onChange('decrease')}>
