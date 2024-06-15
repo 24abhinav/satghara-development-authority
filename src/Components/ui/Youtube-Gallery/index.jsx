@@ -4,20 +4,15 @@ import { getMetaDetails, getYoutubeVideosHandler } from '../../../handlers';
 
 const YoutubeGallery = () => {
     const { youtubePage = {} } = getMetaDetails() || {};
-    const youtubeVideos = [
-        { url: 'HKHIwQuJ_1U', title: 'Sample alerts' },
-        { url: 'EP33MdHj3AU' },
-        { url: 'HKHIwQuJ_1U' },
-    ];
-    // const [youtubeVideos, setYoutubeVideo] = useState([]);
+    const [youtubeVideos, setYoutubeVideo] = useState([]);
 
-    // const fetchYoutubeVideos = async () => {
-    //     setYoutubeVideo(await getYoutubeVideosHandler());
-    // };
+    const fetchYoutubeVideos = async () => {
+        setYoutubeVideo(await getYoutubeVideosHandler());
+    };
 
-    // useEffect(() => {
-    //     fetchYoutubeVideos();
-    // }, []);
+    useEffect(() => {
+        fetchYoutubeVideos();
+    }, []);
     
     return (
         <Wrapper>
