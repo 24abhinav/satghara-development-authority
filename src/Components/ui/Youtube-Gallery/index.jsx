@@ -92,7 +92,7 @@ const YoutubeGallery = ({
                     <span> {youtubePage.heading} </span>
                     <span> ({youtubeVideos.length}) </span>
                 </h2>
-                <button onClick={() => setModal(true)} className="btn primary">Add New Video</button>
+                {admin && <button onClick={() => setModal(true)} className="btn primary">Add New Video</button>}
             </div>
             <div className="cards">
                 {youtubeVideos.map(({ id, url, title }) => {
