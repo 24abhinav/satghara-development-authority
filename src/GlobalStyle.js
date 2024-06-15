@@ -202,6 +202,7 @@ const GlobalStyle = styled.div`
             img {
                 width: 100%;
                 border-radius: 5px;
+                max-height: 150px;
             }
 
             .details {
