@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Wrapper from './style';
-import { getMetaDetails, getProgramsByUrlHandler } from '../../handlers';
+import { getMetaDetails, getProgramsByUrlHandler, getVideoByProgramIdHandler } from '../../handlers';
 import Manifest from '../../manifest';
 
 const Hospital = () => {
-    const { programDetails: { maintainer = {}, centerAddress = '' } = {} } = getMetaDetails() || {};
+    const { programDetails: { maintainer = {}, centerAddress = '', youtubeContent = '' } = {} } = getMetaDetails() || {};
     const { url = 'hospital' } = useParams();
     const [programDetails, setDetails] = useState({});
+    const [videos, setVideos] = useState([]);
+
     const {
         title = '',
         description = '',
@@ -20,6 +22,7 @@ const Hospital = () => {
     const initialData = async () => {
         const [details = {}] = await getProgramsByUrlHandler(url) || [];
         setDetails(details);
+        setVideos(await getVideoByProgramIdHandler(details));
     };
 
     useEffect(() => {
@@ -41,6 +44,14 @@ const Hospital = () => {
                     <p>{maintainer.name}: <b>{maintainer_name}</b></p>
                     <p>{maintainer.mobile}: <b>{maintainer_mobile}</b> </p>
                     {maintainer_address && <p>{maintainer.address}: <b>{maintainer_address}</b></p>}
+                </div>
+            </div>
+            <div>
+                <h4>{youtubeContent}</h4>
+                <div className='cards'>
+                    {videos.map(({ url }) => (
+                        <iframe key={url} src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
+                    ))}
                 </div>
             </div>
         </Wrapper>
