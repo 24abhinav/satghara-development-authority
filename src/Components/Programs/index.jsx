@@ -63,7 +63,7 @@ const ProgramDetails = () => {
                                             <i className='fa fa-arrow-left'></i>
                                         </button>
                                     ): <span />}
-                                    {detailspageurl && <Link to={detailspageurl} className='btn primary'>{overviewPage.moreDetailsBtnText}</Link>}
+                                    {detailspageurl && <Link to={`programs/${detailspageurl}`} className='btn primary'>{overviewPage.moreDetailsBtnText}</Link>}
                                     {count < (programList.length - 1) ? (
                                         <button onClick={() => onChange('increase')}>
                                             <i className='fa fa-arrow-right'></i>

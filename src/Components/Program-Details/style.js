@@ -2,31 +2,49 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
     .details-section {
-        display: grid;
-        grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
-
-        .fixed-height {
-            min-height: 240px;
-            max-height: 300px;
-            height: 100%;
-        }
+        display: flex;
         
-        img {}
+        img {
+            width: 800px;
+            max-height: 500px;
+        }
 
         p {
-            margin: 0;
-            margin-left: 20px;
+            margin: 0 20px;
         }
 
         .contact-info {
             * {
                 margin: 0;
             }
-            display: flex;
-            justify-content: flex-end;
 
             h3 {
                 margin-bottom: 20px;
+            }
+        }
+
+        /* @media (max-width: 1100px) {
+            grid-template-columns: 1fr 1fr;
+
+            .contact-info {
+                display: block;
+                margin-top: 20px;
+            }
+
+            img {
+                width: 100%;
+            }
+        } */
+
+        @media (max-width: 720px) {
+            display: block;
+
+            p {
+                margin: 0;
+            }
+
+            img {
+                width: 100%;
             }
         }
     }

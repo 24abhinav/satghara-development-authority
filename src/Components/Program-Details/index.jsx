@@ -32,17 +32,16 @@ const Hospital = () => {
             {address && <p>{centerAddress}: </p> }
             <div className='details-section'>
                 <img className='fixed-height' src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
-                <p className='fixed-height'>{description}</p>
-                <div className='contact-info fixed-height'>
-                    <div>
-                        <h3>{maintainer.heading}</h3>
-                        <p>{maintainer.name}: <b>{maintainer_name}</b></p>
-                        <p>{maintainer.mobile}: <b>{maintainer_mobile}</b> </p>
-                        {maintainer_address && <p>{maintainer.address}: <b>{maintainer_address}</b></p>}
-                    </div>
+                <p>{description}</p>
+            </div>
+            <div className='contact-info'>
+                <div>
+                    <h3>{maintainer.heading}</h3>
+                    <p>{maintainer.name}: <b>{maintainer_name}</b></p>
+                    <p>{maintainer.mobile}: <b>{maintainer_mobile}</b> </p>
+                    {maintainer_address && <p>{maintainer.address}: <b>{maintainer_address}</b></p>}
                 </div>
             </div>
-            <div></div>
         </Wrapper>
     );
 }
