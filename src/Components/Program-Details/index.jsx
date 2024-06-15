@@ -29,7 +29,7 @@ const Hospital = () => {
     return (
         <Wrapper className='page-width'>
             <h1>{title}</h1>
-            {address && <p>{centerAddress}: </p> }
+            {address && <p>{centerAddress}: {address}</p> }
             <div className='details-section'>
                 <img className='fixed-height' src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
                 <p>{description}</p>
