@@ -100,7 +100,7 @@ export const getPrograms = async () => {
 export const getYoutubeVideosHandler = async () => {
     if (!caching.youtubeVideos) {
         const { data = [] } = await axiosInstance({
-            method: 'post',
+            method: 'get',
             url: 'youtube-videos'
         });
         caching.youtubeVideos = data;
