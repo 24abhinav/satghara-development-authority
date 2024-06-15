@@ -13,7 +13,7 @@ const Wrapper = styled.div`
         }
 
         .contact-us-page {
-            
+            width: 300px;
         }
 
         @media (max-width: 1200px) {
@@ -23,6 +23,9 @@ const Wrapper = styled.div`
             .programs-page {
                 width: auto;
                 margin-right: 0;
+            }
+            .contact-us-page {
+                width: auto;
             }
         }
     }

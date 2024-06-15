@@ -3,6 +3,7 @@ import Wrapper from './style';
 import ContactUs from '../ContactUs';
 import Programs from '../Programs';
 import { getMetaDetails } from '../../handlers';
+import YoutubeGallery from '../ui/Youtube-Gallery';
 
 const Home = () => {
     const { overviewPage = {} } = getMetaDetails() || {};
@@ -16,6 +17,9 @@ const Home = () => {
                 <div className="contact-us-page m-b-20">
                     <ContactUs />
                 </div>
+            </div>
+            <div className="youtube-videos">
+                <YoutubeGallery />
             </div>
         </Wrapper>
     );

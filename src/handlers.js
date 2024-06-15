@@ -65,16 +65,12 @@ export const fetchMetaDetails = async ({ otherParams = {} } = {}) => {
 };
 
 export const postContact = async (data) => {
-    try {
-        await axiosInstance({
-            method: 'post',
-            url: 'contact',
-            data
-        });
-        return true;
-    } catch (err) {
-        return false;
-    }
+    const { ok } = await axiosInstance({
+        method: 'post',
+        url: 'contact',
+        data
+    });
+    return ok;
 };
 
 export const getDonationHandler = async (filter = {}) => {
@@ -98,4 +94,16 @@ export const getPrograms = async () => {
     } catch (err) {
         return [];
     }
+};
+
+
+export const getYoutubeVideosHandler = async () => {
+    if (!caching.youtubeVideos) {
+        const { data = [] } = await axiosInstance({
+            method: 'post',
+            url: 'youtube-video'
+        });
+        caching.youtubeVideos = data;
+    }
+    return caching.youtubeVideos;
 };
