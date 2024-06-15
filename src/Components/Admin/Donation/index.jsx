@@ -128,7 +128,7 @@ const ManageDonation = () => {
     return (
         <Wrapper>
             <h3>Manage Donation</h3>
-            {toast && <Toast { ...toast } /> }
+            {toast && <Toast { ...toast } onClose={setToast} /> }
             {modal.open && <AddUpdateDonation setToast={setToast} reload={reloadTable} initialForm={formInitialValue} modal={modal} setModal={setModal} />}
             <div className="add-new m-b-20">
                 <button onClick={() => setModal({ open: true, type: 'new' })}>

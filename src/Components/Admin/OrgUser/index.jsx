@@ -175,7 +175,7 @@ const OrgUserList = ({ isAdmin }) => {
 
     return (
         <>
-            {toast && <Toast { ...toast } /> }
+            {toast && <Toast { ...toast } onClose={setToast} /> }
             <button className='primary m-b-20 btn' onClick={() => setModal({ open: true, operation: 'Add'})}>Add New User</button>
             <div className='data-table'>
                 <Table>

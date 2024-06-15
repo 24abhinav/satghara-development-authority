@@ -211,3 +211,11 @@ export const deleteVideoHandler = async ({ id }) => {
         url: `/admin/youtube-video/${id}`
     });
 };
+
+export const programVideoMapping = async ({ programId, videoId }) => {
+    return axiosInstance({
+        method: 'post',
+        url: '/admin/video-program-mapping',
+        data: { programId, videoId }
+    });
+};

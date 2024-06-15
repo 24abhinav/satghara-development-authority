@@ -127,7 +127,7 @@ const VisitorsContact = () => {
 
     return (
         <Wrapper className='m-b-20'>
-            {toast && <Toast { ...toast } /> }
+            {toast && <Toast { ...toast } onClose={setToast} /> }
             <form onSubmit={onSearch} className="m-b-20">
                 <div className='filter-section'>
                     {ADMIN_STATIC.visitorsContactPage.filters.map(({ placeholder, key, type, attr = {} }) => (

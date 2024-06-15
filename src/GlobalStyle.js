@@ -3,6 +3,11 @@ import styled from 'styled-components';
 const GlobalStyle = styled.div`
     width: 100%;
 
+    .select {
+        border: none;
+        padding: 10px;
+    }
+
     .m-b-10 {
         margin-bottom: 10px;
     }

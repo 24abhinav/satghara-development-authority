@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Wrapper from './style';
-import { getMetaDetails, getYoutubeVideosHandler } from '../../../handlers';
+import { getMetaDetails, getProgramsByUrlHandler, getYoutubeVideosHandler } from '../../../handlers';
 import Modal from '../Modal';
 import Alert from '../Alert';
 import ADMIN_STATIC from '../../Admin/constant';
-import { addVideoHandler } from '../../Admin/handlers';
+import { addVideoHandler, programVideoMapping } from '../../Admin/handlers';
+import Toast from '../Toast';
 
 const AddNewVideo = ({
     onClose,
@@ -60,14 +61,21 @@ const YoutubeGallery = ({
 }) => {
     const { youtubePage = {} } = getMetaDetails() || {};
     const [youtubeVideos, setYoutubeVideo] = useState([]);
+    const [programList, setProgramList] = useState([]);
     const [modal, setModal] = useState();
+    const [toast, setToast] = useState();
 
     const fetchYoutubeVideos = async (force) => {
         setYoutubeVideo(await getYoutubeVideosHandler(force));
     };
 
+    const fetchProgram = async () => {
+        setProgramList(await getProgramsByUrlHandler());
+    };
+
     useEffect(() => {
         fetchYoutubeVideos();
+        fetchProgram();
     }, []);
 
     useEffect(() => {
@@ -83,10 +91,18 @@ const YoutubeGallery = ({
         fetchYoutubeVideos(true);
         setModal();
     };
+
+    const addRemoveProgram = async (programId, videoId) => {
+        if (Number(programId)) {
+            const { data: { message = '' } = {} } = await programVideoMapping({ programId, videoId });
+            setToast({ msg: message });
+        }
+    };
     
     return (
         <Wrapper>
-            {modal && <AddNewVideo onClose={setModal} onSuccess={addedNewVideo}/>}
+            {toast && <Toast { ...toast } onClose={setToast} /> }
+            {modal && <AddNewVideo onClose={() => setModal()} onSuccess={addedNewVideo}/>}
             <div className='d-flex j-space-between a-center'>
                 <h2>
                     <span> {youtubePage.heading} </span>
@@ -101,9 +117,16 @@ const YoutubeGallery = ({
                             <div className='title d-flex j-space-between a-center'>
                                 <h4>{title || 'SDF On Youtube'}</h4>
                                 {admin && (
-                                    <button disabled={loading} className='btn' onClick={() => deleteVideo(id)} title='Delete'>
-                                        <span className="fa fa-trash-o" />
-                                    </button>
+                                    <>
+                                        <select className='select' onChange={e => addRemoveProgram(e.target.value, id)}>
+                                            {[{id: 0, title: 'add/delete to'}, ...programList].map(({ id = '', title = '' }) => (
+                                                <option key={id} value={id}>{title}</option>
+                                            ))}
+                                        </select>
+                                        <button disabled={loading} className='btn' onClick={() => deleteVideo(id)} title='Delete'>
+                                            <span className="fa fa-trash-o" />
+                                        </button>
+                                    </>
                                 )}
                             </div>
                             <iframe src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
