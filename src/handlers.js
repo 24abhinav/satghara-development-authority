@@ -101,7 +101,7 @@ export const getYoutubeVideosHandler = async () => {
     if (!caching.youtubeVideos) {
         const { data = [] } = await axiosInstance({
             method: 'post',
-            url: 'youtube-video'
+            url: 'youtube-videos'
         });
         caching.youtubeVideos = data;
     }
