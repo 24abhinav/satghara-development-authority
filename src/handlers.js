@@ -96,7 +96,6 @@ export const getPrograms = async () => {
     }
 };
 
-
 export const getYoutubeVideosHandler = async (force) => {
     if (!caching.youtubeVideos || force) {
         const { data = [] } = await axiosInstance({
@@ -106,4 +105,16 @@ export const getYoutubeVideosHandler = async (force) => {
         caching.youtubeVideos = data;
     }
     return caching.youtubeVideos;
+};
+
+export const getProgramsByUrlHandler = async (url) => {
+    if (!caching[url]) {
+        const { data = [] } = await axiosInstance({
+            method: 'get',
+            url: 'programs',
+            params: { url }
+        });
+        caching[url] = data;
+    }
+    return caching[url];
 };
