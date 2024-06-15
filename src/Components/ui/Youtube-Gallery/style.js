@@ -13,6 +13,14 @@ const Wrapper = styled.div`
             height: 300px;
             border: none;
         }
+
+        h4 {
+            margin: 0;
+        }
+
+        button {
+            padding: 0;
+        }
     }
 `;
 

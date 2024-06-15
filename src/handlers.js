@@ -97,8 +97,8 @@ export const getPrograms = async () => {
 };
 
 
-export const getYoutubeVideosHandler = async () => {
-    if (!caching.youtubeVideos) {
+export const getYoutubeVideosHandler = async (force) => {
+    if (!caching.youtubeVideos || force) {
         const { data = [] } = await axiosInstance({
             method: 'get',
             url: 'youtube-videos'

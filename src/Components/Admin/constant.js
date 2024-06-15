@@ -16,6 +16,7 @@ const ADMIN_STATIC = Object.freeze({
         { name: "Org Users", url: "/sdf-admin/org-user" },
         { name: "Page Meta", url: "/sdf-admin/page-meta" },
         { name: "Programs", url: "/sdf-admin/programs" },
+        { name: "Youtube", url: "/sdf-admin/youtube" },
     ],
     donationPage: {
         filters: [
@@ -51,7 +52,13 @@ const ADMIN_STATIC = Object.freeze({
             { name: 'detailspageurl', label: 'Details Page Url', type: 'text', required: false },
             { name: 'alerts', label: 'Alert for programs (e.g: Upcoming)', type: 'text', required: false }
         ]
-    }
+    },
+    youtube: {
+        form: [
+            { name: 'title', label: 'Title', type: 'text', required: true },
+            { name: 'url', label: 'Youtube URL', type: 'text', required: true },
+        ]
+    },
 });
 
 export default ADMIN_STATIC;

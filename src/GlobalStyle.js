@@ -175,6 +175,9 @@ const GlobalStyle = styled.div`
    .j-space-between {
         justify-content: space-between;
    }
+   .a-center {
+        align-items: center;
+   }
 
    .cards {
         display: grid;

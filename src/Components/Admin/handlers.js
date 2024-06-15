@@ -196,3 +196,18 @@ export const deleteProgramHandler = async ({ id }) => {
         url: `/admin/programs/${id}`
     });
 };
+
+export const addVideoHandler = async (data) => {
+    return axiosInstance({
+        method: 'post',
+        url: `/admin/youtube-video`,
+        data
+    });
+};
+
+export const deleteVideoHandler = async ({ id }) => {
+    return axiosInstance({
+        method: 'delete',
+        url: `/admin/youtube-video/${id}`
+    });
+};

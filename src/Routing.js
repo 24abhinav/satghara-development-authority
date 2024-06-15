@@ -15,6 +15,7 @@ const MetaDetails = React.lazy(() => import('./Components/Admin/MetaDetails'));
 const OrgUser = React.lazy(() => import('./Components/Admin/OrgUser'));
 const ResetPassword = React.lazy(() => import('./Components/Admin/ResetPassword'));
 const AdminPrograms = React.lazy(() => import('./Components/Admin/Programs'));
+const YoutubeSection = React.lazy(() => import('./Components/Admin/Youtube'));
 
 const Routing = () => {
     return (
@@ -32,6 +33,7 @@ const Routing = () => {
                 <Route path='org-user' Component={OrgUser} ></Route>
                 <Route path='create-password/:token' Component={ResetPassword} ></Route>
                 <Route path='programs' Component={AdminPrograms}></Route>
+                <Route path='youtube' Component={YoutubeSection}></Route>
             </Route>
         </Routes>
     )
