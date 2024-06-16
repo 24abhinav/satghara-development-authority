@@ -4,18 +4,26 @@
             "logo": "static/Assets/logo.png",
             "alt": "SDF logo",
             "heading": "Satghara Development <br /> Foundation",
-
             "options": [
-                { "name": "Home", "url": "/" },
-                { "name": "Overview", "url": "/overview" },
-                { "name": "Donation", "url": "/donation" }
+                {
+                    "name": "Home",
+                    "url": "/"
+                },
+                {
+                    "name": "Overview",
+                    "url": "/overview"
+                },
+                {
+                    "name": "Donation",
+                    "url": "/donation"
+                }
             ]
         },
         "footer": {
             "copyright": "Satghara Development Foundation All rights reserved."
         },
         "contactUs": {
-            "heading": "Do you want to donate? or <br /> Do you have any query/concern/suggestion? <br /> Please contact us",
+            "heading": "Connect with Us",
             "successAlert": "We have receive your request! We will get in touch with you shortly",
             "formFields": {
                 "name": {
@@ -45,19 +53,6 @@
         "overviewPage": {
             "QuickHeading": "Quick Overview of our programs",
             "heading": "Overview of SDF",
-            "programList": {
-                "hospital": {
-                    "imageUrl": "Assets/hospital.png",
-                    "heading": "free Hospital every sunday",
-                    "overview": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                },
-                "commonKitchen": {
-                    "upcoming": "Upcoming",
-                    "imageUrl": "Assets/kitchen.jpg",
-                    "heading": "A Nominal price Common kitchen",
-                    "overview": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                }
-            },
             "tile": {
                 "totalDonation": {
                     "label": "Total Donation",
@@ -72,16 +67,35 @@
                     "value": 2
                 }
             },
-            "overviewContent": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            "overviewContent": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "moreDetailsBtnText": "Get More Details"
         },
         "donation": {
             "heading": "List of donor and their donation",
-            "tableHeading": ["Name", "Amount", "Date" ],
+            "tableHeading": [
+                "Name",
+                "Amount",
+                "Date",
+                "Details"
+            ],
             "totalDonationLabel": "Total donation till now"
         },
         "common": {
             "serverError": "Due to some technical glitches we could not captured your request! please try after some time",
             "loading": "Please wait..."
+        },
+        "youtubePage": {
+            "heading": "Youtube Gallery"
+        },
+        "programDetails": {
+            "maintainer": {
+                "heading": "Program Maintainer Details",
+                "name": "Name",
+                "mobile": "Mobile",
+                "address": "Address"
+            },
+            "centerAddress": "Center Address",
+            "youtubeContent": "Program Video On youtube"
         }
     },
     "hindi": {
@@ -89,20 +103,28 @@
             "logo": "static/Assets/logo.png",
             "alt": "एसडीएफ प्रतीक चिन्ह",
             "heading": "सतघरा विकास <br /> फाउंडेशन",
-
             "options": [
-                { "name": "मुख", "url": "/"},
-                { "name": "निरीक्षण", "url": "/overview" },
-                { "name": "दान", "url": "/donation" }
+                {
+                    "name": "मुख",
+                    "url": "/"
+                },
+                {
+                    "name": "निरीक्षण",
+                    "url": "/overview"
+                },
+                {
+                    "name": "दान",
+                    "url": "/donation"
+                }
             ]
         },
         "footer": {
             "copyright": "सतघरा डेवलपमेंट फाउंडेशन सर्वाधिकार सुरक्षित।"
         },
         "contactUs": {
-            "heading": "क्या आप दान करना चाहते हैं? <br /> या क्या आपका कोई प्रश्न / चिंता / सुझाव है? <br /> कृपया हमसे संपर्क करें",
+            "heading": "हमसे संपर्क करे",
             "formFields": {
-                "name" : {
+                "name": {
                     "label": "नाम",
                     "type": "text",
                     "placeholder": "अपना नाम दर्ज करें",
@@ -130,19 +152,6 @@
         "overviewPage": {
             "QuickHeading": "हमारे कार्यक्रमों का त्वरित अवलोकन",
             "heading": "एसडीएफ का अवलोकन",
-            "programList": {
-                "hospital": {
-                    "imageUrl": "Assets/hospital.png",
-                    "heading": "प्रत्येक रविवार को निःशुल्क अस्पताल",
-                    "overview": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
-                },
-                "commonKitchen": {
-                    "upcoming": "आगामी",
-                    "imageUrl": "Assets/kitchen.jpg",
-                    "heading": "नाममात्र की कीमत वाली सामान्य रसोई",
-                    "overview": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
-                }
-            },
             "tile": {
                 "totalDonation": {
                     "label": "कुल दान",
@@ -157,16 +166,35 @@
                     "value": 2
                 }
             },
-            "overviewContent": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके"
+            "overviewContent": "वर्ष जिसकी ज्यादा सभीकुछ मुख्यतह शीघ्र मेंभटृ पासपाई संपुर्ण सकती दर्शाता पहोचाना अंग्रेजी होने पुर्व परिवहन मुश्किले लिए। समजते सक्षम किएलोग जानकारी दस्तावेज रिती पहोच। विभाजन आंतरजाल मेमत रिती करता। रहारुप व्याख्यान प्रौध्योगिकी विवरण प्रतिबध अर्थपुर्ण भाषए विवरण पेदा आवश्यकत स्वतंत्रता आंतरकार्यक्षमता बनाने समूह पहोचने सभीकुछ यायेका भेदनक्षमता गटको तरीके",
+            "moreDetailsBtnText": "अधिक विवरण प्राप्त करें"
         },
         "donation": {
             "heading": "दाताओं की सूची और उनका दान",
-            "tableHeading": ["नाम", "मात्रा", "तारीख" ],
+            "tableHeading": [
+                "नाम",
+                "मात्रा",
+                "तारीख",
+                "विवरण"
+            ],
             "totalDonationLabel": "अब तक का कुल दान"
         },
         "common": {
             "serverError": "कुछ तकनीकी खामियों के कारण हम आपका अनुरोध स्वीकार नहीं कर सके! कृपया कुछ देर बाद प्रयास करें",
             "loading": "कृपया प्रतीक्षा करें..."
+        },
+        "youtubePage": {
+            "heading": "यूट्यूब गैलरी"
+        },
+        "programDetails": {
+            "maintainer": {
+                "heading": "कार्यक्रम अनुरक्षक विवरण",
+                "name": "नाम",
+                "mobile": "मोबाइल नंबर",
+                "address": "पता"
+            },
+            "centerAddress": "केंद्र का पता",
+            "youtubeContent": "कार्यक्रम का वीडियो यूट्यूब पर"
         }
     }
 }
