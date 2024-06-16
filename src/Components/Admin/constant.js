@@ -51,9 +51,9 @@ const ADMIN_STATIC = Object.freeze({
             { name: 'description', label: 'Description', type: 'text', required: true },
             { name: 'detailspageurl', label: 'Details Page Url', type: 'text', required: true },
             { name: 'address', label: 'Center Address', type: 'text', required: false },
-            { name: 'maintainer_name', label: 'Maintainer Name', type: 'text', required: true },
-            { name: 'maintainer_mobile', label: 'Maintainer Mobile', type: 'number', required: true },
-            { name: 'maintainer_address', label: 'Maintainer Address', type: 'text', required: false },
+            // { name: 'maintainer_name', label: 'Maintainer Name', type: 'text', required: true },
+            // { name: 'maintainer_mobile', label: 'Maintainer Mobile', type: 'number', required: true },
+            // { name: 'maintainer_address', label: 'Maintainer Address', type: 'text', required: false },
             { name: 'alerts', label: 'Alert for programs (e.g: Upcoming)', type: 'text', required: false },
         ]
     },

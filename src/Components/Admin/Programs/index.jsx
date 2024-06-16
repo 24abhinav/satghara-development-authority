@@ -3,12 +3,12 @@ import Wrapper from './style';
 import { Link } from 'react-router-dom';
 import Modal from '../../ui/Modal';
 import Alert from '../../ui/Alert';
-import { addNewProgramHandler, deleteProgramHandler, editProgramHandler, getPrograms } from '../handlers';
+import { addNewProgramHandler, deleteProgramHandler, editProgramHandler, fetchOrgUserHandler, getPrograms } from '../handlers';
 import ADMIN_STATIC from '../constant';
 import Toast from '../../ui/Toast';
 import Manifest from '../../../manifest';
 
-const AddEditProgram = ({ onClose, selectedProgram = {}, operation, onSuccess }) => {
+const AddEditProgram = ({ onClose, selectedProgram = {}, operation, onSuccess, adminUsers }) => {
     const [alert, setAlert] = useState(null);
     const [loading, setLoading] = useState(false);
     const btnRef = useRef();
@@ -46,6 +46,17 @@ const AddEditProgram = ({ onClose, selectedProgram = {}, operation, onSuccess })
                         <input defaultValue={selectedProgram[name] || ''} name={name} type={type} required={required}  />
                     </div>
                 ))}
+                <div className="form-field">
+                    <label>
+                        Who will be maintaining this Program? <span className='asterisk'>*</span>
+                    </label>
+                    <select name="maintainer" defaultValue={selectedProgram.maintainer || ''} required>
+                        <option value="">Select Maintainer</option>
+                        {adminUsers.map(({ id, name }) => (
+                            <option value={id} key={id}>{name}</option>
+                        ))}
+                    </select>
+                </div>
                 <button ref={btnRef} className='primary btn' type='submit' style={{display: 'none'}} />
             </form>
         </Modal>
@@ -57,6 +68,7 @@ const Programs = () => {
     const [programs, setPrograms] = useState([]);
     const [loading, setLoading] = useState(false);
     const [toast, setToast] = useState();
+    const [adminUsers, setAdminUsers] = useState([]);
 
     const fetchFreshData = async () => {
         setModal({});
@@ -89,8 +101,14 @@ const Programs = () => {
         setToast({ msg });
     }
 
+    const getAdminUsers = async () => {
+        const { data = [] } = await fetchOrgUserHandler();
+        setAdminUsers(data);
+    };
+
     useEffect(() => {
         fetchFreshData();
+        getAdminUsers();
     }, []);
 
     return (
@@ -124,7 +142,7 @@ const Programs = () => {
                     )
                 })}
             </div>
-            {modal.open && <AddEditProgram {...modal} />}
+            {modal.open && <AddEditProgram {...modal} adminUsers={adminUsers} />}
         </Wrapper>
     );
 }

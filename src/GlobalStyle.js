@@ -260,6 +260,14 @@ const GlobalStyle = styled.div`
         top: 10px;
         left: 10px;
     }
+    form {
+        select {
+            width: 100%;
+            padding: 10px;
+            border: solid 1px #ccc;
+            border-radius: 5px;
+        }
+    }
 `;
 
 export default GlobalStyle;
