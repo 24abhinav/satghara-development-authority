@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Wrapper from './style';
-import { Link } from 'react-router-dom';
 import Modal from '../../ui/Modal';
 import Alert from '../../ui/Alert';
 import { addNewProgramHandler, deleteProgramHandler, editProgramHandler, fetchOrgUserHandler, getPrograms } from '../handlers';
@@ -122,7 +121,7 @@ const Programs = () => {
             </div>
             <div className='cards'>
                 {programs.map((program = {}) => {
-                    const { title, description, imageurl, detailspageurl, alerts, maintainer_name } = program;
+                    const { title, description, imageurl, alerts, maintainer_name } = program;
 
                     return (
                         <div key={title} className='card'>
@@ -134,7 +133,6 @@ const Programs = () => {
                                 <p>{description}</p>
                                 <hr />
                                 <div className='action-btn d-flex j-space-between'>
-                                    {detailspageurl && <Link className='link' to={detailspageurl}>View</Link>}
                                     <button disabled={loading} className='btn warning' onClick={() => showProgramModal({ operation: 'Edit', selectedProgram: program })}>Edit</button>
                                     <button disabled={loading} className='btn danger' onClick={() => onDelete(program)}>Delete</button>
                                 </div>
