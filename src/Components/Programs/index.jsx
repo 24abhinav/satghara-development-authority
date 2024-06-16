@@ -8,11 +8,11 @@ const ProgramDetails = () => {
     const [slider, setSlider] = useState([]);
     const [count, setCount] = useState(0);
     const { overviewPage = {} } = getMetaDetails() || {};
-    const pageRefs = useRef({ interval: null, programList: [] });
+    const pageRefs = useRef({ programList: [] });
 
-    const { current: { interval, programList = [] }} = pageRefs;
+    const { current: { programList = [] }} = pageRefs;
 
-    const changeLayout = (source = '') => {
+    const changeLayout = (source = '', int = '') => {
         let newCount = source === 'increase' ? count + 1 : count - 1;
         console.log({ newCount, len: programList.length});
         if (newCount > programList.length) {
@@ -33,10 +33,6 @@ const ProgramDetails = () => {
         const response = await getPrograms() || [];
         setSlider(response[0] || {});
         pageRefs.current.programList = response;
-
-        // pageRefs.current.interval = setInterval(() => {
-        //     changeLayout('increase');
-        // }, 3000);
     };
 
     useEffect(() => {
