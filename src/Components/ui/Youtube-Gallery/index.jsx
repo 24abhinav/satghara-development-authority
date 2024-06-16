@@ -93,8 +93,12 @@ const YoutubeGallery = ({
     };
 
     const addRemoveProgram = async (programId, videoId) => {
-        if (Number(programId)) {
-            const { data: { message = '' } = {} } = await programVideoMapping({ programId, videoId });
+        const payload = {
+            programId: Number(programId),
+            videoId: Number(videoId)
+        };
+        if (payload.programId) {
+            const { data: { message = '' } = {} } = await programVideoMapping(payload);
             setToast({ msg: message });
         }
     };
@@ -119,8 +123,8 @@ const YoutubeGallery = ({
                                 {admin && (
                                     <>
                                         <select className='select' onChange={e => addRemoveProgram(e.target.value, id)}>
-                                            {[{id: 0, title: 'add/delete to'}, ...programList].map(({ id = '', title = '' }) => (
-                                                <option key={id} value={id}>{title}</option>
+                                            {[{programid: 0, title: 'add/delete to'}, ...programList].map(({ programid = 0, title = '' }) => (
+                                                <option key={programid} value={programid}>{title}</option>
                                             ))}
                                         </select>
                                         <button disabled={loading} className='btn' onClick={() => deleteVideo(id)} title='Delete'>

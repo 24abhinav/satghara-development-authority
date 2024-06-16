@@ -47,10 +47,10 @@ const ProgramDetails = () => {
         <Wrapper>
             <div>
                 {slider.map((program = {}) => {
-                    const { id, imageurl, title, description, alerts, detailspageurl } = program;
+                    const { programid, imageurl, title, description, alerts, detailspageurl } = program;
                     const hasLongDescription = description.length > 450;
                     return (
-                        <div key={id} className="program-slider">
+                        <div key={programid} className="program-slider">
                             <div className='program-image'>
                                 {alerts && <small className='chip success'>{alerts}</small>}
                                 <img src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />

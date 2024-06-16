@@ -190,7 +190,7 @@ export const editProgramHandler = async (formData, oldData) => {
     });
 };
 
-export const deleteProgramHandler = async ({ id }) => {
+export const deleteProgramHandler = async ({ programid: id }) => {
     return axiosInstance({
         method: 'delete',
         url: `/admin/programs/${id}`
