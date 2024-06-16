@@ -24,6 +24,13 @@ const Wrapper = styled.div`
         }
     }
 
+    .videos {
+        iframe {
+            width: 100%;
+            height: 400px;
+        }
+    }
+
     @media (max-width: 720px) {
         h1 {
             text-align: left;

@@ -76,8 +76,8 @@ const Wrapper = styled.div`
                 width: 100%;
 
                 p {
-                    max-height: 150px;
-                    overflow: auto;
+                    max-height: 170px;
+                    overflow: hidden;
                 }
             }
         }

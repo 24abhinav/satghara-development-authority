@@ -46,11 +46,13 @@ const Hospital = () => {
                     {maintainer_address && <p>{maintainer.address}: <b>{maintainer_address}</b></p>}
                 </div>
             </div>
-            <div>
+            <div className='videos'>
                 <h4>{youtubeContent}</h4>
                 <div className='cards'>
                     {videos.map(({ url }) => (
-                        <iframe key={url} src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
+                        <div>
+                            <iframe key={url} src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
+                        </div>
                     ))}
                 </div>
             </div>
