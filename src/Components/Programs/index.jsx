@@ -20,7 +20,7 @@ const ProgramDetails = () => {
         } else if (newCount < 0) {
             newCount = programList.length - 1;
         }
-        setSlider([programList[newCount]]);
+        setSlider(programList[newCount]);
         setCount(newCount);
     };
 
@@ -31,7 +31,7 @@ const ProgramDetails = () => {
     
     const initialData = async () => {
         const response = await getPrograms() || [];
-        setSlider(response[0] || []);
+        setSlider(response[0] || {});
         pageRefs.current.programList = response;
 
         // pageRefs.current.interval = setInterval(() => {
@@ -43,39 +43,43 @@ const ProgramDetails = () => {
         initialData();
     }, []);
 
+    const {
+        programid = '',
+        imageurl = '',
+        title = '',
+        description = '',
+        alerts = '',
+        detailspageurl = ''
+    } = slider;
+    const hasLongDescription = description.length > 450;
+
     return (
         <Wrapper>
-            <div>
-                {slider.map((program = {}) => {
-                    const { programid, imageurl, title, description, alerts, detailspageurl } = program;
-                    const hasLongDescription = description.length > 450;
-                    return (
-                        <div key={programid} className="program-slider">
-                            <div className='program-image'>
-                                {alerts && <small className='chip success'>{alerts}</small>}
-                                <img src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
-                            </div>
-                            <div className='program-details'>
-                                <h5>{title}</h5>
-                                <p>{description.slice(0, 450)}{hasLongDescription && '...'}</p>
-                                <div className='arrows'>
-                                    {count !== 0 ? (
-                                        <button onClick={() => onChange('decrease')}>
-                                            <i className='fa fa-arrow-left'></i>
-                                        </button>
-                                    ): <span />}
-                                    {detailspageurl && <Link to={`programs/${detailspageurl}`} className='btn primary'>{overviewPage.moreDetailsBtnText}</Link>}
-                                    {count < (programList.length - 1) ? (
-                                        <button onClick={() => onChange('increase')}>
-                                            <i className='fa fa-arrow-right'></i>
-                                        </button>
-                                    ) : <span />}
-                                </div>
-                            </div>
+            {programid && (
+                <div className="program-slider">
+                    <div className='program-image'>
+                        {alerts && <small className='chip success'>{alerts}</small>}
+                        <img src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
+                    </div>
+                    <div className='program-details'>
+                        <h5>{title}</h5>
+                        <p>{description.slice(0, 450)}{hasLongDescription && '...'}</p>
+                        <div className='arrows'>
+                            {count !== 0 ? (
+                                <button onClick={() => onChange('decrease')}>
+                                    <i className='fa fa-arrow-left'></i>
+                                </button>
+                            ): <span />}
+                            {detailspageurl && <Link to={`programs/${detailspageurl}`} className='btn primary'>{overviewPage.moreDetailsBtnText}</Link>}
+                            {count < (programList.length - 1) ? (
+                                <button onClick={() => onChange('increase')}>
+                                    <i className='fa fa-arrow-right'></i>
+                                </button>
+                            ) : <span />}
                         </div>
-                    );
-                })}
-            </div>
+                    </div>
+                </div>
+            )}
         </Wrapper>
     );
 }

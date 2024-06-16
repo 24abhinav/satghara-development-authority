@@ -75,7 +75,9 @@ const YoutubeGallery = ({
 
     useEffect(() => {
         fetchYoutubeVideos();
-        fetchProgram();
+        if (admin) {
+            fetchProgram();
+        }
     }, []);
 
     useEffect(() => {

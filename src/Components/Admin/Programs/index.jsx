@@ -122,14 +122,15 @@ const Programs = () => {
             </div>
             <div className='cards'>
                 {programs.map((program = {}) => {
-                    const { title, description, imageurl, detailspageurl, alerts } = program;
+                    const { title, description, imageurl, detailspageurl, alerts, maintainer_name } = program;
 
                     return (
                         <div key={title} className='card'>
                             {alerts && <small>{alerts}</small>}
                             <img src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
                             <div className='details'>
-                                <h4>{title}</h4>
+                                <h4 className='m-b-10'>{title}</h4>
+                                <h5>Maintainer Name: {maintainer_name}</h5>
                                 <p>{description}</p>
                                 <hr />
                                 <div className='action-btn d-flex j-space-between'>
