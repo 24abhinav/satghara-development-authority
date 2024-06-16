@@ -30,8 +30,8 @@ const ProgramDetails = () => {
     };
     
     const initialData = async () => {
-        const response = await getPrograms();
-        setSlider([{ ...response[0] || []}]);
+        const response = await getPrograms() || [];
+        setSlider(response[0] || []);
         pageRefs.current.programList = response;
 
         // pageRefs.current.interval = setInterval(() => {
