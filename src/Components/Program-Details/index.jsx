@@ -35,7 +35,7 @@ const Hospital = () => {
             <h1>{title}</h1>
             {address && <p>{centerAddress}: <b>{address}</b></p> }
             <div className='details-section'>
-                <img className='fixed-height' src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
+                <img className='fixed-height' src={`${Manifest.apiBashUrl}/static/Assets/${imageurl}`} alt={title} />
                 <p>{description}</p>
             </div>
             <div className='contact-info'>

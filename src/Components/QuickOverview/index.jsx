@@ -30,7 +30,7 @@ const QuickOverview = ({ parentHeading, noUpcoming = false }) => {
                             { count === (index + 1) ? (
                                 <div className="overview">
                                     {upcoming && <p className='upcoming-flag'>{upcoming}</p>}
-                                    <img src={`${Manifest.apiBashUrl}/static/${imageUrl}`} alt={heading} />
+                                    <img src={`${Manifest.apiBashUrl}/static/Assets/${imageUrl}`} alt={heading} />
                                     <div className="program-details">
                                         <h4 className='m-b-15'>{heading}</h4>
                                         <p dangerouslySetInnerHTML={{__html: overview}} />

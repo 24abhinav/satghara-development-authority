@@ -126,7 +126,7 @@ const Programs = () => {
                     return (
                         <div key={title} className='card'>
                             {alerts && <small>{alerts}</small>}
-                            <img src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
+                            <img src={`${Manifest.apiBashUrl}/static/Assets/${imageurl}`} alt={title} />
                             <div className='details'>
                                 <h4 className='m-b-10'>{title}</h4>
                                 <h5>Maintainer Name: {maintainer_name}</h5>

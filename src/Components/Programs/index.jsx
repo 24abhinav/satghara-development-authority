@@ -55,7 +55,7 @@ const ProgramDetails = () => {
                 <div className="program-slider">
                     <div className='program-image'>
                         {alerts && <small className='chip success'>{alerts}</small>}
-                        <img src={`${Manifest.apiBashUrl}/static/${imageurl}`} alt={title} />
+                        <img src={`${Manifest.apiBashUrl}/static/Assets/${imageurl}`} alt={title} />
                     </div>
                     <div className='program-details'>
                         <h5>{title}</h5>
