@@ -119,13 +119,13 @@ export const getProgramsByUrlHandler = async (url) => {
     return caching[url];
 };
 
-export const getVideoByProgramIdHandler = async ({ id }) => {
+export const getVideoByProgramIdHandler = async ({ programid }) => {
     const key = `programVideoMapping${id}`;
     if (!caching[key]) {
         const { data = [] } = await axiosInstance({
             method: 'get',
             url: 'program-videos',
-            params: { programId: id }
+            params: { programId: programid }
         });
         caching[key] = data;
     }
