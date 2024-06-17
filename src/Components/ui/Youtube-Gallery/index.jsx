@@ -106,41 +106,45 @@ const YoutubeGallery = ({
     };
     
     return (
-        <Wrapper>
-            {toast && <Toast { ...toast } onClose={setToast} /> }
-            {modal && <AddNewVideo onClose={() => setModal()} onSuccess={addedNewVideo}/>}
-            <div className='d-flex j-space-between a-center'>
-                <h2>
-                    <span> {youtubePage.heading} </span>
-                    <span> ({youtubeVideos.length}) </span>
-                </h2>
-                {admin && <button onClick={() => setModal(true)} className="btn primary">Add New Video</button>}
-            </div>
-            <div className="cards">
-                {youtubeVideos.map(({ id, url, title }) => {
-                    return (
-                        <div key={id} className='youtube-videos'>
-                            <div className='title d-flex j-space-between a-center'>
-                                <h4>{title || 'SDF On Youtube'}</h4>
-                                {admin && (
-                                    <>
-                                        <select className='select' onChange={e => addRemoveProgram(e.target.value, id)}>
-                                            {[{programid: 0, title: 'add/delete to'}, ...programList].map(({ programid = 0, title = '' }) => (
-                                                <option key={programid} value={programid}>{title}</option>
-                                            ))}
-                                        </select>
-                                        <button disabled={loading} className='btn' onClick={() => deleteVideo(id)} title='Delete'>
-                                            <span className="fa fa-trash-o" />
-                                        </button>
-                                    </>
-                                )}
-                            </div>
-                            <iframe src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
-                        </div>
-                    );
-                })}
-            </div>
-        </Wrapper>
+        <>
+            {(youtubeVideos.length || admin) ? (
+                <Wrapper>
+                    {toast && <Toast { ...toast } onClose={setToast} /> }
+                    {modal && <AddNewVideo onClose={() => setModal()} onSuccess={addedNewVideo}/>}
+                    <div className='d-flex j-space-between a-center'>
+                        <h2>
+                            <span> {youtubePage.heading} </span>
+                            <span> ({youtubeVideos.length}) </span>
+                        </h2>
+                        {admin && <button onClick={() => setModal(true)} className="btn primary">Add New Video</button>}
+                    </div>
+                    <div className="cards">
+                        {youtubeVideos.map(({ id, url, title }) => {
+                            return (
+                                <div key={id} className='youtube-videos'>
+                                    <div className='title d-flex j-space-between a-center'>
+                                        <h4>{title || 'SDF On Youtube'}</h4>
+                                        {admin && (
+                                            <>
+                                                <select className='select' onChange={e => addRemoveProgram(e.target.value, id)}>
+                                                    {[{programid: 0, title: 'add/delete to'}, ...programList].map(({ programid = 0, title = '' }) => (
+                                                        <option key={programid} value={programid}>{title}</option>
+                                                    ))}
+                                                </select>
+                                                <button disabled={loading} className='btn' onClick={() => deleteVideo(id)} title='Delete'>
+                                                    <span className="fa fa-trash-o" />
+                                                </button>
+                                            </>
+                                        )}
+                                    </div>
+                                    <iframe src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
+                                </div>
+                            );
+                        })}
+                    </div>
+                </Wrapper>
+            ): null}
+        </>
     );
 }
 
