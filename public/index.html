@@ -20,12 +20,11 @@
     <title>Satghara development Foundation (SDF)</title>
     <script>
       const isAdminPortal = window.location.href.includes('sdf-admin');
-      if (isAdminPortal) {
-        const link = document.createElement('link');
-        link.setAttribute('rel', 'manifest');
-        link.setAttribute('href', '%PUBLIC_URL%/manifest.json');
-        document.head.appendChild(link);
-      }
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'manifest');
+      link.setAttribute('href', '%PUBLIC_URL%/manifest.json');
+      link.setAttribute('href', `%PUBLIC_URL%/${isAdminPortal ? 'admin-' : ''}manifest.json`);
+      document.head.appendChild(link);
     </script>
   </head>
   <body>
