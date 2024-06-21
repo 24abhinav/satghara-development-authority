@@ -62,13 +62,13 @@ const ProgramDetails = () => {
                         <p>{description.slice(0, 450)}{hasLongDescription && '...'}</p>
                         <div className='arrows'>
                             {count !== 0 ? (
-                                <button name='previous-program' onClick={() => onChange('decrease')}>
+                                <button name='previous' onClick={() => onChange('decrease')}>
                                     <i className='fa fa-arrow-left'></i>
                                 </button>
                             ): <span />}
                             {detailspageurl && <Link to={`programs/${detailspageurl}`} className='btn primary'>{overviewPage.moreDetailsBtnText}</Link>}
                             {count < (programList.length - 1) ? (
-                                <button name='next-program' onClick={() => onChange('increase')}>
+                                <button name='next' onClick={() => onChange('increase')}>
                                     <i className='fa fa-arrow-right'></i>
                                 </button>
                             ) : <span />}
