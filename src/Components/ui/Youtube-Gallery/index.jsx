@@ -137,7 +137,7 @@ const YoutubeGallery = ({
                                             </>
                                         )}
                                     </div>
-                                    <iframe src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
+                                    <iframe title={title} src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
                                 </div>
                             );
                         })}
