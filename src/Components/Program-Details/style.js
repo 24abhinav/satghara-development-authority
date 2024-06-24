@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     .back-link {
         font-size: 12px;
         border-radius: 4px;
-        border: 0.5 px solid blue;
+        border: 0.5px solid blue;
 
         i {
            padding-right: 4px;
