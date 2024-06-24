@@ -31,7 +31,10 @@ const Hospital = () => {
 
     return (
         <Wrapper className='page-width'>
-            <Link className='back-link' to="/">Back</Link>
+            <Link className='back-link' to="/">
+                <i className='fa fa-arrow-left'></i>
+                <span>Back</span>
+            </Link>
             <h1>{title}</h1>
             {address && <p>{centerAddress}: <b>{address}</b></p> }
             <div className='details-section'>
