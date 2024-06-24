@@ -12,7 +12,7 @@ const Wrapper = styled.div`
         border: 0.5 px solid blue;
 
         i {
-           padding-right: 10px;
+           padding-right: 4px;
         }
     }
 
