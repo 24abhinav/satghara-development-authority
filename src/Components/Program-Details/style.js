@@ -10,6 +10,9 @@ const Wrapper = styled.div`
         font-size: 12px;
         border-radius: 4px;
         border: 0.5px solid blue;
+        display: flex;
+        align-items: center;
+        padding: 10px;
 
         i {
            padding-right: 4px;
