@@ -6,6 +6,16 @@ const Wrapper = styled.div`
         margin: 10px;
     }
 
+    .back-link {
+        font-size: 12px;
+        border-radius: 4px;
+        border: 0.5 px solid blue;
+
+        i {
+           padding-right: 10px;
+        }
+    }
+
     .details-section {
         display: flex;
         
