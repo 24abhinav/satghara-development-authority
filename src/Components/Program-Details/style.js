@@ -14,13 +14,10 @@ const Wrapper = styled.div`
         align-items: center;
         padding: 10px;
         width: fit-content;
+        text-decoration: none;
 
         i {
            padding-right: 4px;
-        }
-
-        a {
-           text-decoration: none;
         }
     }
 
