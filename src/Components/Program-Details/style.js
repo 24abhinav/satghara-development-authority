@@ -12,7 +12,7 @@ const Wrapper = styled.div`
         border: 0.5px solid blue;
         display: flex;
         align-items: center;
-        padding: 10px;
+        padding: 5px;
         width: fit-content;
         text-decoration: none;
 
