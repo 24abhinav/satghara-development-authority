@@ -13,9 +13,14 @@ const Wrapper = styled.div`
         display: flex;
         align-items: center;
         padding: 10px;
+        width: fit-content;
 
         i {
            padding-right: 4px;
+        }
+
+        a {
+           text-decoration: none;
         }
     }
 
