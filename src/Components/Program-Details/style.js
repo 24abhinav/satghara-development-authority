@@ -37,6 +37,16 @@ const Wrapper = styled.div`
         p {
             margin: 0;
         }
+
+        .maintainer-details {
+            display: flex:
+
+            img {
+               padding-right: 10px;
+               max-height: 150px;
+               max-width: 150px;
+            }
+        }
     }
 
     .videos {
