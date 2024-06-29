@@ -18,6 +18,7 @@ const Hospital = () => {
         maintainer_name = '',
         maintainer_mobile = '',
         maintainer_address = '',
+        maintainer_image = ''
         address = ''
     } = programDetails;
     const initialData = async () => {
@@ -45,7 +46,7 @@ const Hospital = () => {
             <div className='contact-info'>
                 <h3>{maintainer.heading}</h3>
                 <div className='maintainer-details'>
-                    <img src={maintainer.image || avatar} alt={maintainer.name} />
+                    <img src={maintainer_image || avatar} alt={maintainer_name} />
                     <div>
                         <p>{maintainer.name}: <b>{maintainer_name}</b></p>
                         <p>{maintainer.mobile}: <b>+91 {maintainer_mobile}</b> </p>
