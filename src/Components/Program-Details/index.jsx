@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Wrapper from './style';
 import { getMetaDetails, getProgramsByUrlHandler, getVideoByProgramIdHandler } from '../../handlers';
 import Manifest from '../../manifest';
+import avatar from './avatar.png';
 
 const Hospital = () => {
     const { programDetails: { maintainer = {}, centerAddress = '', youtubeContent = '' } = {} } = getMetaDetails() || {};
@@ -45,7 +46,7 @@ const Hospital = () => {
                 <h3>{maintainer.heading}</h3>
                 <div className='maintainer-details'>
                     {maintainer.image ? <img src={maintainer.image} alt={maintainer.name} /> : null}
-                    <img src={maintainer.image} alt={maintainer.name} />
+                    <img src={maintainer.image || avatar} alt={maintainer.name} />
                     <div>
                         <p>{maintainer.name}: <b>{maintainer_name}</b></p>
                         <p>{maintainer.mobile}: <b>+91 {maintainer_mobile}</b> </p>
