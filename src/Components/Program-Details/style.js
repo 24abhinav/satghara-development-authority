@@ -37,8 +37,9 @@ const Wrapper = styled.div`
         p {
             margin: 0;
         }
+    }
 
-        .maintainer-details {
+    .maintainer-details {
             display: flex:
 
             img {
@@ -47,7 +48,6 @@ const Wrapper = styled.div`
                max-width: 150px;
             }
         }
-    }
 
     .videos {
         iframe {
