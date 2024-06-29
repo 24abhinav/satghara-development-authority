@@ -45,7 +45,7 @@ const Hospital = () => {
                 <div>
                     <h3>{maintainer.heading}</h3>
                     <p>{maintainer.name}: <b>{maintainer_name}</b></p>
-                    <p>{maintainer.mobile}: <b>{maintainer_mobile}</b> </p>
+                    <p>{maintainer.mobile}: <b>+91 {maintainer_mobile}</b> </p>
                     {maintainer_address && <p>{maintainer.address}: <b>{maintainer_address}</b></p>}
                 </div>
             </div>
