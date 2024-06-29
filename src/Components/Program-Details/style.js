@@ -37,10 +37,8 @@ const Wrapper = styled.div`
         p {
             margin: 0;
         }
-    }
-
-    .maintainer-details {
-            display: flex:
+        .maintainer-details {
+            display: flex;
 
             img {
                padding-right: 10px;
@@ -48,6 +46,7 @@ const Wrapper = styled.div`
                max-width: 150px;
             }
         }
+    }
 
     .videos {
         iframe {
