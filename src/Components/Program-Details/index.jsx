@@ -43,10 +43,10 @@ const Hospital = () => {
             </div>
             <div className='contact-info'>
                 <h3>{maintainer.heading}</h3>
-                <div>
+                <div className='maintainer-details'>
                     {maintainer.image ? <img src={maintainer.image} alt={maintainer.name} /> : null}
                     <img src={maintainer.image} alt={maintainer.name} />
-                    <div className='maintainer-details'>
+                    <div>
                         <p>{maintainer.name}: <b>{maintainer_name}</b></p>
                         <p>{maintainer.mobile}: <b>+91 {maintainer_mobile}</b> </p>
                         {maintainer_address && <p>{maintainer.address}: <b>{maintainer_address}</b></p>}
