@@ -45,7 +45,6 @@ const Hospital = () => {
             <div className='contact-info'>
                 <h3>{maintainer.heading}</h3>
                 <div className='maintainer-details'>
-                    {maintainer.image ? <img src={maintainer.image} alt={maintainer.name} /> : null}
                     <img src={maintainer.image || avatar} alt={maintainer.name} />
                     <div>
                         <p>{maintainer.name}: <b>{maintainer_name}</b></p>
