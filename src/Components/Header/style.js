@@ -7,7 +7,7 @@ const Wrapper = styled.header`
     width: 100%;
     display: flex;
     justify-content: center;
-    border: 0.5px solid #0d0c1c;
+    border-bottom: 0.5px solid #0d0c1c;
     
     .header {
         display: flex;
