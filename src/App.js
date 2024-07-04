@@ -28,6 +28,9 @@ const App = () => {
           <>
               <Headers isAdmin={isAdmin} />
               <br />
+              <div className='social-media'>
+                 <i className='fa fa-facebook facebook' />
+              </div>
               <Suspense fallback={<p>loading</p>}>
                 <div className='router-component'>
                   <Routing />
