@@ -268,6 +268,25 @@ const GlobalStyle = styled.div`
             border-radius: 5px;
         }
     }
+
+    .social-media {
+       position: absolute;
+       right: 0;
+
+       i {
+          color: white;
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .facebook {
+            background: #0766ff;
+        }
+    }
 `;
 
 export default GlobalStyle;
