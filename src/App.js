@@ -29,7 +29,7 @@ const App = () => {
               <Headers isAdmin={isAdmin} />
               <br />
               <div className='social-media'>
-                 <a href='#' >
+                 <a title='SDF Facebook Page' href='https://www.facebook.com/profile.php?id=61554569855085&mibextid=ZbWKwL' target='_blank' >
                      <i className='fa fa-facebook facebook' />
                  </a>
               </div>
