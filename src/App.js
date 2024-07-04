@@ -29,7 +29,9 @@ const App = () => {
               <Headers isAdmin={isAdmin} />
               <br />
               <div className='social-media'>
-                 <i className='fa fa-facebook facebook' />
+                 <a href='#' >
+                     <i className='fa fa-facebook facebook' />
+                 </a>
               </div>
               <Suspense fallback={<p>loading</p>}>
                 <div className='router-component'>
