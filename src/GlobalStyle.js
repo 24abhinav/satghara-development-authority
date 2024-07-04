@@ -272,6 +272,7 @@ const GlobalStyle = styled.div`
     .social-media {
        position: fixed;
        right: 0;
+       z-index: 9;
 
        i {
           color: white;
