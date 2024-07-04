@@ -270,7 +270,7 @@ const GlobalStyle = styled.div`
     }
 
     .social-media {
-       position: absolute;
+       position: fixed;
        right: 0;
 
        i {
