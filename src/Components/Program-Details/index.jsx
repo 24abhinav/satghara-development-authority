@@ -18,7 +18,7 @@ const Hospital = () => {
         maintainer_name = '',
         maintainer_mobile = '',
         maintainer_address = '',
-        maintainer_image = ''
+        maintainer_image = '',
         address = ''
     } = programDetails;
     const initialData = async () => {
