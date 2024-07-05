@@ -123,7 +123,7 @@ const YoutubeGallery = ({
                         {admin && <button onClick={() => setModal(true)} className="btn primary">Add New Video</button>}
                     </div>
                     <div className="cards">
-                        {youtubeVideos.map(({ id, url, title }) => {
+                        {youtubeVideos.map(({ id, url, title, platform }) => {
                             return (
                                 <div key={id} className='youtube-videos'>
                                     <div className='title d-flex j-space-between a-center'>
@@ -141,7 +141,7 @@ const YoutubeGallery = ({
                                             </>
                                         )}
                                     </div>
-                                    <iframe title={title} src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
+                                    <iframe title={title} src={platform==='facebook' ? '' : `https://www.youtube.com/embed/${url}`} allowFullScreen />
                                 </div>
                             );
                         })}
