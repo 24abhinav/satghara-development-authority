@@ -50,7 +50,7 @@ const FilterComponent = ({ setFilter, loading }) => {
 
 
 export const DonationTable = ({ isAdmin = false, changeDonation, reload = false, setReload }) => {
-    const { donation: { tableHeading = [], totalDonationLabel = '' } = {} } = getMetaDetails();
+    const { donation: { tableHeading = [], totalDonationLabel = '', noData = '' } = {} } = getMetaDetails();
     const [donationDetails, setDonation] = useState([]);
     const [loading, setLoading] = useState(false);
     const [filter, setFilter] = useState({ ...initialFilter });
@@ -114,7 +114,7 @@ export const DonationTable = ({ isAdmin = false, changeDonation, reload = false,
                 </tbody>
             </Table>
             {loading && <p>Loading latest Donation ...</p>}
-            {!donationList?.length && <p className='no-data'>No Data Found</p>}
+            {!donationList?.length && <p className='no-data'>{noData}</p>}
             <h3>{totalDonationLabel} : {totalDonation.toLocaleString('en-IN')}</h3>
         </div>
     );
