@@ -59,6 +59,7 @@ const ADMIN_STATIC = Object.freeze({
     },
     youtube: {
         form: [
+            { name: 'platform', label: 'Platform', type: 'text', required: true },
             { name: 'title', label: 'Title', type: 'text', required: true },
             { name: 'url', label: 'Youtube URL', type: 'text', required: true },
         ]
