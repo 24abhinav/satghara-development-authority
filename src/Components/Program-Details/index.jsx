@@ -58,9 +58,9 @@ const Hospital = () => {
                 <div className='videos'>
                     <h4>{youtubeContent}</h4>
                     <div className='cards'>
-                        {videos.map(({ url }) => (
+                        {videos.map(({ url, platform }) => (
                             <div>
-                                <iframe key={url} src={`https://www.youtube.com/embed/${url}`} allowFullScreen />
+                                <iframe title={title} src={platform==='facebook' ? `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(`https://www.facebook.com/${url}`)}` : `https://www.youtube.com/embed/${url}`} allowFullScreen />
                             </div>
                         ))}
                     </div>
