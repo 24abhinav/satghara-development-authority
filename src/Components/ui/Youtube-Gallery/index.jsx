@@ -141,7 +141,7 @@ const YoutubeGallery = ({
                                             </>
                                         )}
                                     </div>
-                                    <iframe title={title} src={platform==='facebook' ? '' : `https://www.youtube.com/embed/${url}`} allowFullScreen />
+                                    <iframe title={title} src={platform==='facebook' ? `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(`https://www.facebook.com/${url}`)}` : `https://www.youtube.com/embed/${url}`} allowFullScreen />
                                 </div>
                             );
                         })}
