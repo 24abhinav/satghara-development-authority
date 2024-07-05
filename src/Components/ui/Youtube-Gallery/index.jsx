@@ -26,7 +26,11 @@ const AddNewVideo = ({
                 formData[key] = value;
             }
         }
-        formData.url = new URLSearchParams(formData.url.split('?')[1] || '').get('v');
+        if (formData.platform === 'facebook') {
+            formData.url = formData.url.replace('https://www.facebook.com', '');
+        } else {
+            formData.url = new URLSearchParams(formData.url.split('?')[1] || '').get('v');
+        }
         const { ok } = await addVideoHandler(formData);
         if (ok) {
             onSuccess();
