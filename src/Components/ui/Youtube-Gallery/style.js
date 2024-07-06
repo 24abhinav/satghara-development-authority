@@ -10,7 +10,7 @@ const Wrapper = styled.div`
         }
         iframe {
             width: 100%;
-            height: 300px;
+            height: 225px;
             border: none;
         }
 
